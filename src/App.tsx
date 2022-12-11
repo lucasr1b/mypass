@@ -1,5 +1,5 @@
-import Navbar from "./components/navbar/Navbar";
-import WelcomeBanner from "./components/welcome/WelcomeBanner";
+import Navbar from './components/navbar/Navbar';
+import WelcomeBanner from './components/welcome/WelcomeBanner';
 import './App.scss';
 
 const App = () => {
