@@ -1,9 +1,5 @@
 const Password = () => {
-  return (
-    <div className='Passwords'>
-
-    </div>
-  )
-}
+	return <div className='Password'></div>;
+};
 
 export default Password;

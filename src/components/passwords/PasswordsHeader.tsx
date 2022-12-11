@@ -1,16 +1,16 @@
-import { Search } from "react-bootstrap-icons";
-import "./PasswordsHeader.scss";
+import { Search } from 'react-bootstrap-icons';
+import './PasswordsHeader.scss';
 
 const PasswordsHeader = () => {
 	return (
 		<div className='Passwords__Header'>
 			<span>22 passwords</span>
-			<div className='Password__Search'>
+			<div className='Passwords__Search'>
 				<input
 					placeholder='Search passwords'
-					className='Password__Search__Input'
+					className='Passwords__Search__Input'
 				/>
-				<div className='Password__Search__Icon'>
+				<div className='Passwords__Search__Icon'>
 					<Search />
 				</div>
 			</div>
