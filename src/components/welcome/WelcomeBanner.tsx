@@ -1,10 +1,10 @@
-import './Banner.scss';
+import './WelcomeBanner.scss';
 
-const Banner = () => {
+const WelcomeBanner = () => {
   return (
-    <div className='Banner'>
+    <div className='WelcomeBanner'>
       <img src='welcome.svg' />
-      <div className='Banner__Content'>
+      <div className='WelcomeBanner__Content'>
         <h1>Welcome to your vault!</h1>
         <span>You can safely store passwords in your vault and keep them synchronized across all of your devices.</span>
         <button>Add a new password</button>
@@ -13,4 +13,4 @@ const Banner = () => {
   )
 }
 
-export default Banner;
+export default WelcomeBanner;

@@ -1,5 +1,5 @@
 import Navbar from "./components/navbar/Navbar";
-import Banner from "./components/welcome/Banner";
+import WelcomeBanner from "./components/welcome/WelcomeBanner";
 import './App.scss';
 
 const App = () => {
@@ -7,7 +7,7 @@ const App = () => {
     <div className='App'>
       <Navbar />
       <div className='App__Container'>
-        <Banner />
+        <WelcomeBanner />
       </div>
     </div>
   );
