@@ -1,0 +1,40 @@
+.Navbar {
+  padding: 20px;
+  .Navbar__Logo {
+    width: 120px;
+    height: auto;
+  }
+  .Navbar__Buttons {
+    float: right;
+    display: flex;
+    gap: 20px;
+    button {
+      height: 35px;
+      border-radius: 4px;
+      background-color: #f5efff;
+      color: #6e49e8;
+      border: none;
+    }
+  }
+  .Navbar__Dark__Mode {
+    width: 55px;
+    svg {
+      width: 16px;
+      height: 16px;
+    }
+  }
+  .Navbar__Profile {
+    display: flex;
+    align-items: center;
+    width: 110px;
+    img {
+      width: 24px;
+      height: auto;
+      border-radius: 50px;
+    }
+    span {
+      font-weight: 600;
+      margin: 0 10px;
+    }
+  }
+}
