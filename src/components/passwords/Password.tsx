@@ -12,7 +12,7 @@ export type PasswordProps = {
 const Password = (props: PasswordProps) => {
 	return (
 		<div className='Password'>
-			<img src='icons/Google.png' />
+			<img src='icons/Google.png' alt={props.password.site} />
 			<div className='Password__Details'>
 				<span className='Password__Details__Site'>{props.password.site}</span>
 				<span className='Password__Details__Email'>{props.password.email}</span>
