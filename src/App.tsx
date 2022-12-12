@@ -4,6 +4,7 @@ import Passwords from './components/passwords/Passwords';
 import useLocalStorage from 'use-local-storage';
 import './App.scss';
 import AddPasswordButton from './components/passwords/AddPasswordButton';
+import NewPasswordModal from './components/modal/NewPasswordModal';
 
 const App = () => {
 
@@ -20,6 +21,7 @@ const App = () => {
       <div className='App__Container'>
         <WelcomeBanner />
         <Passwords />
+        <NewPasswordModal />
       </div>
       <AddPasswordButton />
     </div>
