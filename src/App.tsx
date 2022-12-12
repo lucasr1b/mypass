@@ -3,6 +3,7 @@ import WelcomeBanner from './components/welcome/WelcomeBanner';
 import Passwords from './components/passwords/Passwords';
 import useLocalStorage from 'use-local-storage';
 import './App.scss';
+import AddPasswordButton from './components/passwords/AddPasswordButton';
 
 const App = () => {
 
@@ -20,6 +21,7 @@ const App = () => {
         <WelcomeBanner />
         <Passwords />
       </div>
+      <AddPasswordButton />
     </div>
   );
 }
