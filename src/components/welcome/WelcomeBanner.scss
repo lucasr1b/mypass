@@ -1,5 +1,5 @@
 .WelcomeBanner {
-  border: 1px solid #dcdae0;
+  border: 1px solid var(--secondary-accent);
   border-radius: 12px;
   width: 850px;
   height: 200px;
@@ -21,6 +21,7 @@
 
     h1 {
       font-size: 28px;
+      color: var(--text-primary);
     }
 
     span {
@@ -31,7 +32,7 @@
     button {
       width: 180px;
       height: 40px;
-      background-color: #f5efff;
+      background-color: var(--accent);
       color: #6e49e8;
       border: none;
       border-radius: 6px;
