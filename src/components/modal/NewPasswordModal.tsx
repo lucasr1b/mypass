@@ -12,7 +12,7 @@ const NewPasswordModal = ({ closeModal }: any) => {
             <h3>Add new password</h3>
             <span>Add a new password to be safely stored in your vault.</span>
           </div>
-          <div className='Modal__Close'>
+          <div className='Modal__Close' onClick={closeModal}>
             <X />
           </div>
         </div>
