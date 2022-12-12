@@ -1,12 +1,13 @@
 import PasswordsHeader from './PasswordsHeader';
-import './Passwords.scss';
 import Password from './Password';
+import PasswordList from './PasswordList';
+import './Passwords.scss';
 
 const Passwords = () => {
 	return (
 		<div className='Passwords'>
 			<PasswordsHeader />
-			<Password />
+			<PasswordList />
 		</div>
 	);
 };
