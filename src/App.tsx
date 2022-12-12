@@ -25,11 +25,11 @@ const App = () => {
     <div className='App' data-theme={theme}>
       <Navbar switchTheme={() => switchTheme()} theme={theme} />
       <div className='App__Container'>
-        <WelcomeBanner addPassword={() => toggleModal()} />
+        <WelcomeBanner openModal={() => toggleModal()} />
         <Passwords />
         {modalToggled && <NewPasswordModal closeModal={() => toggleModal()} />}
       </div>
-      {!modalToggled && <AddPasswordButton />}
+      {!modalToggled && <AddPasswordButton openModal={() => toggleModal()} />}
     </div>
   );
 }
