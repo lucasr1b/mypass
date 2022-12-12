@@ -1,4 +1,5 @@
 import { X } from 'react-bootstrap-icons';
+import ModalTextInput from './ModalTextInput';
 import './NewPasswordModal.scss';
 
 const NewPasswordModal = ({ closeModal }: any) => {
@@ -17,10 +18,10 @@ const NewPasswordModal = ({ closeModal }: any) => {
         </div>
         <form className='Modal__Form'>
           <div className='Modal__Form__Inputs'>
-            <input />
-            <input />
-            <input />
-            <input />
+            <ModalTextInput label={'Identifier'} />
+            <ModalTextInput label={'Website URL'} />
+            <ModalTextInput label={'Username or email'} />
+            <ModalTextInput label={'Password'} />
           </div>
           <div className='Modal__Form__Buttons'>
             <div className='Modal__Form__Buttons__Images'>
