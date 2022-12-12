@@ -42,8 +42,8 @@ const PasswordList = () => {
 
   return (
     <div className='Password__List'>
-      {passwords.map(password =>
-        <Password password={password} />
+      {passwords.map((password, index) =>
+        <Password key={index} password={password} />
       )}
     </div>
   )
