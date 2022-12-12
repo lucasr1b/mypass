@@ -19,7 +19,6 @@ const App = () => {
 
   const toggleModal = () => {
     setModalToggled(!modalToggled);
-    document.body.style.overflow = (modalToggled ? 'unset' : 'hidden')
   }
 
   return (
@@ -28,9 +27,9 @@ const App = () => {
       <div className='App__Container'>
         <WelcomeBanner addPassword={() => toggleModal()} />
         <Passwords />
+        {modalToggled && <NewPasswordModal closeModal={() => toggleModal()} />}
       </div>
-      {modalToggled && <NewPasswordModal closeModal={() => toggleModal()} />}
-      <AddPasswordButton />
+      {!modalToggled && <AddPasswordButton />}
     </div>
   );
 }
