@@ -16,7 +16,7 @@ const App = () => {
 
   return (
     <div className='App' data-theme={theme}>
-      <Navbar switchTheme={() => switchTheme()} />
+      <Navbar switchTheme={() => switchTheme()} theme={theme} />
       <div className='App__Container'>
         <WelcomeBanner />
         <Passwords />
