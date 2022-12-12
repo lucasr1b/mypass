@@ -3,7 +3,8 @@ import './NewPasswordModal.scss';
 
 const NewPasswordModal = ({ closeModal }: any) => {
   return (
-    <div className='Modal__Backdrop' onClick={closeModal}>
+    <>
+      <div className='Modal__Backdrop' onClick={closeModal}></div>
       <div className='New__Password__Modal'>
         <div className='Modal__Header'>
           <div className='Modal__Header__Info'>
@@ -34,7 +35,7 @@ const NewPasswordModal = ({ closeModal }: any) => {
           </div>
         </form>
       </div>
-    </div>
+    </>
   )
 }
 
