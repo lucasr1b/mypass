@@ -37,6 +37,12 @@
       border-radius: 6px;
       font-weight: 500;
       margin-top: 15px;
+
+      &:hover {
+        background-color: #6e49e8;
+        color: white;
+        cursor: pointer;
+      }
     }
   }
 }

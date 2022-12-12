@@ -17,6 +17,12 @@
       background-color: #f5efff;
       color: #6e49e8;
       border: none;
+
+      &:hover {
+        background-color: #6e49e8;
+        color: white;
+        cursor: pointer;
+      }
     }
   }
 
