@@ -1,12 +1,12 @@
 :root {
   --background: white;
-  --text-primary: black;
+  --primary: black;
   --accent: #f5efff;
   --secondary-accent: #dcdae0;
 }
 [data-theme="dark"] {
   --background: #000;
-  --text-primary: white;
+  --primary: white;
   --accent: #131119;
   --secondary-accent: #282628;
 }
