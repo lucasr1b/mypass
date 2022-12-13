@@ -1,0 +1,15 @@
+{
+  "name": "mypass-server",
+  "version": "1.0.0",
+  "description": "Backend used for mypass.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "mypass",
+    "server"
+  ],
+  "author": "Lucas Ribeiro",
+  "license": "ISC"
+}
