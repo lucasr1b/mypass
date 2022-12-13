@@ -30,7 +30,10 @@ const NewPasswordModal = ({ closeModal }: any) => {
                 Upload Logo
               </button>
               <span>OR</span>
-              <button className='Modal__Form__Fetch'>Fetch favicon from website</button>
+              <div>
+                <button className='Modal__Form__Fetch'>Fetch favicon from website</button>
+                <span className='Modal__Form__Fetch__Requirement'>Website URL is required to fetch</span>
+              </div>
             </div>
             <div className='Modal__Form__Actions'>
               <button className='Modal__Form__Cancel' onClick={closeModal}>Cancel</button>
