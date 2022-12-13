@@ -1,12 +1,17 @@
 import express, { Express, Request, Response } from 'express';
+import cors from 'cors';
 import connectDB from './db/db';
 require('dotenv').config();
 
 const app: Express = express();
 const port = process.env.PORT || 5000;
 
-app.get('/', (req: Request, res: Response) => {
-  res.send('Hello World!');
+app.use(cors());
+app.use(express.json());
+
+app.get('/api', (req: Request, res: Response) => {
+  res.status(200).json({ message: "Hello World", }
+  );
 });
 
 app.listen(port, () => {
