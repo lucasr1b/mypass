@@ -14,6 +14,7 @@ const App = () => {
 
   const switchTheme = () => {
     const newTheme = theme === 'light' ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', newTheme);
     setTheme(newTheme);
   }
 
@@ -22,7 +23,7 @@ const App = () => {
   }
 
   return (
-    <div className='App' data-theme={theme}>
+    <div className='App'>
       <Navbar switchTheme={() => switchTheme()} theme={theme} />
       <div className='App__Container'>
         <WelcomeBanner openModal={() => toggleModal()} />
