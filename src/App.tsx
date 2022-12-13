@@ -5,7 +5,7 @@ import useLocalStorage from 'use-local-storage';
 import './App.scss';
 import AddPasswordButton from './components/passwords/AddPasswordButton';
 import NewPasswordModal from './components/modal/NewPasswordModal';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const App = () => {
 
@@ -21,6 +21,10 @@ const App = () => {
   const toggleModal = () => {
     setModalToggled(!modalToggled);
   }
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme);
+  })
 
   return (
     <div className='App'>
