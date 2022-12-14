@@ -5,14 +5,14 @@ import FormInput from './components/form/FormInput';
 import FormSubmitButton from './components/form/FormSubmitButton';
 import FormWithGoogle from './components/form/FormWithGoogle';
 import Navbar from './components/navbar/Navbar';
-import './Register.scss';
+import './styles/authentication.scss';
 
 const Register = () => {
   return (
-    <div className='Register'>
+    <div className='Authentication'>
       <Navbar buttonsEnabled={false} />
-      <div className='Register__Container'>
-        <div className='Register__Form'>
+      <div className='Authentication__Container'>
+        <div className='Authentication__Form'>
           <FormHeader title='Create an account' description='Create an account and start saving your passwords.' />
           <FormInput label={'Full name'} />
           <FormInput label={'Email address'} />
@@ -22,7 +22,7 @@ const Register = () => {
           <FormWithGoogle text='Sign up with Google' />
           <FormFooter text='Already have an account?' action='Login' link='/login' />
         </div>
-        <div className='Register__Image'>
+        <div className='Authentication__Image'>
           <img src='register.svg' />
         </div>
       </div>

@@ -1,9 +1,9 @@
-.Register {
+.Authentication {
   display: flex;
   flex-direction: column;
   height: 100vh;
 
-  .Register__Container {
+  .Authentication__Container {
     display: flex;
     align-items: center;
     flex-direction: row;
@@ -11,14 +11,14 @@
     padding: 0 80px;
     gap: 200px;
 
-    .Register__Form {
+    .Authentication__Form {
       display: flex;
       flex-direction: column;
       gap: 20px;
       width: 400px;
     }
 
-    .Register__Image {
+    .Authentication__Image {
       img {
         width: 800px;
         height: auto;

@@ -6,14 +6,14 @@ import FormOrOAuth from './components/form/FormOrOAuth';
 import FormSubmitButton from './components/form/FormSubmitButton';
 import FormWithGoogle from './components/form/FormWithGoogle';
 import Navbar from './components/navbar/Navbar';
-import './Login.scss';
+import './styles/authentication.scss';
 
 const Login = () => {
   return (
-    <div className='Login'>
+    <div className='Authentication'>
       <Navbar buttonsEnabled={false} />
-      <div className='Login__Container'>
-        <div className='Login__Form'>
+      <div className='Authentication__Container'>
+        <div className='Authentication__Form'>
           <FormHeader title='Welcome back!' description='Login to your account to continue.' />
           <FormWithGoogle text='Login with Google' />
           <FormOrOAuth />
@@ -22,7 +22,7 @@ const Login = () => {
           <FormSubmitButton text='Login' />
           <FormFooter text="Don't have an account?" action='Sign up for free' link='/register' />
         </div>
-        <div className='Login__Image'>
+        <div className='Authentication__Image'>
           <img src='login.svg' />
         </div>
       </div>
