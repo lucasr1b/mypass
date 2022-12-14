@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import FormHeader from './components/form/FormHeader';
 import FormInput from './components/form/FormInput';
+import FormSubmitButton from './components/form/FormSubmitButton';
 import Navbar from './components/navbar/Navbar';
 import './Register.scss';
 
@@ -15,6 +16,7 @@ const Register = () => {
           <FormInput label={'Email address'} />
           <FormInput label={'Password'} />
           <FormInput label={'Confirm password'} />
+          <FormSubmitButton text='Create account' />
         </div>
         <div className='Register__Image'>
           <img src='register.svg' />
