@@ -16,8 +16,8 @@ const Register = () => {
           <FormHeader title='Create an account' description='Create an account and start saving your passwords.' />
           <FormInput label={'Full name'} />
           <FormInput label={'Email address'} />
-          <FormInput label={'Password'} />
-          <FormInput label={'Confirm password'} />
+          <FormInput label={'Password'} type='password' />
+          <FormInput label={'Confirm password'} type='password' />
           <FormSubmitButton text='Create account' />
           <FormWithGoogle text='Sign up with Google' />
           <FormFooter text='Already have an account?' action='Login' link='/login' />
