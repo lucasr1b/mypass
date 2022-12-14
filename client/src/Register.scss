@@ -6,9 +6,11 @@
     gap: 200px;
 
     .Register__Form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
       width: 520px;
       height: 600px;
-      background-color: #6e49e8;
     }
 
     .Register__Image {

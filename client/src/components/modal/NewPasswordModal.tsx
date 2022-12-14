@@ -1,5 +1,5 @@
 import { CloudUpload, X } from 'react-bootstrap-icons';
-import ModalTextInput from './ModalTextInput';
+import FormInput from '../form/FormInput';
 import './NewPasswordModal.scss';
 
 const NewPasswordModal = ({ closeModal }: any) => {
@@ -18,10 +18,10 @@ const NewPasswordModal = ({ closeModal }: any) => {
         </div>
         <form className='Modal__Form'>
           <div className='Modal__Form__Inputs'>
-            <ModalTextInput label={'Identifier'} />
-            <ModalTextInput label={'Website URL'} />
-            <ModalTextInput label={'Username or email'} />
-            <ModalTextInput label={'Password'} />
+            <FormInput label={'Identifier'} small={true} />
+            <FormInput label={'Website URL'} small={true} />
+            <FormInput label={'Username or email'} small={true} />
+            <FormInput label={'Password'} small={true} />
           </div>
           <div className='Modal__Form__Buttons'>
             <div className='Modal__Form__Images'>
