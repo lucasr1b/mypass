@@ -1,7 +1,13 @@
 .Register {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+
   .Register__Container {
     display: flex;
+    align-items: center;
     flex-direction: row;
+    flex: 1;
     padding: 0 80px;
     gap: 200px;
 
