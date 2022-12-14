@@ -1,4 +1,5 @@
-.Authentication {
+.Login,
+.Register {
   display: flex;
   flex-direction: column;
   height: 100vh;
@@ -9,20 +10,12 @@
     flex-direction: row;
     flex: 1;
     padding: 0 80px;
-    gap: 200px;
 
     .Authentication__Form {
       display: flex;
       flex-direction: column;
       gap: 20px;
       width: 400px;
-    }
-
-    .Authentication__Image {
-      img {
-        width: 800px;
-        height: auto;
-      }
     }
   }
 }

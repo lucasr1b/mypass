@@ -5,10 +5,11 @@ import FormSubmitButton from '../../components/form/FormSubmitButton';
 import FormWithGoogle from '../../components/form/FormWithGoogle';
 import Navbar from '../../components/navbar/Navbar';
 import '../../styles/authentication.scss';
+import './Register.scss'
 
 const Register = () => {
   return (
-    <div className='Authentication'>
+    <div className='Register'>
       <Navbar buttonsEnabled={false} />
       <div className='Authentication__Container'>
         <div className='Authentication__Form'>
@@ -21,7 +22,7 @@ const Register = () => {
           <FormWithGoogle text='Sign up with Google' />
           <FormFooter text='Already have an account?' action='Login' link='/login' />
         </div>
-        <div className='Authentication__Image'>
+        <div className='Register__Image'>
           <img src='register.svg' />
         </div>
       </div>

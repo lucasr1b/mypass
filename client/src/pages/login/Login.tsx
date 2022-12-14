@@ -6,10 +6,11 @@ import FormSubmitButton from '../../components/form/FormSubmitButton';
 import FormWithGoogle from '../../components/form/FormWithGoogle';
 import Navbar from '../../components/navbar/Navbar';
 import '../../styles/authentication.scss';
+import './Login.scss';
 
 const Login = () => {
   return (
-    <div className='Authentication'>
+    <div className='Login'>
       <Navbar buttonsEnabled={false} />
       <div className='Authentication__Container'>
         <div className='Authentication__Form'>
@@ -21,7 +22,7 @@ const Login = () => {
           <FormSubmitButton text='Login' />
           <FormFooter text="Don't have an account?" action='Sign up for free' link='/register' />
         </div>
-        <div className='Authentication__Image'>
+        <div className='Login__Image'>
           <img src='login.svg' />
         </div>
       </div>
