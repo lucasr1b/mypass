@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { RouterProvider, Link, createBrowserRouter } from 'react-router-dom';
-import App from './App';
-import Login from './Login';
-import Register from './Register';
+import App from './pages/app/App';
+import Login from './pages/login/Login';
+import Register from './pages/register/Register';
 import './theme.scss';
 
 const router = createBrowserRouter([

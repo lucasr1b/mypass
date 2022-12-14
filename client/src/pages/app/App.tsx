@@ -1,10 +1,10 @@
-import Navbar from './components/navbar/Navbar';
-import WelcomeBanner from './components/welcome/WelcomeBanner';
-import Passwords from './components/passwords/Passwords';
+import Navbar from '../../components/navbar/Navbar';
+import WelcomeBanner from '../../components/welcome/WelcomeBanner';
+import Passwords from '../../components/passwords/Passwords';
 import useLocalStorage from 'use-local-storage';
 import './App.scss';
-import AddPasswordButton from './components/passwords/AddPasswordButton';
-import NewPasswordModal from './components/modal/NewPasswordModal';
+import AddPasswordButton from '../../components/passwords/AddPasswordButton';
+import NewPasswordModal from '../../components/modal/NewPasswordModal';
 import { useEffect, useState } from 'react';
 
 const App = () => {

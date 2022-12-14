@@ -1,12 +1,11 @@
-import { Link } from 'react-router-dom';
-import FormFooter from './components/form/FormFooter';
-import FormHeader from './components/form/FormHeader';
-import FormInput from './components/form/FormInput';
-import FormOrOAuth from './components/form/FormOrOAuth';
-import FormSubmitButton from './components/form/FormSubmitButton';
-import FormWithGoogle from './components/form/FormWithGoogle';
-import Navbar from './components/navbar/Navbar';
-import './styles/authentication.scss';
+import FormFooter from '../../components/form/FormFooter';
+import FormHeader from '../../components/form/FormHeader';
+import FormInput from '../../components/form/FormInput';
+import FormOrOAuth from '../../components/form/FormOrOAuth';
+import FormSubmitButton from '../../components/form/FormSubmitButton';
+import FormWithGoogle from '../../components/form/FormWithGoogle';
+import Navbar from '../../components/navbar/Navbar';
+import '../../styles/authentication.scss';
 
 const Login = () => {
   return (
