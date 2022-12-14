@@ -28,7 +28,7 @@ const App = () => {
 
   return (
     <div className='App'>
-      <Navbar switchTheme={() => switchTheme()} theme={theme} />
+      <Navbar switchTheme={() => switchTheme()} theme={theme} buttonsEnabled={true} />
       <div className='App__Container'>
         <WelcomeBanner openModal={() => toggleModal()} />
         <Passwords />
