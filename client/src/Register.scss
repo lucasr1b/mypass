@@ -1,0 +1,21 @@
+.Register {
+  .Register__Container {
+    display: flex;
+    flex-direction: row;
+    padding: 0 80px;
+    gap: 200px;
+
+    .Register__Form {
+      width: 520px;
+      height: 600px;
+      background-color: #6e49e8;
+    }
+
+    .Register__Image {
+      img {
+        width: 600px;
+        height: auto;
+      }
+    }
+  }
+}

@@ -1,11 +1,19 @@
 import { Link } from 'react-router-dom';
 import Navbar from './components/navbar/Navbar';
+import './Register.scss';
 
 const Register = () => {
   return (
-    <div>
+    <div className='Register'>
       <Navbar buttonsEnabled={false} />
-      Register, you can login <Link to='/login'>here</Link>
+      <div className='Register__Container'>
+        <div className='Register__Form'>
+
+        </div>
+        <div className='Register__Image'>
+          <img src='register.svg' />
+        </div>
+      </div>
     </div>
   )
 }
