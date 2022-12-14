@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import FormHeader from './components/form/FormHeader';
 import FormInput from './components/form/FormInput';
 import FormSubmitButton from './components/form/FormSubmitButton';
+import FormWithGoogle from './components/form/FormWithGoogle';
 import Navbar from './components/navbar/Navbar';
 import './Register.scss';
 
@@ -17,6 +18,7 @@ const Register = () => {
           <FormInput label={'Password'} />
           <FormInput label={'Confirm password'} />
           <FormSubmitButton text='Create account' />
+          <FormWithGoogle text='Sign up with Google' />
         </div>
         <div className='Register__Image'>
           <img src='register.svg' />

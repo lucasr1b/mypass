@@ -1,0 +1,20 @@
+.Form__With__Google {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 400px;
+  height: 50px;
+  border: 1px solid #d1d1d1;
+  border-radius: 8px;
+
+  img {
+    width: 24px;
+    height: 24px;
+  }
+
+  span {
+    color: #6c7284;
+    font-weight: 500;
+  }
+}
