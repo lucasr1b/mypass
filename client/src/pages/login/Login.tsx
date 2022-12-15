@@ -20,7 +20,7 @@ const Login = () => {
           <FormInput label={'Email address'} />
           <FormInput label={'Password'} type='password' />
           <FormSubmitButton text='Login' />
-          <FormFooter text="Don't have an account?" action='Sign up for free' link='/register' />
+          <FormFooter text="Don't have an account?" action='Sign up for free' link='/signup' />
         </div>
         <div className='Login__Image'>
           <img src='login.svg' />
