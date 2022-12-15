@@ -18,10 +18,10 @@ const NewPasswordModal = ({ closeModal }: any) => {
         </div>
         <form className='Modal__Form'>
           <div className='Modal__Form__Inputs'>
-            <FormInput label={'Identifier'} small={true} />
-            <FormInput label={'Website URL'} small={true} />
-            <FormInput label={'Username or email'} small={true} />
-            <FormInput label={'Password'} small={true} />
+            <FormInput label={'Identifier'} small={true} name='identifier' />
+            <FormInput label={'Website URL'} small={true} name='url' />
+            <FormInput label={'Username or email'} small={true} name='user' />
+            <FormInput label={'Password'} small={true} name='password' />
           </div>
           <div className='Modal__Form__Buttons'>
             <div className='Modal__Form__Images'>

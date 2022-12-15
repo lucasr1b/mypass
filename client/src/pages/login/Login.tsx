@@ -17,8 +17,8 @@ const Login = () => {
           <FormHeader title='Welcome back!' description='Login to your account to continue.' />
           <FormWithGoogle text='Login with Google' />
           <FormOrOAuth />
-          <FormInput label={'Email address'} />
-          <FormInput label={'Password'} type='password' />
+          <FormInput label={'Email address'} name='email' />
+          <FormInput label={'Password'} type='password' name='password' />
           <FormSubmitButton text='Login' />
           <FormFooter text="Don't have an account?" action='Sign up for free' link='/signup' />
         </div>

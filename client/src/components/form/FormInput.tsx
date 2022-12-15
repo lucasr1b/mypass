@@ -2,6 +2,7 @@ import './FormInput.scss';
 
 export type FormInputTypes = {
   label: string;
+  name: string;
   small: boolean;
   type: string;
 }
@@ -9,8 +10,8 @@ export type FormInputTypes = {
 const FormInput = (props: FormInputTypes) => {
   return (
     <div className={`${'Form__Text__Input'}${props.small ? ' Input__Size__Small' : ''}`}>
-      <input type={props.type} placeholder={props.label} />
-      <label htmlFor=''>{props.label}</label>
+      <input type={props.type} placeholder={props.label} name={props.name} />
+      <label htmlFor={props.name}>{props.label}</label>
     </div>
   )
 }
