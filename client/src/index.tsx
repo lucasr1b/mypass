@@ -9,6 +9,10 @@ import './styles/theme.scss';
 const router = createBrowserRouter([
   {
     path: '/',
+    element: <h1>Hello World</h1>
+  },
+  {
+    path: '/app',
     element: <App />
   },
   {
