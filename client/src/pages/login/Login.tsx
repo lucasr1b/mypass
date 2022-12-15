@@ -9,18 +9,23 @@ import '../../styles/authentication.scss';
 import './Login.scss';
 
 const Login = () => {
+
+  const loginUser = () => {
+    console.log('Hello World');
+  }
+
   return (
     <div className='Login'>
       <Navbar buttonsEnabled={false} />
       <div className='Authentication__Container'>
-        <form className='Authentication__Form'>
+        <form className='Authentication__Form' onSubmit={loginUser}>
           <FormHeader title='Welcome back!' description='Login to your account to continue.' />
           <FormWithGoogle text='Login with Google' />
           <FormOrOAuth />
           <FormInput label={'Email address'} name='email' />
           <FormInput label={'Password'} type='password' name='password' />
           <FormSubmitButton text='Login' />
-          <FormFooter text="Don't have an account?" action='Sign up for free' link='/signup' />
+          < FormFooter text="Don't have an account?" action='Sign up for free' link='/signup' />
         </form>
         <div className='Login__Image'>
           <img src='login.svg' />
