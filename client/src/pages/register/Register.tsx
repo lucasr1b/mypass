@@ -12,7 +12,7 @@ const Register = () => {
     <div className='Register'>
       <Navbar buttonsEnabled={false} />
       <div className='Authentication__Container'>
-        <div className='Authentication__Form'>
+        <form className='Authentication__Form'>
           <FormHeader title='Create an account' description='Create an account and start saving your passwords.' />
           <FormInput label={'Full name'} name='fname' />
           <FormInput label={'Email address'} name='email' />
@@ -21,7 +21,7 @@ const Register = () => {
           <FormSubmitButton text='Create account' />
           <FormWithGoogle text='Sign up with Google' />
           <FormFooter text='Already have an account?' action='Login' link='/login' />
-        </div>
+        </form>
         <div className='Register__Image'>
           <img src='register.svg' />
         </div>

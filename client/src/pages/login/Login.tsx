@@ -13,7 +13,7 @@ const Login = () => {
     <div className='Login'>
       <Navbar buttonsEnabled={false} />
       <div className='Authentication__Container'>
-        <div className='Authentication__Form'>
+        <form className='Authentication__Form'>
           <FormHeader title='Welcome back!' description='Login to your account to continue.' />
           <FormWithGoogle text='Login with Google' />
           <FormOrOAuth />
@@ -21,7 +21,7 @@ const Login = () => {
           <FormInput label={'Password'} type='password' name='password' />
           <FormSubmitButton text='Login' />
           <FormFooter text="Don't have an account?" action='Sign up for free' link='/signup' />
-        </div>
+        </form>
         <div className='Login__Image'>
           <img src='login.svg' />
         </div>
