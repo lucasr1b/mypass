@@ -4,13 +4,19 @@ import connectDB from './db/db';
 import passwordRoutes from './routes/passwordRoutes';
 import userRoutes from './routes/userRoutes';
 import authRoutes from './routes/authRoutes';
+import cookieParser from 'cookie-parser';
 require('dotenv').config();
 
 const app: Express = express();
 const port = process.env.PORT || 5000;
 
-app.use(cors());
+app.use(cors({
+  origin: ['http://localhost:3000'],
+  credentials: true,
+}));
+
 app.use(express.json());
+app.use(cookieParser());
 
 app.get('/api', (req: Request, res: Response) => {
   res.status(200).json({ message: "Hello World", }
