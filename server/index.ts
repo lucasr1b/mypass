@@ -3,6 +3,7 @@ import cors from 'cors';
 import connectDB from './db/db';
 import passwordRoutes from './routes/passwordRoutes';
 import userRoutes from './routes/userRoutes';
+import authRoutes from './routes/authRoutes';
 require('dotenv').config();
 
 const app: Express = express();
@@ -18,6 +19,7 @@ app.get('/api', (req: Request, res: Response) => {
 
 app.use('/api/passwords', passwordRoutes);
 app.use('/api/users', userRoutes);
+app.use('/api/auth', authRoutes);
 
 app.listen(port, () => {
   console.log(`Started server on port ${port}`);
