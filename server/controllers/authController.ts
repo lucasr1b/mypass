@@ -1,9 +1,10 @@
 import { Request, Response } from 'express';
 import User from '../models/User';
 import { createToken } from '../services/authService';
+import { maxAge } from '../utils/constants';
 
-// @Desc register user
-// @Route /api/users/register
+// @Desc Register user
+// @Route /api/auth/login
 // @Method POST
 
 export const registerUserController = async (req: Request, res: Response) => {
@@ -16,7 +17,6 @@ export const registerUserController = async (req: Request, res: Response) => {
       password
     });
 
-    const maxAge = 7 * 24 * 60 * 60 * 1000 // 7d
     const token = createToken(user._id.toString(), maxAge);
 
     res.cookie('TOKEN', token, {
@@ -35,5 +35,30 @@ export const registerUserController = async (req: Request, res: Response) => {
     console.log(err);
     res.status(400).json({ created: false, error: err.message });
   }
+}
 
+// @Desc Login user
+// @Route /api/auth/login
+// @Method POST
+
+export const authLoginController = async (req: Request, res: Response) => {
+  try {
+    const { email, password } = req.body;
+
+    const user = await User.findOne({ email });
+
+    if (user && await user.comparePassword(password)) {
+      const token = createToken(user._id.toString(), maxAge);
+
+      res.cookie('TOKEN', token, {
+        maxAge
+      });
+      res.status(200).json({ loggedIn: true });
+    } else {
+      res.status(401).json({ error: 'Email or password is incorrect.' });
+    }
+  } catch (err: any) {
+    console.log(err);
+    res.status(400).json({ error: err.message });
+  }
 }

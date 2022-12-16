@@ -1,3 +1,4 @@
+import axios from 'axios';
 import FormFooter from '../../components/form/FormFooter';
 import FormHeader from '../../components/form/FormHeader';
 import FormInput from '../../components/form/FormInput';
@@ -6,12 +7,22 @@ import FormSubmitButton from '../../components/form/FormSubmitButton';
 import FormWithGoogle from '../../components/form/FormWithGoogle';
 import Navbar from '../../components/navbar/Navbar';
 import '../../styles/authentication.scss';
+import { axiosConfig } from '../../utils/constants';
 import './Login.scss';
 
 const Login = () => {
 
-  const loginUser = () => {
-    console.log('Hello World');
+  const loginUser = (e: any) => {
+    e.preventDefault();
+
+    const { email, password } = document.forms[0];
+
+    const data = {
+      email: email.value,
+      password: password.value,
+    };
+
+    axios.post('http://localhost:5000/api/auth/login', data, axiosConfig)
   }
 
   return (
