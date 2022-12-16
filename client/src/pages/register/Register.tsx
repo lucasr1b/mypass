@@ -22,7 +22,7 @@ const Register = () => {
       password: password.value,
     };
 
-    axios.post('http://localhost:5000/api/users/register', data, axiosConfig)
+    axios.post('http://localhost:5000/api/auth/register', data, axiosConfig)
   }
 
   return (
