@@ -32,6 +32,7 @@ const Register = () => {
       name: fname.value,
       email: email.value,
       password: password.value,
+      cpassword: cpassword.value,
     };
 
     axios.post('http://localhost:5000/api/auth/register', data, axiosConfig)
