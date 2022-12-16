@@ -1,4 +1,7 @@
 import axios from 'axios';
+import { useEffect } from 'react';
+import { Cookies } from 'react-cookie';
+import { useNavigate } from 'react-router-dom';
 import FormFooter from '../../components/form/FormFooter';
 import FormHeader from '../../components/form/FormHeader';
 import FormInput from '../../components/form/FormInput';
@@ -10,6 +13,15 @@ import { axiosConfig } from '../../utils/constants';
 import './Register.scss'
 
 const Register = () => {
+
+  const cookies = new Cookies();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (cookies.get('TOKEN')) {
+      navigate('/app');
+    }
+  }, [cookies, navigate])
 
   const registerUser = async (e: any) => {
     e.preventDefault();

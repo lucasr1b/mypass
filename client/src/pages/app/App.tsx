@@ -6,8 +6,35 @@ import './App.scss';
 import AddPasswordButton from '../../components/passwords/AddPasswordButton';
 import NewPasswordModal from '../../components/modal/NewPasswordModal';
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { Cookies } from 'react-cookie';
+import axios from 'axios';
+import { axiosConfig } from '../../utils/constants';
 
 const App = () => {
+
+  const cookies = new Cookies();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const verifyAuthentication = async () => {
+      if (!cookies.get('TOKEN')) {
+        navigate('/login')
+      } else {
+        const { data } = await axios.post(
+          "http://localhost:5000/api/auth", {}, axiosConfig
+        );
+        if (!data.loggedIn) {
+          cookies.remove('TOKEN');
+          navigate('/login');
+        } else {
+          console.log('Authenticated and all good!');
+        }
+      };
+    }
+
+    verifyAuthentication();
+  }, [cookies, navigate])
 
   const [theme, setTheme] = useLocalStorage('theme', 'light');
   const [modalToggled, setModalToggled] = useState(false);
