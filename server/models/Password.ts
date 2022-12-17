@@ -1,12 +1,13 @@
 import mongoose from 'mongoose';
 
-export interface IPassword {
+export interface IPassword extends mongoose.Document {
   identifier: string,
   url: string,
   user: string,
   password: string,
   logo: string,
   createdAt: Date,
+  updatedAt: Date,
 }
 
 const PasswordSchema = new mongoose.Schema({
@@ -35,12 +36,8 @@ const PasswordSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-
-  createdAt: {
-    type: Date,
-    required: true
-  },
-
+}, {
+  timestamps: true,
 })
 
 const Password = mongoose.model<IPassword>('Password', PasswordSchema);
