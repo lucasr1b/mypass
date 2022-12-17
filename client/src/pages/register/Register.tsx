@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Cookies } from 'react-cookie';
 import { useNavigate } from 'react-router-dom';
 import FormFooter from '../../components/form/FormFooter';
@@ -11,11 +11,14 @@ import Navbar from '../../components/navbar/Navbar';
 import '../../styles/authentication.scss';
 import { axiosConfig } from '../../utils/constants';
 import './Register.scss'
+import FormError from '../../components/form/FormError';
 
 const Register = () => {
 
   const cookies = new Cookies();
   const navigate = useNavigate();
+
+  const [error, setError] = useState('');
 
   useEffect(() => {
     if (cookies.get('TOKEN')) {
@@ -36,6 +39,9 @@ const Register = () => {
     };
 
     axios.post('http://localhost:5000/api/auth/register', data, axiosConfig)
+      .catch((res) => {
+        setError(res.response.data.error);
+      })
   }
 
   return (
@@ -44,6 +50,7 @@ const Register = () => {
       <div className='Authentication__Container'>
         <form className='Authentication__Form' onSubmit={registerUser}>
           <FormHeader title='Create an account' description='Create an account and start saving your passwords.' />
+          {error && <FormError error={error} />}
           <FormInput label={'Full name'} name='fname' />
           <FormInput label={'Email address'} name='email' />
           <FormInput label={'Password'} type='password' name='password' />
