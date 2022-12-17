@@ -16,7 +16,7 @@ export const registerUserController = async (req: Request, res: Response) => {
 
     if (name && email && password && cpassword) {
       if (validator.validate(email)) {
-        if (password.length > 8) {
+        if (password.length >= 8) {
           if (password === cpassword) {
             const user = await User.create({
               name,
@@ -56,7 +56,7 @@ export const registerUserController = async (req: Request, res: Response) => {
     }
   } catch (err: any) {
     console.log(err);
-    res.status(400).json({ created: false, error: err.message });
+    res.status(400).json({ created: false, error: (err.message.includes('duplicate key error') ? 'All fields are required' : err.message) });
   }
 }
 
