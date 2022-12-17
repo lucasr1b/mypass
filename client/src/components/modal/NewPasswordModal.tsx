@@ -1,11 +1,12 @@
 import { CloudUpload, X } from 'react-bootstrap-icons';
 import FormInput from '../form/FormInput';
 import './NewPasswordModal.scss';
+import Backdrop from '../common/Backdrop';
 
 const NewPasswordModal = ({ closeModal }: any) => {
   return (
     <>
-      <div className='Modal__Backdrop' onClick={closeModal}></div>
+      <Backdrop action={closeModal} />
       <div className='New__Password__Modal'>
         <div className='Modal__Header'>
           <div className='Modal__Header__Info'>

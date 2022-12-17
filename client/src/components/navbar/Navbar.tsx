@@ -2,6 +2,7 @@ import { useState } from 'react';
 import './Navbar.scss';
 import { MoonFill, CaretDownFill, CaretUpFill, SunFill, GearFill, DoorOpenFill, MoonStarsFill } from 'react-bootstrap-icons';
 import { Link } from 'react-router-dom';
+import Backdrop from '../common/Backdrop';
 
 const Navbar = (props: any) => {
 
@@ -18,11 +19,16 @@ const Navbar = (props: any) => {
               <button onClick={() => setDropdownToggled(!dropdownToggled)}>
                 <img src='profile.jpg' alt={'profile'} /> <span>Lucas</span> {dropdownToggled ? <CaretUpFill /> : <CaretDownFill />}
               </button>
-              {dropdownToggled && <div className='Navbar__Dropdown'>
-                <a><GearFill /> Settings</a>
-                <a><MoonStarsFill />Theme</a>
-                <Link to='/logout'><DoorOpenFill />Logout</Link>
-              </div>}
+              {dropdownToggled &&
+                <>
+                  <Backdrop action={() => setDropdownToggled(false)} transparent={true} />
+                  <div className='Navbar__Dropdown'>
+                    <a><GearFill /> Settings</a>
+                    <a><MoonStarsFill />Theme</a>
+                    <Link to='/logout'><DoorOpenFill />Logout</Link>
+                  </div>
+                </>
+              }
             </div>
           </div>
         </>

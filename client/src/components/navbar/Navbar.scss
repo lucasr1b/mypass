@@ -68,6 +68,8 @@
       width: 160px;
       border-radius: 6px;
       margin-top: 10px;
+      z-index: 999;
+      box-shadow: 4px 5px 10px #00000030;
 
       a {
         display: flex;
