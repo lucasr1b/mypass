@@ -19,6 +19,7 @@ const Login = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    document.documentElement.setAttribute('data-theme', 'light');
     if (cookies.get('TOKEN')) {
       navigate('/app');
     }

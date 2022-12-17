@@ -21,6 +21,7 @@ const Register = () => {
   const [error, setError] = useState('');
 
   useEffect(() => {
+    document.documentElement.setAttribute('data-theme', 'light');
     if (cookies.get('TOKEN')) {
       navigate('/app');
     }
