@@ -34,6 +34,7 @@ const App = () => {
     }
 
     verifyAuthentication();
+    document.documentElement.setAttribute('data-theme', theme);
   }, [cookies, navigate])
 
   const [theme, setTheme] = useLocalStorage('theme', 'light');
@@ -48,10 +49,6 @@ const App = () => {
   const toggleModal = () => {
     setModalToggled(!modalToggled);
   }
-
-  useEffect(() => {
-    document.documentElement.setAttribute('data-theme', theme);
-  })
 
   return (
     <div className='App'>
