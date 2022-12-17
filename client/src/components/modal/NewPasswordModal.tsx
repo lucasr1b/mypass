@@ -2,8 +2,32 @@ import { CloudUpload, X } from 'react-bootstrap-icons';
 import FormInput from '../form/FormInput';
 import './NewPasswordModal.scss';
 import Backdrop from '../common/Backdrop';
+import { axiosConfig } from '../../utils/constants';
+import axios from 'axios';
 
 const NewPasswordModal = ({ closeModal }: any) => {
+
+  const addNewPassword = async (e: any) => {
+    e.preventDefault();
+
+    const { identifier, url, user, password } = document.forms[0];
+
+    const data = {
+      identifier: identifier.value,
+      url: url.value,
+      user: user.value,
+      password: password.value,
+    };
+
+    await axios.post('http://localhost:5000/api/passwords/new', data, axiosConfig)
+      .then(() => {
+        closeModal();
+      })
+      .catch((res) => {
+        console.log(res.response.data.error);
+      })
+  }
+
   return (
     <>
       <Backdrop action={closeModal} />
@@ -17,12 +41,12 @@ const NewPasswordModal = ({ closeModal }: any) => {
             <X />
           </div>
         </div>
-        <form className='Modal__Form'>
+        <form className='Modal__Form' onSubmit={addNewPassword}>
           <div className='Modal__Form__Inputs'>
-            <FormInput label={'Identifier'} small={true} name='identifier' />
-            <FormInput label={'Website URL'} small={true} name='url' />
-            <FormInput label={'Username or email'} small={true} name='user' />
-            <FormInput label={'Password'} small={true} name='password' />
+            <FormInput label='Identifier' small={true} name='identifier' />
+            <FormInput label='Website URL' small={true} name='url' />
+            <FormInput label='Username or email' small={true} name='user' />
+            <FormInput label='Password' type='password' small={true} name='password' />
           </div>
           <div className='Modal__Form__Buttons'>
             <div className='Modal__Form__Images'>

@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import Password from '../models/Password';
 
-// @Desc new password
+// @Desc Add a new password
 // @Route /api/passwords/new
 // @Method POST
 
