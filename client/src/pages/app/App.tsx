@@ -28,7 +28,8 @@ const App = () => {
           cookies.remove('TOKEN');
           navigate('/login');
         } else {
-          localStorage.setItem('user', data.user.split(' ')[0]);
+          localStorage.setItem('name', data.user.name);
+          localStorage.setItem('email', data.user.email);
           console.log('Authenticated and all good!');
         }
       };

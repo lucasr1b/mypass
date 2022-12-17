@@ -7,15 +7,14 @@ import Password from '../models/Password';
 
 export const newPassword = async (req: Request, res: Response) => {
 
-  const { identifier, url, user, password } = req.body;
+  const { identifier, url, details, password } = req.body;
 
   const newPassword = Password.create({
     identifier,
     url,
-    user,
+    details,
     password,
-    logo: 'abc.png',
-    createdAt: Date.now(),
+    logo: 'http://localhost:3000/icons/Google.png',
   });
 
   res.status(200).json(newPassword);

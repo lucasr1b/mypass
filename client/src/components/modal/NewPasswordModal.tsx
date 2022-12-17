@@ -10,12 +10,13 @@ const NewPasswordModal = ({ closeModal }: any) => {
   const addNewPassword = async (e: any) => {
     e.preventDefault();
 
-    const { identifier, url, user, password } = document.forms[0];
+    const { identifier, url, details, password } = document.forms[0];
 
     const data = {
+      email: localStorage.getItem('email'),
       identifier: identifier.value,
       url: url.value,
-      user: user.value,
+      details: details.value,
       password: password.value,
     };
 
@@ -45,7 +46,7 @@ const NewPasswordModal = ({ closeModal }: any) => {
           <div className='Modal__Form__Inputs'>
             <FormInput label='Identifier' small={true} name='identifier' />
             <FormInput label='Website URL' small={true} name='url' />
-            <FormInput label='Username or email' small={true} name='user' />
+            <FormInput label='Username or email' small={true} name='details' />
             <FormInput label='Password' type='password' small={true} name='password' />
           </div>
           <div className='Modal__Form__Buttons'>

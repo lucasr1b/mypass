@@ -11,7 +11,7 @@ export const authenticatedUserController = async (req: Request, res: Response, n
 
       const user = await User.findById(decodedToken.id);
 
-      if (user) res.status(200).json({ loggedIn: true, user: user.name });
+      if (user) res.status(200).json({ loggedIn: true, user: { name: user.name, email: user.email } });
       next();
     } catch (err: any) {
       console.log(err);
