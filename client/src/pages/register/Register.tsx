@@ -38,9 +38,13 @@ const Register = () => {
       cpassword: cpassword.value,
     };
 
-    axios.post('http://localhost:5000/api/auth/register', data, axiosConfig)
+    await axios.post('http://localhost:5000/api/auth/register', data, axiosConfig)
       .catch((res) => {
         setError(res.response.data.error);
+      }).then(() => {
+        if (!error) {
+          navigate('/app');
+        }
       })
   }
 
