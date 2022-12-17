@@ -28,6 +28,7 @@ const App = () => {
           cookies.remove('TOKEN');
           navigate('/login');
         } else {
+          localStorage.setItem('user', data.user.split(' ')[0]);
           console.log('Authenticated and all good!');
         }
       };

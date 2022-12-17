@@ -17,7 +17,7 @@ const Navbar = (props: any) => {
             <button className='Navbar__Theme' onClick={props.switchTheme}>{props.theme === 'light' ? <MoonFill /> : <SunFill />}</button>
             <div className='Navbar__Profile'>
               <button onClick={() => setDropdownToggled(!dropdownToggled)}>
-                <img src='profile.jpg' alt={'profile'} /> <span>Lucas</span> {dropdownToggled ? <CaretUpFill /> : <CaretDownFill />}
+                <img src='profile.jpg' alt={'profile'} /> <span>{localStorage.getItem('user')}</span> {dropdownToggled ? <CaretUpFill /> : <CaretDownFill />}
               </button>
               {dropdownToggled &&
                 <>
