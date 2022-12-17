@@ -78,10 +78,10 @@ export const authLoginController = async (req: Request, res: Response) => {
       });
       res.status(200).json({ loggedIn: true });
     } else {
-      res.status(401).json({ error: 'Email or password is incorrect.' });
+      res.status(401).json({ loggedIn: false, error: 'Email or password is incorrect.' });
     }
   } catch (err: any) {
     console.log(err);
-    res.status(400).json({ error: err.message });
+    res.status(400).json({ loggedIn: false, error: err.message });
   }
 }

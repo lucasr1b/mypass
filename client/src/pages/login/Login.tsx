@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Cookies } from 'react-cookie';
 import { useNavigate } from 'react-router-dom';
 import FormFooter from '../../components/form/FormFooter';
@@ -12,11 +12,14 @@ import Navbar from '../../components/navbar/Navbar';
 import '../../styles/authentication.scss';
 import { axiosConfig } from '../../utils/constants';
 import './Login.scss';
+import FormError from '../../components/form/FormError';
 
 const Login = () => {
 
   const cookies = new Cookies();
   const navigate = useNavigate();
+
+  const [error, setError] = useState('');
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', 'light');
@@ -25,7 +28,7 @@ const Login = () => {
     }
   }, [cookies, navigate])
 
-  const loginUser = (e: any) => {
+  const loginUser = async (e: any) => {
     e.preventDefault();
 
     const { email, password } = document.forms[0];
@@ -35,7 +38,13 @@ const Login = () => {
       password: password.value,
     };
 
-    axios.post('http://localhost:5000/api/auth/login', data, axiosConfig)
+    await axios.post('http://localhost:5000/api/auth/login', data, axiosConfig)
+      .then(() => {
+        navigate('/app');
+      })
+      .catch((res) => {
+        setError(res.response.data.error);
+      })
   }
 
   return (
@@ -46,6 +55,7 @@ const Login = () => {
           <FormHeader title='Welcome back!' description='Login to your account to continue.' />
           <FormWithGoogle text='Login with Google' />
           <FormOrOAuth />
+          {error && <FormError error={error} />}
           <FormInput label={'Email address'} name='email' />
           <FormInput label={'Password'} type='password' name='password' />
           <FormSubmitButton text='Login' />

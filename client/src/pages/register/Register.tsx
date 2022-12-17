@@ -40,12 +40,11 @@ const Register = () => {
     };
 
     await axios.post('http://localhost:5000/api/auth/register', data, axiosConfig)
+      .then(() => {
+        navigate('/app');
+      })
       .catch((res) => {
         setError(res.response.data.error);
-      }).then(() => {
-        if (!error) {
-          navigate('/app');
-        }
       })
   }
 
