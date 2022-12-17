@@ -94,8 +94,12 @@
           border-radius: 0px 0px 6px 6px;
         }
 
+        border-top: 1px solid var(--secondary-accent);
+        border-bottom: 1px solid var(--secondary-accent);
+
         &:hover {
           background-color: #6e49e8;
+          border: none;
           color: white;
           cursor: pointer;
         }
