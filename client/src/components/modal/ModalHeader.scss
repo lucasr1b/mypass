@@ -5,6 +5,10 @@
   margin-bottom: 20px;
 
   .Modal__Header__Text {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
     h3 {
       font-size: 22px;
     }
