@@ -7,7 +7,6 @@ import { getSessionUser } from '../utils/session';
 // @Method POST
 
 export const newPassword = async (req: Request, res: Response) => {
-
   const user = await getSessionUser(req, res);
 
   const { identifier, url, details, password } = req.body;
@@ -22,10 +21,7 @@ export const newPassword = async (req: Request, res: Response) => {
       logo: 'http://localhost:3000/icons/Google.png',
     });
     res.status(200).json(newPassword);
+  } else {
+    res.status(400);
   }
-
-  res.status(400);
-
-
-
 }
