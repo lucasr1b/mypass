@@ -12,6 +12,11 @@ export interface IPassword extends mongoose.Document {
 
 const PasswordSchema = new mongoose.Schema({
 
+  user: {
+    type: String,
+    required: true,
+  },
+
   identifier: {
     type: String,
     required: true

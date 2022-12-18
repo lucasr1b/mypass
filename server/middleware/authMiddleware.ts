@@ -1,21 +1,15 @@
 import { NextFunction, Request, Response } from 'express';
 import jwt from 'jsonwebtoken';
 import User from '../models/User';
+import { getSessionUser } from '../utils/session';
 
 export const authenticatedUserController = async (req: Request, res: Response, next: NextFunction) => {
-  const token = req.cookies.TOKEN;
-
-  if (token) {
-    try {
-      const decodedToken: any = jwt.verify(token, process.env.JWT_SECRET as string);
-
-      const user = await User.findById(decodedToken.id);
-
-      if (user) res.status(200).json({ loggedIn: true, user: { name: user.name, email: user.email } });
-      next();
-    } catch (err: any) {
-      console.log(err);
-      res.status(400).json({ loggedIn: false, error: err.message });
-    }
+  try {
+    const user = await getSessionUser(req, res);
+    if (user) res.status(200).json({ loggedIn: true, user: { id: user._id, name: user.name, email: user.email } });
+    next();
+  } catch (err: any) {
+    console.log(err);
+    res.status(400).json({ loggedIn: false, error: err.message });
   }
 }

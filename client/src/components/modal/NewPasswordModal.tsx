@@ -13,7 +13,6 @@ const NewPasswordModal = ({ closeModal }: any) => {
     const { identifier, url, details, password } = document.forms[0];
 
     const data = {
-      email: localStorage.getItem('email'),
       identifier: identifier.value,
       url: url.value,
       details: details.value,
