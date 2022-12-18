@@ -3,13 +3,15 @@
   --primary: black;
   --accent: #e9e5f5;
   --secondary-accent: #d0ced3;
+  --dropdown-border: #ccc4e5;
   --modal-backdrop: rgba(0, 0, 0, 0.2);
 }
 [data-theme="dark"] {
   --background: #100f10;
   --primary: white;
   --accent: #181834;
-  --secondary-accent: #342e47;
+  --secondary-accent: #2c2c2f;
+  --dropdown-border: #272752;
   --modal-backdrop: rgba(0, 0, 0, 0.4);
 }
 

@@ -96,8 +96,8 @@
           border-radius: 0px 0px 6px 6px;
         }
 
-        border-top: 1px solid var(--secondary-accent);
-        border-bottom: 1px solid var(--secondary-accent);
+        border-top: 1px solid var(--dropdown-border);
+        border-bottom: 1px solid var(--dropdown-border);
 
         &:hover {
           background-color: #6e49e8;
