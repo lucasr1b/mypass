@@ -1,9 +1,10 @@
-import { Search } from 'react-bootstrap-icons';
 import './PasswordsHeader.scss';
 import { Password } from '../../utils/types';
+import PasswordSearch from './PasswordSearch';
 
-export type PasswordsHeaderProps = {
+type PasswordsHeaderProps = {
 	passwords: Password[];
+	isSearching: boolean;
 	setIsSearching: any;
 	setFilteredSearch: any;
 	filteredSearch: Password[];
@@ -35,20 +36,11 @@ const PasswordsHeader = (props: PasswordsHeaderProps) => {
 	return (
 		<div className='Passwords__Header'>
 			<span>{
-				props.filteredSearch.length > 0 ?
-					props.filteredSearch.length + (props.filteredSearch.length > 1 ? ' paswords' : ' password') :
-					props.passwords.length + (props.passwords.length > 1 ? ' passwords' : ' password')
+				props.isSearching ?
+					props.filteredSearch.length + (props.filteredSearch.length > 1 || props.filteredSearch.length === 0 ? ' passwords' : ' password') :
+					props.passwords.length + (props.passwords.length > 1 || props.passwords.length === 0 ? ' passwords' : ' password')
 			}</span>
-			<div className='Passwords__Search'>
-				<input
-					placeholder='Search passwords'
-					className='Passwords__Search__Input'
-					onChange={handleSearch}
-				/>
-				<div className='Passwords__Search__Icon'>
-					<Search />
-				</div>
-			</div>
+			<PasswordSearch search={handleSearch} />
 		</div>
 	);
 };

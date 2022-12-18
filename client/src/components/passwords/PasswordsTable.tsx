@@ -1,25 +1,25 @@
 import PasswordsHeader from './PasswordsHeader';
 import PasswordList from './PasswordList';
-import './Passwords.scss';
+import './PasswordsTable.scss';
 import { useState } from 'react';
 import { Password } from '../../utils/types';
 
-export type PasswordsProps = {
+type PasswordsTableProps = {
 	passwords: Password[];
 	setPasswordList: any;
 }
 
-const Passwords = (props: PasswordsProps) => {
+const PasswordsTable = (props: PasswordsTableProps) => {
 
 	const [isSearching, setIsSearching] = useState(false);
 	const [filteredSearch, setFilteredSearch] = useState<Password[]>([]);
 
 	return (
-		<div className='Passwords'>
-			<PasswordsHeader passwords={props.passwords} setFilteredSearch={setFilteredSearch} setIsSearching={setIsSearching} filteredSearch={filteredSearch} />
+		<div className='Passwords__Table'>
+			<PasswordsHeader passwords={props.passwords} setFilteredSearch={setFilteredSearch} setIsSearching={setIsSearching} isSearching={isSearching} filteredSearch={filteredSearch} />
 			<PasswordList passwords={props.passwords} setPasswordList={props.setPasswordList} isSearching={isSearching} filteredSearch={filteredSearch} />
 		</div>
 	);
 };
 
-export default Passwords;
+export default PasswordsTable;

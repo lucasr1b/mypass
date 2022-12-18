@@ -1,6 +1,6 @@
 import Navbar from '../../components/navbar/Navbar';
 import WelcomeBanner from '../../components/welcome/WelcomeBanner';
-import Passwords from '../../components/passwords/Passwords';
+import PasswordsTable from '../../components/passwords/PasswordsTable';
 import useLocalStorage from 'use-local-storage';
 import './App.scss';
 import AddPasswordButton from '../../components/passwords/AddPasswordButton';
@@ -66,7 +66,7 @@ const App = () => {
       <Navbar switchTheme={() => switchTheme()} theme={theme} buttonsEnabled={true} />
       <div className='App__Container'>
         <WelcomeBanner openModal={() => toggleModal()} />
-        <Passwords passwords={passwords} setPasswordList={setPasswordList} />
+        <PasswordsTable passwords={passwords} setPasswordList={setPasswordList} />
         {modalToggled && <NewPasswordModal closeModal={() => toggleModal()} addPassword={addPasssword} />}
       </div>
       {!modalToggled && <AddPasswordButton openModal={() => toggleModal()} />}
