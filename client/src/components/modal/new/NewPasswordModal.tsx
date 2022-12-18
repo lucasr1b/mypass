@@ -1,12 +1,11 @@
-import { CloudUpload, X } from 'react-bootstrap-icons';
-import FormInput from '../form/FormInput';
+import FormInput from '../../form/FormInput';
 import './NewPasswordModal.scss';
-import Backdrop from '../common/Backdrop';
-import { axiosConfig } from '../../utils/constants';
+import Backdrop from '../../common/Backdrop';
+import { axiosConfig } from '../../../utils/constants';
 import axios from 'axios';
-import ModalHeader from './ModalHeader';
-import ModalUpload from './ModalUpload';
-import ModalButton from './ModalButton';
+import ModalHeader from './../ModalHeader';
+import ModalUpload from './../ModalUpload';
+import ModalButton from './../ModalButton';
 
 export type NewPasswordModalProps = {
   closeModal: any,
@@ -41,7 +40,7 @@ const NewPasswordModal = (props: NewPasswordModalProps) => {
     <>
       <Backdrop action={props.closeModal} />
       <div className='New__Password__Modal'>
-        <ModalHeader closeModal={props.closeModal} />
+        <ModalHeader title='Add new password' description='Add a new password to be safely stored in your vault.' closeModal={props.closeModal} />
         <form className='Modal__Form' onSubmit={addNewPassword}>
           <div className='Modal__Form__Inputs'>
             <FormInput label='Identifier' small={true} name='identifier' />

@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import Password from "./Password";
 import { axiosConfig } from '../../utils/constants';
 import axios from 'axios';
+import ViewPasswordModal from '../modal/view/ViewPasswordModal';
 
 export type Password = {
   identifier: string;
@@ -48,6 +49,7 @@ const PasswordList = (props: PasswordListProps) => {
       {props.passwords && (props.isSearching ? props.filteredSearch : props.passwords).map((password, index) =>
         <Password key={index} password={password} />
       )}
+      <ViewPasswordModal closeModal={() => console.log('Closed!')} />
     </div>
   )
 }

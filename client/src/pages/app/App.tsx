@@ -4,7 +4,7 @@ import Passwords from '../../components/passwords/Passwords';
 import useLocalStorage from 'use-local-storage';
 import './App.scss';
 import AddPasswordButton from '../../components/passwords/AddPasswordButton';
-import NewPasswordModal from '../../components/modal/NewPasswordModal';
+import NewPasswordModal from '../../components/modal/new/NewPasswordModal';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Cookies } from 'react-cookie';
