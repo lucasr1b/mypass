@@ -28,6 +28,7 @@ const ViewPasswordModal = (props: ViewPasswordModalProps) => {
 
   const deletePassword = async (id: string) => {
     await axios.post('http://localhost:5000/api/passwords/delete', { id }, axiosConfig);
+    props.closeModal();
   }
 
   return (
