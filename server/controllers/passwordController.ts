@@ -23,6 +23,8 @@ export const newPassword = async (req: Request, res: Response) => {
       logo: 'http://localhost:3000/icons/Google.png',
     });
     res.status(200).json({
+      _id: newPassword._id,
+      user: user.id,
       identifier: newPassword.identifier,
       url: newPassword.url,
       details: newPassword.details,
