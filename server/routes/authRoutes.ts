@@ -1,7 +1,5 @@
 import express from 'express';
-import { authLoginUserController, authRegisterUserController } from '../controllers/authController';
-import { authenticatedUserController } from '../middleware/authMiddleware';
-
+import { authenticatedUserController, authLoginUserController, authRegisterUserController } from '../controllers/authController';
 const router = express.Router();
 
 router.post('/', authenticatedUserController)

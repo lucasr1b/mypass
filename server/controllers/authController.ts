@@ -1,10 +1,24 @@
-import { Request, Response } from 'express';
+import { NextFunction, Request, Response } from 'express';
 import User from '../models/User';
 import { createToken } from '../services/authService';
 import { maxAge } from '../utils/constants';
 import validator from 'email-validator';
+import { getSessionUser } from '../utils/session';
 
 let validationError: string;
+
+// @Desc Check if user is authenticated
+// @Route /api/auth
+// @Method POST
+export const authenticatedUserController = async (req: Request, res: Response) => {
+  try {
+    const user = await getSessionUser(req);
+    if (user) res.status(200).json({ user: { id: user._id, name: user.name, email: user.email } });
+  } catch (err: any) {
+    console.log(err);
+    res.status(400).json({ error: err.message });
+  }
+}
 
 // @Desc Register user
 // @Route /api/auth/register
@@ -76,12 +90,12 @@ export const authLoginUserController = async (req: Request, res: Response) => {
       res.cookie('TOKEN', token, {
         maxAge
       });
-      res.status(200).json({ loggedIn: true });
+      res.status(200).json({ user: { id: user._id, name: user.name, email: user.email } });
     } else {
-      res.status(401).json({ loggedIn: false, error: 'Email or password is incorrect.' });
+      res.status(401).json({ error: 'Email or password is incorrect.' });
     }
   } catch (err: any) {
     console.log(err);
-    res.status(400).json({ loggedIn: false, error: err.message });
+    res.status(400).json({ error: err.message });
   }
 }

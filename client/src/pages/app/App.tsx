@@ -22,17 +22,15 @@ const App = () => {
       if (!cookies.get('TOKEN')) {
         navigate('/login')
       } else {
-        const { data } = await axios.post(
-          "http://localhost:5000/api/auth", {}, axiosConfig
-        );
-        if (!data.loggedIn) {
-          cookies.remove('TOKEN');
-          navigate('/login');
-        } else {
-          localStorage.setItem('name', data.user.name);
-          localStorage.setItem('email', data.user.email);
-          console.log('Authenticated and all good!');
-        }
+        await axios.post("http://localhost:5000/api/auth", {}, axiosConfig)
+          .then(res => {
+            if (res.status === 401) {
+              cookies.remove('TOKEN');
+              navigate('/login');
+            }
+          }).catch(err => {
+            console.log(err);
+          })
       };
     }
 

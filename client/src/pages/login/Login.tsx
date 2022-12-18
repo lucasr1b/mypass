@@ -39,8 +39,10 @@ const Login = () => {
     };
 
     await axios.post('http://localhost:5000/api/auth/login', data, axiosConfig)
-      .then(() => {
+      .then((res) => {
         navigate('/app');
+        localStorage.setItem('name', res.data.user.name);
+        localStorage.setItem('email', res.data.user.email);
       })
       .catch((res) => {
         setError(res.response.data.error);
