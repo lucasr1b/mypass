@@ -1,12 +1,12 @@
-import { Request, Response } from 'express';
+import { Request } from 'express';
 import User, { IUser } from '../models/User';
-import jwt from 'jsonwebtoken';
+import jwt, { JwtPayload } from 'jsonwebtoken';
 
-export const getSessionUser = async (req: Request, res: Response) => {
+export const getSessionUser = async (req: Request) => {
   const token = req.cookies.TOKEN;
 
   if (token) {
-    const decodedToken: any = jwt.verify(token, process.env.JWT_SECRET as string);
+    const decodedToken = jwt.verify(token, process.env.JWT_SECRET as string) as JwtPayload;
 
     const user = await User.findById(decodedToken.id);
 
