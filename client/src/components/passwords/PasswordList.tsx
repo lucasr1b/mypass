@@ -14,6 +14,8 @@ export type Password = {
 export type PasswordListProps = {
   passwords: Password[];
   setPasswordList: any;
+  isSearching: boolean;
+  filteredSearch: Password[];
 }
 
 const PasswordList = (props: PasswordListProps) => {
@@ -43,9 +45,14 @@ const PasswordList = (props: PasswordListProps) => {
 
   return (
     <div className='Password__List'>
-      {props.passwords && props.passwords.map((password, index) =>
-        <Password key={index} password={password} />
-      )}
+      <>
+        {props.passwords && props.isSearching && props.filteredSearch.map((password, index) =>
+          <Password key={index} password={password} />
+        )}
+        {props.passwords && !props.isSearching && props.passwords.map((password, index) =>
+          <Password key={index} password={password} />
+        )}
+      </>
     </div>
   )
 }

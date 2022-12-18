@@ -1,6 +1,7 @@
 import PasswordsHeader from './PasswordsHeader';
 import PasswordList, { Password } from './PasswordList';
 import './Passwords.scss';
+import { useState } from 'react';
 
 export type PasswordsProps = {
 	passwords: Password[];
@@ -8,10 +9,14 @@ export type PasswordsProps = {
 }
 
 const Passwords = (props: PasswordsProps) => {
+
+	const [isSearching, setIsSearching] = useState(false);
+	const [filteredSearch, setFilteredSearch] = useState<Password[]>([]);
+
 	return (
 		<div className='Passwords'>
-			<PasswordsHeader />
-			<PasswordList passwords={props.passwords} setPasswordList={props.setPasswordList} />
+			<PasswordsHeader passwords={props.passwords} setFilteredSearch={setFilteredSearch} setIsSearching={setIsSearching} filteredSearch={filteredSearch} />
+			<PasswordList passwords={props.passwords} setPasswordList={props.setPasswordList} isSearching={isSearching} filteredSearch={filteredSearch} />
 		</div>
 	);
 };
