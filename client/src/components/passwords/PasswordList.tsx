@@ -45,14 +45,9 @@ const PasswordList = (props: PasswordListProps) => {
 
   return (
     <div className='Password__List'>
-      <>
-        {props.passwords && props.isSearching && props.filteredSearch.map((password, index) =>
-          <Password key={index} password={password} />
-        )}
-        {props.passwords && !props.isSearching && props.passwords.map((password, index) =>
-          <Password key={index} password={password} />
-        )}
-      </>
+      {props.passwords && (props.isSearching ? props.filteredSearch : props.passwords).map((password, index) =>
+        <Password key={index} password={password} />
+      )}
     </div>
   )
 }
