@@ -18,10 +18,7 @@ app.use(cors({
 app.use(express.json());
 app.use(cookieParser());
 
-app.get('/api', (req: Request, res: Response) => {
-  res.status(200).json({ message: "Hello World", }
-  );
-});
+app.use(express.static('public'));
 
 app.use('/api/passwords', passwordRoutes);
 app.use('/api/users', userRoutes);
