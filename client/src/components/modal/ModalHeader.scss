@@ -1,0 +1,39 @@
+.Modal__Header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  .Modal__Header__Text {
+    h3 {
+      font-size: 22px;
+    }
+
+    span {
+      color: #6c7284;
+      font-size: 14px;
+    }
+  }
+
+  .Modal__Header__Close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 30px;
+    width: 30px;
+    color: #6c7284;
+    border-radius: 5px;
+    margin-left: auto;
+    margin-right: 5px;
+
+    svg {
+      width: 25px;
+      height: 25px;
+    }
+
+    &:hover {
+      background-color: var(--accent);
+      color: #6e49e8;
+      cursor: pointer;
+    }
+  }
+}

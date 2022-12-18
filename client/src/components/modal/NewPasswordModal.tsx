@@ -4,6 +4,9 @@ import './NewPasswordModal.scss';
 import Backdrop from '../common/Backdrop';
 import { axiosConfig } from '../../utils/constants';
 import axios from 'axios';
+import ModalHeader from './ModalHeader';
+import ModalUpload from './ModalUpload';
+import ModalButton from './ModalButton';
 
 export type NewPasswordModalProps = {
   closeModal: any,
@@ -38,15 +41,7 @@ const NewPasswordModal = (props: NewPasswordModalProps) => {
     <>
       <Backdrop action={props.closeModal} />
       <div className='New__Password__Modal'>
-        <div className='Modal__Header'>
-          <div className='Modal__Header__Info'>
-            <h3>Add new password</h3>
-            <span>Add a new password to be safely stored in your vault.</span>
-          </div>
-          <div className='Modal__Close' onClick={props.closeModal}>
-            <X />
-          </div>
-        </div>
+        <ModalHeader closeModal={props.closeModal} />
         <form className='Modal__Form' onSubmit={addNewPassword}>
           <div className='Modal__Form__Inputs'>
             <FormInput label='Identifier' small={true} name='identifier' />
@@ -55,20 +50,10 @@ const NewPasswordModal = (props: NewPasswordModalProps) => {
             <FormInput label='Password' type='password' small={true} name='password' />
           </div>
           <div className='Modal__Form__Buttons'>
-            <div className='Modal__Form__Images'>
-              <button className='Modal__Form__Upload'>
-                <CloudUpload />
-                Upload Logo
-              </button>
-              <span>OR</span>
-              <div>
-                <button className='Modal__Form__Fetch'>Fetch favicon from website</button>
-                <span className='Modal__Form__Fetch__Requirement'>Website URL is required to fetch</span>
-              </div>
-            </div>
+            <ModalUpload />
             <div className='Modal__Form__Actions'>
-              <button className='Modal__Form__Cancel' onClick={props.closeModal}>Cancel</button>
-              <button className='Modal__Form__Save' type='submit'>Save</button>
+              <ModalButton text='Cancel' onClick={props.closeModal} />
+              <ModalButton text='Save' filled={true} />
             </div>
           </div>
         </form>

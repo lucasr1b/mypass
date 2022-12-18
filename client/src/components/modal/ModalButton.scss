@@ -1,0 +1,30 @@
+.Modal__Button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 120px;
+  height: 45px;
+  border: none;
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 14px;
+  background-color: transparent;
+  border: 1px solid #6e49e8;
+  color: #6e49e8;
+
+  &:hover {
+    cursor: pointer;
+    background-color: #6e49e8;
+    color: white;
+  }
+}
+
+.Modal__Button__Filled {
+  background-color: #6e49e8;
+  color: white;
+  border: none;
+
+  &:hover {
+    background-color: #583ab8;
+  }
+}
