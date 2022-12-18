@@ -1,6 +1,6 @@
 import express, { Express, Request, Response } from 'express';
 import cors from 'cors';
-import connectDB from './db/db';
+import connectToDB from './db/db';
 import passwordRoutes from './routes/passwordRoutes';
 import userRoutes from './routes/userRoutes';
 import authRoutes from './routes/authRoutes';
@@ -29,5 +29,5 @@ app.use('/api/auth', authRoutes);
 
 app.listen(port, () => {
   console.log(`Started server on port ${port}`);
-  connectDB();
+  connectToDB();
 }) 
