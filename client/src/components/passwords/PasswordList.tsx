@@ -11,16 +11,21 @@ export type Password = {
   logo: string;
 }
 
-const PasswordList = () => {
+export type PasswordListProps = {
+  passwords: Password[];
+  setPasswordList: any;
+}
 
-  const [passwords, setPasswords] = useState<Password[]>([]);
+const PasswordList = (props: PasswordListProps) => {
+
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchPasswords = async () => {
       await axios.get('http://localhost:5000/api/passwords', axiosConfig)
         .then((res) => {
-          setPasswords(res.data)
+          props.setPasswordList(res.data)
+          props.setPasswordList(res.data);
           setIsLoading(false);
         })
         .catch((res) => {
@@ -34,11 +39,11 @@ const PasswordList = () => {
     <p>Loading...</p>
   )
 
-  if (!passwords) return <p>Unable to fetch passwords.</p>
+  if (!props.passwords) return <p>Unable to fetch passwords.</p>
 
   return (
     <div className='Password__List'>
-      {passwords && passwords.map((password, index) =>
+      {props.passwords && props.passwords.map((password, index) =>
         <Password key={index} password={password} />
       )}
     </div>

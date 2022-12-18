@@ -10,6 +10,7 @@ import { useNavigate } from 'react-router-dom';
 import { Cookies } from 'react-cookie';
 import axios from 'axios';
 import { axiosConfig } from '../../utils/constants';
+import { Password } from '../../components/passwords/PasswordList';
 
 const App = () => {
 
@@ -52,13 +53,23 @@ const App = () => {
     setModalToggled(!modalToggled);
   }
 
+  const [passwords, setPasswords] = useState<Password[]>([]);
+
+  const addPasssword = (password: Password) => {
+    setPasswords([...passwords, password]);
+  }
+
+  const setPasswordList = (passwords: Password[]) => {
+    setPasswords(passwords);
+  }
+
   return (
     <div className='App'>
       <Navbar switchTheme={() => switchTheme()} theme={theme} buttonsEnabled={true} />
       <div className='App__Container'>
         <WelcomeBanner openModal={() => toggleModal()} />
-        <Passwords />
-        {modalToggled && <NewPasswordModal closeModal={() => toggleModal()} />}
+        <Passwords passwords={passwords} setPasswordList={setPasswordList} />
+        {modalToggled && <NewPasswordModal closeModal={() => toggleModal()} addPassword={addPasssword} />}
       </div>
       {!modalToggled && <AddPasswordButton openModal={() => toggleModal()} />}
     </div>

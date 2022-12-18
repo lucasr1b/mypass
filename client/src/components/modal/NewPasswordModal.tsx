@@ -5,7 +5,12 @@ import Backdrop from '../common/Backdrop';
 import { axiosConfig } from '../../utils/constants';
 import axios from 'axios';
 
-const NewPasswordModal = ({ closeModal }: any) => {
+export type NewPasswordModalProps = {
+  closeModal: any,
+  addPassword: any,
+}
+
+const NewPasswordModal = (props: NewPasswordModalProps) => {
 
   const addNewPassword = async (e: any) => {
     e.preventDefault();
@@ -20,8 +25,9 @@ const NewPasswordModal = ({ closeModal }: any) => {
     };
 
     await axios.post('http://localhost:5000/api/passwords/new', data, axiosConfig)
-      .then(() => {
-        closeModal();
+      .then((res) => {
+        props.addPassword(res.data);
+        props.closeModal();
       })
       .catch((res) => {
         console.log(res.response.data.error);
@@ -30,14 +36,14 @@ const NewPasswordModal = ({ closeModal }: any) => {
 
   return (
     <>
-      <Backdrop action={closeModal} />
+      <Backdrop action={props.closeModal} />
       <div className='New__Password__Modal'>
         <div className='Modal__Header'>
           <div className='Modal__Header__Info'>
             <h3>Add new password</h3>
             <span>Add a new password to be safely stored in your vault.</span>
           </div>
-          <div className='Modal__Close' onClick={closeModal}>
+          <div className='Modal__Close' onClick={props.closeModal}>
             <X />
           </div>
         </div>
@@ -61,7 +67,7 @@ const NewPasswordModal = ({ closeModal }: any) => {
               </div>
             </div>
             <div className='Modal__Form__Actions'>
-              <button className='Modal__Form__Cancel' onClick={closeModal}>Cancel</button>
+              <button className='Modal__Form__Cancel' onClick={props.closeModal}>Cancel</button>
               <button className='Modal__Form__Save' type='submit'>Save</button>
             </div>
           </div>

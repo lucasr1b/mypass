@@ -1,12 +1,17 @@
 import PasswordsHeader from './PasswordsHeader';
-import PasswordList from './PasswordList';
+import PasswordList, { Password } from './PasswordList';
 import './Passwords.scss';
 
-const Passwords = () => {
+export type PasswordsProps = {
+	passwords: Password[];
+	setPasswordList: any;
+}
+
+const Passwords = (props: PasswordsProps) => {
 	return (
 		<div className='Passwords'>
 			<PasswordsHeader />
-			<PasswordList />
+			<PasswordList passwords={props.passwords} setPasswordList={props.setPasswordList} />
 		</div>
 	);
 };

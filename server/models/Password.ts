@@ -1,9 +1,10 @@
 import mongoose from 'mongoose';
 
 export interface IPassword extends mongoose.Document {
+  user: string,
   identifier: string,
   url: string,
-  user: string,
+  details: string,
   password: string,
   logo: string,
   createdAt: Date,

@@ -13,7 +13,7 @@ export const newPassword = async (req: Request, res: Response) => {
   const { identifier, url, details, password } = req.body;
 
   if (user) {
-    const newPassword = Password.create({
+    const newPassword = await Password.create({
       user: user.id,
       identifier,
       url,
@@ -21,7 +21,13 @@ export const newPassword = async (req: Request, res: Response) => {
       password,
       logo: 'http://localhost:3000/icons/Google.png',
     });
-    res.status(200).json(newPassword);
+    res.status(200).json({
+      identifier: newPassword.identifier,
+      url: newPassword.url,
+      details: newPassword.details,
+      password: newPassword.password,
+      logo: newPassword.logo,
+    });
   } else {
     res.status(400).send('User not found.')
   }
