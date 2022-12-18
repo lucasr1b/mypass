@@ -35,7 +35,11 @@ const PasswordsHeader = (props: PasswordsHeaderProps) => {
 
 	return (
 		<div className='Passwords__Header'>
-			<span>22 passwords</span>
+			<span>{
+				props.filteredSearch.length > 0 ?
+					props.filteredSearch.length + (props.filteredSearch.length > 1 ? ' paswords' : ' password') :
+					props.passwords.length + (props.passwords.length > 1 ? ' passwords' : ' password')
+			}</span>
 			<div className='Passwords__Search'>
 				<input
 					placeholder='Search passwords'
