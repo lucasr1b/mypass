@@ -1,6 +1,6 @@
 import './FormWithGoogle.scss';
 
-export type FormWithGoogleProps = {
+type FormWithGoogleProps = {
   text: string;
 }
 

@@ -1,6 +1,6 @@
 import './FormHeader.scss';
 
-export type FormHeaderProps = {
+type FormHeaderProps = {
   title: string;
   description: string;
 }

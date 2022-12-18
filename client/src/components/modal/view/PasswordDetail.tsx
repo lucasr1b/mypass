@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCopy, faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { useState } from 'react';
 
-export type PasswordDetailProps = {
+type PasswordDetailProps = {
   value: string;
   type: string;
 }

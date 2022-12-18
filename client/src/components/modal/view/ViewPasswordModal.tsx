@@ -8,7 +8,7 @@ import moment from 'moment';
 import axios from 'axios';
 import { axiosConfig } from '../../../utils/constants';
 
-export type ViewPasswordModalProps = {
+type ViewPasswordModalProps = {
   closeModal: any;
   password: any;
   passwords: any;

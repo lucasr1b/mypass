@@ -1,6 +1,6 @@
 import './FormSubmitButton.scss';
 
-export type FormSubmitButtonProps = {
+type FormSubmitButtonProps = {
   text: string;
 }
 

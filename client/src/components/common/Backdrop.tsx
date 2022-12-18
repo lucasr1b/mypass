@@ -1,6 +1,6 @@
 import './Backdrop.scss';
 
-export type BackdropProps = {
+type BackdropProps = {
   action: any;
   transparent: boolean;
 }

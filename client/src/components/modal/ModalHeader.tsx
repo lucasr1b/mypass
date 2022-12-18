@@ -1,7 +1,7 @@
 import './ModalHeader.scss';
 import { X } from 'react-bootstrap-icons';
 
-export type ModalHeaderProps = {
+type ModalHeaderProps = {
   title: string;
   description: string;
   closeModal: any;

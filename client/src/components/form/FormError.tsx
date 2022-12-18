@@ -1,6 +1,6 @@
 import './FormError.scss';
 
-export type FormErrorProps = {
+type FormErrorProps = {
   error: string;
 }
 

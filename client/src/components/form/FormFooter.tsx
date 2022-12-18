@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import './FormFooter.scss';
 
-export type FormFooterProps = {
+type FormFooterProps = {
   text: string;
   action: string;
   link: string;

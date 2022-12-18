@@ -1,6 +1,6 @@
 import './FormInput.scss';
 
-export type FormInputTypes = {
+type FormInputTypes = {
   label: string;
   name: string;
   small: boolean;

@@ -7,7 +7,7 @@ import ModalHeader from './../ModalHeader';
 import ModalUpload from './../ModalUpload';
 import ModalButton from './../ModalButton';
 
-export type NewPasswordModalProps = {
+type NewPasswordModalProps = {
   closeModal: any,
   addPassword: any,
 }

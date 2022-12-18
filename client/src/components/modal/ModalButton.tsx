@@ -1,6 +1,6 @@
 import './ModalButton.scss';
 
-export type ModalButtonProps = {
+type ModalButtonProps = {
   text: string;
   onClick: any;
   filled: boolean;
