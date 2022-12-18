@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Password } from '../../utils/types';
-import PasswordItem from './PasswordItem';
+import PasswordItem from './Password';
 import { axiosConfig } from '../../utils/constants';
 import axios from 'axios';
 import ViewPasswordModal from '../modal/view/ViewPasswordModal';
