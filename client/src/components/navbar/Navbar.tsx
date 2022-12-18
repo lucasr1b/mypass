@@ -3,6 +3,8 @@ import './Navbar.scss';
 import { MoonFill, CaretDownFill, CaretUpFill, SunFill, GearFill, DoorOpenFill, MoonStarsFill } from 'react-bootstrap-icons';
 import { Link } from 'react-router-dom';
 import Backdrop from '../common/Backdrop';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSignOut } from '@fortawesome/free-solid-svg-icons';
 
 const Navbar = (props: any) => {
 
@@ -25,7 +27,7 @@ const Navbar = (props: any) => {
                   <div className='Navbar__Dropdown'>
                     <a><GearFill /> Settings</a>
                     <a><MoonStarsFill />Theme</a>
-                    <Link to='/logout'><DoorOpenFill />Logout</Link>
+                    <Link to='/logout'><FontAwesomeIcon icon={faSignOut} />Logout</Link>
                   </div>
                 </>
               }
