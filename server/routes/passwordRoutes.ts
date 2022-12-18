@@ -1,8 +1,9 @@
 import express from 'express';
-import { newPassword } from '../controllers/passwordController';
+import { getPasswordsController, newPassword } from '../controllers/passwordController';
 
 const router = express.Router();
 
-router.route('/new').post(newPassword);
+router.get('/', getPasswordsController);
+router.post('/new', newPassword)
 
 export default router;

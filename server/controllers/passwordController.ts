@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import Password from '../models/Password';
 import { getSessionUser } from '../utils/session';
+import { getPasswordsFromUser } from '../services/passwordService';
 
 // @Desc Add a new password
 // @Route /api/passwords/new
@@ -22,6 +23,22 @@ export const newPassword = async (req: Request, res: Response) => {
     });
     res.status(200).json(newPassword);
   } else {
-    res.status(400);
+    res.status(400).send('User not found.')
+  }
+}
+
+// @Desc Get all passwords
+// @Route /api/passwords
+// @Method GET
+
+export const getPasswordsController = async (req: Request, res: Response) => {
+  const user = await getSessionUser(req, res);
+
+  if (user) {
+    const passwords = await getPasswordsFromUser(user.id);
+
+    res.status(200).send(passwords);
+  } else {
+    res.status(400).send('User not found.')
   }
 }
