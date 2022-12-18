@@ -15,18 +15,18 @@ import './Login.scss';
 import FormError from '../../components/form/FormError';
 
 const Login = () => {
-
-  const cookies = new Cookies();
   const navigate = useNavigate();
 
   const [error, setError] = useState('');
 
   useEffect(() => {
+    const cookies = new Cookies();
+
     document.documentElement.setAttribute('data-theme', 'light');
     if (cookies.get('TOKEN')) {
       navigate('/app');
     }
-  }, [cookies, navigate])
+  }, [navigate])
 
   const loginUser = async (e: any) => {
     e.preventDefault();
@@ -64,7 +64,7 @@ const Login = () => {
           < FormFooter text="Don't have an account?" action='Sign up for free' link='/signup' />
         </form>
         <div className='Login__Image'>
-          <img src='login.svg' />
+          <img src='login.svg' alt='Vault' />
         </div>
       </div>
     </div>

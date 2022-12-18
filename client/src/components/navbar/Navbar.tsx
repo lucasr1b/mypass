@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import './Navbar.scss';
-import { MoonFill, CaretDownFill, CaretUpFill, SunFill, GearFill, DoorOpenFill, MoonStarsFill } from 'react-bootstrap-icons';
+import { MoonFill, CaretDownFill, CaretUpFill, SunFill, GearFill, MoonStarsFill } from 'react-bootstrap-icons';
 import { Link } from 'react-router-dom';
 import Backdrop from '../common/Backdrop';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -26,7 +26,7 @@ const Navbar = (props: any) => {
                   <Backdrop action={() => setDropdownToggled(false)} transparent={true} />
                   <div className='Navbar__Dropdown'>
                     <a><GearFill /> Settings</a>
-                    <a><MoonStarsFill />Theme</a>
+                    <a> <MoonStarsFill />Theme</a>
                     <Link to='/logout'><FontAwesomeIcon icon={faSignOut} />Logout</Link>
                   </div>
                 </>

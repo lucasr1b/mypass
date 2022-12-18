@@ -10,7 +10,7 @@ const Logout = () => {
   useEffect(() => {
     cookies.remove('TOKEN')
     navigate('/login');
-  }, [cookies, navigate])
+  })
 
   return (
     <div>Logging out...</div>

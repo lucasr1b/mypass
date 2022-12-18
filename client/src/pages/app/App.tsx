@@ -14,10 +14,13 @@ import { Password } from '../../components/passwords/PasswordList';
 
 const App = () => {
 
-  const cookies = new Cookies();
   const navigate = useNavigate();
 
+  const [theme, setTheme] = useLocalStorage('theme', 'light');
+  const [modalToggled, setModalToggled] = useState(false);
+
   useEffect(() => {
+    const cookies = new Cookies();
     const verifyAuthentication = async () => {
       if (!cookies.get('TOKEN')) {
         navigate('/login')
@@ -36,10 +39,7 @@ const App = () => {
 
     verifyAuthentication();
     document.documentElement.setAttribute('data-theme', theme);
-  }, [cookies, navigate])
-
-  const [theme, setTheme] = useLocalStorage('theme', 'light');
-  const [modalToggled, setModalToggled] = useState(false);
+  }, [navigate, theme])
 
   const switchTheme = () => {
     const newTheme = theme === 'light' ? 'dark' : 'light';

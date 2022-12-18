@@ -14,18 +14,18 @@ import './Register.scss'
 import FormError from '../../components/form/FormError';
 
 const Register = () => {
-
-  const cookies = new Cookies();
   const navigate = useNavigate();
 
   const [error, setError] = useState('');
 
   useEffect(() => {
+    const cookies = new Cookies();
+
     document.documentElement.setAttribute('data-theme', 'light');
     if (cookies.get('TOKEN')) {
       navigate('/app');
     }
-  }, [cookies, navigate])
+  }, [navigate])
 
   const registerUser = async (e: any) => {
     e.preventDefault();
@@ -64,7 +64,7 @@ const Register = () => {
           <FormFooter text='Already have an account?' action='Login' link='/login' />
         </form>
         <div className='Register__Image'>
-          <img src='register.svg' />
+          <img src='register.svg' alt='Astronaut' />
         </div>
       </div>
     </div>

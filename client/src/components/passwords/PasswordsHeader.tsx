@@ -1,7 +1,6 @@
 import { Search } from 'react-bootstrap-icons';
 import './PasswordsHeader.scss';
 import { Password } from './PasswordList';
-import { useEffect, useState } from 'react';
 
 export type PasswordsHeaderProps = {
 	passwords: Password[];
@@ -24,7 +23,7 @@ const PasswordsHeader = (props: PasswordsHeaderProps) => {
 	const handleSearch = (e: any) => {
 		const searchQuery = e.target.value;
 
-		if (searchQuery == '') {
+		if (searchQuery === '') {
 			props.setIsSearching(false);
 			props.setFilteredSearch([]);
 		} else {

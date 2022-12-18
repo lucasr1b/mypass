@@ -7,7 +7,7 @@ export type FormWithGoogleProps = {
 const FormWithGoogle = (props: FormWithGoogleProps) => {
   return (
     <div className='Form__With__Google'>
-      <img src='icons/Google.png' />
+      <img src='icons/Google.png' alt='Google' />
       <span>{props.text}</span>
     </div>
   )

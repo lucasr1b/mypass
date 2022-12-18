@@ -1,10 +1,8 @@
 import './ViewPasswordModal.scss';
 import Backdrop from '../../common/Backdrop';
 import ModalHeader from '../ModalHeader';
-import PasswordDetails from './PasswordDetail';
 import PasswordDetail from './PasswordDetail';
 import ModalButton from '../ModalButton';
-import { Password } from '../../passwords/PasswordList';
 import { useEffect, useState } from 'react';
 import moment from 'moment';
 import axios from 'axios';
@@ -26,7 +24,7 @@ const ViewPasswordModal = (props: ViewPasswordModalProps) => {
     if (props.password.createdAt === props.password.updatedAt)
       setDate(`Created on ${moment(props.password.createdAt).format('Do of MMM YYYY')}`);
     else setDate(`Last updated on ${moment(props.password.updatedAt).format('Do of MMM YYYY')}`);
-  }, [date])
+  }, [date, props.password])
 
   const deletePassword = async (id: string) => {
     await axios.post('http://localhost:5000/api/passwords/delete', { id }, axiosConfig);
