@@ -1,6 +1,6 @@
 import { Search } from 'react-bootstrap-icons';
 import './PasswordsHeader.scss';
-import { Password } from './PasswordList';
+import { Password } from '../../utils/types';
 
 export type PasswordsHeaderProps = {
 	passwords: Password[];

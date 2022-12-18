@@ -1,7 +1,8 @@
 import PasswordsHeader from './PasswordsHeader';
-import PasswordList, { Password } from './PasswordList';
+import PasswordList from './PasswordList';
 import './Passwords.scss';
 import { useState } from 'react';
+import { Password } from '../../utils/types';
 
 export type PasswordsProps = {
 	passwords: Password[];

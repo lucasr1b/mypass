@@ -10,7 +10,7 @@ import { useNavigate } from 'react-router-dom';
 import { Cookies } from 'react-cookie';
 import axios from 'axios';
 import { axiosConfig } from '../../utils/constants';
-import { Password } from '../../components/passwords/PasswordList';
+import { Password } from '../../utils/types';
 
 const App = () => {
 
