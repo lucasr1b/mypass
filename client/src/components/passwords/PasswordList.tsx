@@ -63,7 +63,7 @@ const PasswordList = (props: PasswordListProps) => {
           <Password key={index} password={password} onClick={() => openModal(password)} />
         )}
       </div>
-      {isModalOpened && <ViewPasswordModal closeModal={closeModal} password={password} />}
+      {isModalOpened && <ViewPasswordModal closeModal={closeModal} password={password} passwords={props.passwords} setPasswordList={props.setPasswordList} />}
     </div>
   )
 }

@@ -13,6 +13,8 @@ import { axiosConfig } from '../../../utils/constants';
 export type ViewPasswordModalProps = {
   closeModal: any;
   password: any;
+  passwords: any;
+  setPasswordList: any;
 }
 
 const ViewPasswordModal = (props: ViewPasswordModalProps) => {
@@ -28,6 +30,7 @@ const ViewPasswordModal = (props: ViewPasswordModalProps) => {
 
   const deletePassword = async (id: string) => {
     await axios.post('http://localhost:5000/api/passwords/delete', { id }, axiosConfig);
+    props.setPasswordList(props.passwords.filter((password: any) => password._id !== id))
     props.closeModal();
   }
 
