@@ -4,6 +4,7 @@
   --accent: #e9e5f5;
   --secondary-accent: #d0ced3;
   --dropdown-border: #ccc4e5;
+  --dropdown-shadow: #00000015;
   --modal-backdrop: rgba(0, 0, 0, 0.2);
 }
 [data-theme="dark"] {
@@ -12,6 +13,7 @@
   --accent: #181834;
   --secondary-accent: #2c2c2f;
   --dropdown-border: #272752;
+  --dropdown-shadow: #00000030;
   --modal-backdrop: rgba(0, 0, 0, 0.4);
 }
 
