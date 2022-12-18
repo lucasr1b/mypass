@@ -22,6 +22,9 @@ const PasswordDetail = (props: PasswordDetailProps) => {
   const copy = (detail: string) => {
     setIsCopied(true);
     navigator.clipboard.writeText(detail);
+    setTimeout(() => {
+      setIsCopied(false);
+    }, 2500)
   }
 
   return (
