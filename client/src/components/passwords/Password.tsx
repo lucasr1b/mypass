@@ -8,12 +8,13 @@ export type PasswordProps = {
 		details: string;
 		password: string;
 		logo: string;
-	}
+	},
+	onClick: any;
 }
 
 const Password = (props: PasswordProps) => {
 	return (
-		<div className='Password'>
+		<div className='Password' onClick={props.onClick}>
 			<img src='icons/Google.png' alt={props.password.logo} />
 			<div className='Password__Details'>
 				<span className='Password__Details__Site'>{props.password.identifier}</span>

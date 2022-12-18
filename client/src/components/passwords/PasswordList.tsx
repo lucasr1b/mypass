@@ -22,6 +22,8 @@ export type PasswordListProps = {
 const PasswordList = (props: PasswordListProps) => {
 
   const [isLoading, setIsLoading] = useState(true);
+  const [isModalOpened, setIsModalOpened] = useState(false);
+  const [password, setPassword] = useState({});
 
   useEffect(() => {
     const fetchPasswords = async () => {
@@ -38,6 +40,16 @@ const PasswordList = (props: PasswordListProps) => {
     fetchPasswords();
   }, [])
 
+  const closeModal = () => {
+    setIsModalOpened(false);
+    setPassword({});
+  }
+
+  const openModal = (password: Password) => {
+    setIsModalOpened(true);
+    setPassword(password);
+  }
+
   if (isLoading) return (
     <p>Loading...</p>
   )
@@ -46,10 +58,12 @@ const PasswordList = (props: PasswordListProps) => {
 
   return (
     <div className='Password__List'>
-      {props.passwords && (props.isSearching ? props.filteredSearch : props.passwords).map((password, index) =>
-        <Password key={index} password={password} />
-      )}
-      <ViewPasswordModal closeModal={() => console.log('Closed!')} />
+      <div className='Password__List__Wrapper'>
+        {props.passwords && (props.isSearching ? props.filteredSearch : props.passwords).map((password, index) =>
+          <Password key={index} password={password} onClick={() => openModal(password)} />
+        )}
+      </div>
+      {isModalOpened && <ViewPasswordModal closeModal={closeModal} password={password} />}
     </div>
   )
 }
