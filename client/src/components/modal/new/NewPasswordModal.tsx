@@ -52,7 +52,7 @@ const NewPasswordModal = (props: NewPasswordModalProps) => {
             <ModalUpload />
             <div className='Modal__Form__Actions'>
               <ModalButton text='Cancel' onClick={props.closeModal} />
-              <ModalButton text='Save' filled={true} />
+              <ModalButton text='Save' submit={true} filled={true} />
             </div>
           </div>
         </form>
