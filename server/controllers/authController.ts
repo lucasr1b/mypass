@@ -7,10 +7,10 @@ import validator from 'email-validator';
 let validationError: string;
 
 // @Desc Register user
-// @Route /api/auth/login
+// @Route /api/auth/register
 // @Method POST
 
-export const registerUserController = async (req: Request, res: Response) => {
+export const authRegisterUserController = async (req: Request, res: Response) => {
   try {
     const { name, email, password, cpassword } = req.body;
 
@@ -64,7 +64,7 @@ export const registerUserController = async (req: Request, res: Response) => {
 // @Route /api/auth/login
 // @Method POST
 
-export const authLoginController = async (req: Request, res: Response) => {
+export const authLoginUserController = async (req: Request, res: Response) => {
   try {
     const { email, password } = req.body;
 

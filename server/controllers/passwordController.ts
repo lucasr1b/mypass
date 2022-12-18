@@ -32,7 +32,7 @@ export const newPassword = async (req: Request, res: Response) => {
       logo: newPassword.logo,
     });
   } else {
-    res.status(400).send('User not found.')
+    res.status(401).json({ loggedIn: false });
   }
 }
 
@@ -52,7 +52,7 @@ export const deletePasswordController = async (req: Request, res: Response) => {
       deletedPassword,
     });
   } else {
-    res.status(400).send('User not found.')
+    res.status(401).json({ loggedIn: false });
   }
 }
 
@@ -68,6 +68,6 @@ export const getPasswordsController = async (req: Request, res: Response) => {
 
     res.status(200).send(passwords);
   } else {
-    res.status(400).send('User not found.')
+    res.status(401).json({ loggedIn: false });
   }
 }
