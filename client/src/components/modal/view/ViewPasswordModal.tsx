@@ -7,6 +7,8 @@ import ModalButton from '../ModalButton';
 import { Password } from '../../passwords/PasswordList';
 import { useEffect, useState } from 'react';
 import moment from 'moment';
+import axios from 'axios';
+import { axiosConfig } from '../../../utils/constants';
 
 export type ViewPasswordModalProps = {
   closeModal: any;
@@ -22,7 +24,11 @@ const ViewPasswordModal = (props: ViewPasswordModalProps) => {
     if (props.password.createdAt === props.password.updatedAt)
       setDate(`Created on ${moment(props.password.createdAt).format('Do of MMM YYYY')}`);
     else setDate(`Last updated on ${moment(props.password.updatedAt).format('Do of MMM YYYY')}`);
-  })
+  }, [date])
+
+  const deletePassword = async (id: string) => {
+    await axios.post('http://localhost:5000/api/passwords/delete', { id }, axiosConfig);
+  }
 
   return (
     <>
@@ -35,7 +41,7 @@ const ViewPasswordModal = (props: ViewPasswordModalProps) => {
         </div>
         <div className='View__Password__Modal__Actions'>
           <ModalButton text='Edit' />
-          <ModalButton text='Delete' />
+          <ModalButton text='Delete' onClick={() => deletePassword(props.password._id)} />
         </div>
       </div>
     </>

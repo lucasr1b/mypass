@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 import Password from '../models/Password';
 import { getSessionUser } from '../utils/session';
 import { getPasswordsFromUser } from '../services/passwordService';
+import { ObjectId } from 'mongodb';
 
 // @Desc Add a new password
 // @Route /api/passwords/new
@@ -27,6 +28,26 @@ export const newPassword = async (req: Request, res: Response) => {
       details: newPassword.details,
       password: newPassword.password,
       logo: newPassword.logo,
+    });
+  } else {
+    res.status(400).send('User not found.')
+  }
+}
+
+// @Desc Delete a new password
+// @Route /api/passwords/delete
+// @Method POST
+
+export const deletePasswordController = async (req: Request, res: Response) => {
+  const user = await getSessionUser(req, res);
+
+  const { id } = req.body;
+
+  if (user) {
+    const deletedPassword = await Password.findOneAndDelete({ '_id': new ObjectId(id) }).select('-password');
+    res.status(200).json({
+      deleted: true,
+      deletedPassword,
     });
   } else {
     res.status(400).send('User not found.')
