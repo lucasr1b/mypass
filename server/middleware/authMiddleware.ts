@@ -5,7 +5,7 @@ import { getSessionUser } from '../utils/session';
 
 export const authenticatedUserController = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const user = await getSessionUser(req, res);
+    const user = await getSessionUser(req);
     if (user) res.status(200).json({ loggedIn: true, user: { id: user._id, name: user.name, email: user.email } });
     next();
   } catch (err: any) {

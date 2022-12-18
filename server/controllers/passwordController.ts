@@ -9,7 +9,7 @@ import { ObjectId } from 'mongodb';
 // @Method POST
 
 export const newPassword = async (req: Request, res: Response) => {
-  const user = await getSessionUser(req, res);
+  const user = await getSessionUser(req);
 
   const { identifier, url, details, password } = req.body;
 
@@ -41,7 +41,7 @@ export const newPassword = async (req: Request, res: Response) => {
 // @Method POST
 
 export const deletePasswordController = async (req: Request, res: Response) => {
-  const user = await getSessionUser(req, res);
+  const user = await getSessionUser(req);
 
   const { id } = req.body;
 
@@ -61,7 +61,7 @@ export const deletePasswordController = async (req: Request, res: Response) => {
 // @Method GET
 
 export const getPasswordsController = async (req: Request, res: Response) => {
-  const user = await getSessionUser(req, res);
+  const user = await getSessionUser(req);
 
   if (user) {
     const passwords = await getPasswordsFromUser(user.id);
