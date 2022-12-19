@@ -13,6 +13,7 @@ import '../../styles/authentication.scss';
 import { axiosConfig } from '../../utils/constants';
 import './Login.scss';
 import FormError from '../../components/form/FormError';
+import { setSessionDetails } from '../../utils/helpers';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -23,10 +24,11 @@ const Login = () => {
     const cookies = new Cookies();
 
     document.documentElement.setAttribute('data-theme', 'light');
+
     if (cookies.get('TOKEN')) {
       navigate('/app');
     }
-  }, [navigate])
+  });
 
   const loginUser = async (e: any) => {
     e.preventDefault();
@@ -40,13 +42,12 @@ const Login = () => {
 
     await axios.post('http://localhost:5000/api/auth/login', data, axiosConfig)
       .then((res) => {
+        setSessionDetails(res.data);
         navigate('/app');
-        localStorage.setItem('name', res.data.user.name);
-        localStorage.setItem('email', res.data.user.email);
       })
       .catch((res) => {
         setError(res.response.data.error);
-      })
+      });
   }
 
   return (
@@ -61,7 +62,7 @@ const Login = () => {
           <FormInput label={'Email address'} name='email' />
           <FormInput label={'Password'} type='password' name='password' />
           <FormSubmitButton text='Login' />
-          < FormFooter text="Don't have an account?" action='Sign up for free' link='/signup' />
+          <FormFooter text="Don't have an account?" action='Sign up for free' link='/signup' />
         </form>
         <div className='Login__Image'>
           <img src='login.svg' alt='Vault' />

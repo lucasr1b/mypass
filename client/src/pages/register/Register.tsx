@@ -43,8 +43,8 @@ const Register = () => {
 
     await axios.post('http://localhost:5000/api/auth/register', data, axiosConfig)
       .then((res) => {
-        navigate('/app');
         setSessionDetails(res.data);
+        navigate('/app');
       })
       .catch((res) => {
         setError(res.response.data.error);
