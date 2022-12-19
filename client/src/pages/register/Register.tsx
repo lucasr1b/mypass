@@ -12,6 +12,7 @@ import '../../styles/authentication.scss';
 import { axiosConfig } from '../../utils/constants';
 import './Register.scss'
 import FormError from '../../components/form/FormError';
+import { setSessionDetails } from '../../utils/helpers';
 
 const Register = () => {
   const navigate = useNavigate();
@@ -22,10 +23,11 @@ const Register = () => {
     const cookies = new Cookies();
 
     document.documentElement.setAttribute('data-theme', 'light');
+
     if (cookies.get('TOKEN')) {
       navigate('/app');
     }
-  }, [navigate])
+  });
 
   const registerUser = async (e: any) => {
     e.preventDefault();
@@ -40,12 +42,13 @@ const Register = () => {
     };
 
     await axios.post('http://localhost:5000/api/auth/register', data, axiosConfig)
-      .then(() => {
+      .then((res) => {
         navigate('/app');
+        setSessionDetails(res.data);
       })
       .catch((res) => {
         setError(res.response.data.error);
-      })
+      });
   }
 
   return (
