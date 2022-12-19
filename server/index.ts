@@ -1,11 +1,11 @@
-import express, { Express, Request, Response } from 'express';
+require('dotenv').config();
+import express, { Express, } from 'express';
 import cors from 'cors';
 import connectToDB from './db/db';
 import passwordRoutes from './routes/passwordRoutes';
 import userRoutes from './routes/userRoutes';
 import authRoutes from './routes/authRoutes';
 import cookieParser from 'cookie-parser';
-require('dotenv').config();
 
 const app: Express = express();
 const port = process.env.PORT || 5000;

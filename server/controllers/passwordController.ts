@@ -4,6 +4,22 @@ import { getSessionUser } from '../utils/session';
 import { getPasswordsFromUser } from '../services/passwordService';
 import { ObjectId } from 'mongodb';
 
+// @Desc Get all passwords
+// @Route /api/passwords
+// @Method GET
+
+export const getPasswordsController = async (req: Request, res: Response) => {
+  const user = await getSessionUser(req);
+
+  if (user) {
+    const passwords = await getPasswordsFromUser(user.id);
+
+    res.status(200).send(passwords);
+  } else {
+    res.status(401).json({ loggedIn: false });
+  }
+}
+
 // @Desc Add a new password
 // @Route /api/passwords/new
 // @Method POST
@@ -51,22 +67,6 @@ export const deletePasswordController = async (req: Request, res: Response) => {
       deleted: true,
       deletedPassword,
     });
-  } else {
-    res.status(401).json({ loggedIn: false });
-  }
-}
-
-// @Desc Get all passwords
-// @Route /api/passwords
-// @Method GET
-
-export const getPasswordsController = async (req: Request, res: Response) => {
-  const user = await getSessionUser(req);
-
-  if (user) {
-    const passwords = await getPasswordsFromUser(user.id);
-
-    res.status(200).send(passwords);
   } else {
     res.status(401).json({ loggedIn: false });
   }
