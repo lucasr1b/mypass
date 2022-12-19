@@ -9,7 +9,7 @@ let validationError: string;
 
 // @Desc Check if user is authenticated
 // @Route /api/auth
-// @Method POST
+// @Method GET
 export const authenticatedUserController = async (req: Request, res: Response) => {
   try {
     const user = await getSessionUser(req);
