@@ -47,6 +47,7 @@ const Login = () => {
       })
       .catch((res) => {
         setError(res.response.data.error);
+        password.value = '';
       });
   }
 
