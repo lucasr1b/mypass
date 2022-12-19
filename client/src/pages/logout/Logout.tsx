@@ -1,16 +1,17 @@
 import { useEffect } from 'react';
 import { Cookies } from 'react-cookie';
 import { useNavigate } from 'react-router-dom';
+import { resetSessionDetails } from '../../utils/helpers';
 
 const Logout = () => {
-
-  const cookies = new Cookies();
   const navigate = useNavigate();
 
   useEffect(() => {
-    cookies.remove('TOKEN')
+    const cookies = new Cookies();
+
+    resetSessionDetails(cookies);
     navigate('/login');
-  })
+  });
 
   return (
     <div>Logging out...</div>
