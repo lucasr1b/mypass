@@ -27,7 +27,7 @@ const Register = () => {
     if (cookies.get('TOKEN')) {
       navigate('/app');
     }
-  });
+  }, [navigate]);
 
   const registerUser = async (e: any) => {
     e.preventDefault();

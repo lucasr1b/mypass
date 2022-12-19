@@ -11,7 +11,7 @@ const Logout = () => {
 
     resetSessionDetails(cookies);
     navigate('/login');
-  });
+  }, [navigate]);
 
   return (
     <div>Logging out...</div>

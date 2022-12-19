@@ -28,7 +28,7 @@ const Login = () => {
     if (cookies.get('TOKEN')) {
       navigate('/app');
     }
-  });
+  }, [navigate]);
 
   const loginUser = async (e: any) => {
     e.preventDefault();
