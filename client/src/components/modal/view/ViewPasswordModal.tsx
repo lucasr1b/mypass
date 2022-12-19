@@ -6,7 +6,7 @@ import ModalButton from '../ModalButton';
 import { useEffect, useState } from 'react';
 import moment from 'moment';
 import axios from 'axios';
-import { axiosConfig } from '../../../utils/constants';
+import { API_URL, axiosConfig } from '../../../utils/constants';
 
 type ViewPasswordModalProps = {
   closeModal: any;
@@ -27,7 +27,7 @@ const ViewPasswordModal = (props: ViewPasswordModalProps) => {
   }, [date, props.password])
 
   const deletePassword = async (id: string) => {
-    await axios.post('http://localhost:5000/api/passwords/delete', { id }, axiosConfig);
+    await axios.post(`${API_URL}/passwords/delete`, { id }, axiosConfig);
     props.setPasswordList(props.passwords.filter((password: any) => password._id !== id))
     props.closeModal();
   }

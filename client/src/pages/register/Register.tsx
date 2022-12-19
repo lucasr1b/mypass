@@ -9,7 +9,7 @@ import FormSubmitButton from '../../components/form/FormSubmitButton';
 import FormWithGoogle from '../../components/form/FormWithGoogle';
 import Navbar from '../../components/navbar/Navbar';
 import '../../styles/authentication.scss';
-import { axiosConfig } from '../../utils/constants';
+import { API_URL, axiosConfig } from '../../utils/constants';
 import './Register.scss'
 import FormError from '../../components/form/FormError';
 import { setSessionDetails } from '../../utils/helpers';
@@ -41,7 +41,7 @@ const Register = () => {
       cpassword: cpassword.value,
     };
 
-    await axios.post('http://localhost:5000/api/auth/register', data, axiosConfig)
+    await axios.post(`${API_URL}/auth/register`, data, axiosConfig)
       .then((res) => {
         setSessionDetails(res.data);
         navigate('/app');

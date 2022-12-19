@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Password } from '../../utils/types';
 import PasswordItem from './PasswordItem';
-import { axiosConfig } from '../../utils/constants';
+import { API_URL, axiosConfig } from '../../utils/constants';
 import axios from 'axios';
 import ViewPasswordModal from '../modal/view/ViewPasswordModal';
 
@@ -20,7 +20,7 @@ const PasswordList = (props: PasswordListProps) => {
 
   useEffect(() => {
     const fetchPasswords = async () => {
-      await axios.get('http://localhost:5000/api/passwords', axiosConfig)
+      await axios.get(`${API_URL}/passwords`, axiosConfig)
         .then((res) => {
           props.setPasswordList(res.data)
           props.setPasswordList(res.data);

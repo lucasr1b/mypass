@@ -9,7 +9,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Cookies } from 'react-cookie';
 import axios from 'axios';
-import { axiosConfig } from '../../utils/constants';
+import { API_URL, axiosConfig } from '../../utils/constants';
 import { Password } from '../../utils/types';
 
 const App = () => {
@@ -28,7 +28,7 @@ const App = () => {
       if (!cookies.get('TOKEN')) {
         navigate('/login')
       } else {
-        await axios.get("http://localhost:5000/api/auth", axiosConfig)
+        await axios.get(`${API_URL}/auth`, axiosConfig)
           .then(res => {
             if (res.status === 401) {
               cookies.remove('TOKEN');
