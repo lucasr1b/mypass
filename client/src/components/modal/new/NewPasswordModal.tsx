@@ -6,6 +6,7 @@ import axios from 'axios';
 import ModalHeader from './../ModalHeader';
 import ModalUpload from './../ModalUpload';
 import ModalButton from './../ModalButton';
+import { useState } from 'react';
 
 type NewPasswordModalProps = {
   closeModal: any,
@@ -13,6 +14,8 @@ type NewPasswordModalProps = {
 }
 
 const NewPasswordModal = (props: NewPasswordModalProps) => {
+
+  const [websiteURL, setWebsiteURL] = useState('');
 
   const addNewPassword = async (e: any) => {
     e.preventDefault();
@@ -36,6 +39,10 @@ const NewPasswordModal = (props: NewPasswordModalProps) => {
       })
   }
 
+  const handleWebsiteURL = (e: any) => {
+    setWebsiteURL(e.target.value);
+  }
+
   return (
     <>
       <Backdrop action={props.closeModal} />
@@ -44,12 +51,12 @@ const NewPasswordModal = (props: NewPasswordModalProps) => {
         <form className='ModalForm' onSubmit={addNewPassword}>
           <div className='ModalForm__Inputs'>
             <FormInput label='Identifier' small={true} name='identifier' />
-            <FormInput label='Website URL' small={true} name='url' />
+            <FormInput label='Website URL' small={true} name='url' onChange={handleWebsiteURL} />
             <FormInput label='Username or email' small={true} name='details' />
             <FormInput label='Password' type='password' small={true} name='password' />
           </div>
           <div className='ModalForm__Buttons'>
-            <ModalUpload />
+            <ModalUpload websiteURL={websiteURL} />
             <div className='ModalForm__Actions'>
               <ModalButton text='Cancel' onClick={props.closeModal} />
               <ModalButton text='Save' submit={true} filled={true} />

@@ -8,6 +8,12 @@
     font-weight: 500;
   }
 
+  img {
+    width: 150px;
+    height: 150px;
+    border-radius: 6px;
+  }
+
   button {
     background-color: var(--accent);
     color: #6e49e8;
@@ -20,6 +26,13 @@
       background-color: #6e49e8;
       color: white;
       cursor: pointer;
+    }
+
+    &:disabled {
+      background-color: rgb(164, 164, 164);
+      font-weight: normal;
+      color: white;
+      cursor: default;
     }
   }
 
