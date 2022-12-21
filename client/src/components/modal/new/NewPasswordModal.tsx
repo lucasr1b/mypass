@@ -54,7 +54,7 @@ const NewPasswordModal = (props: NewPasswordModalProps) => {
         <ModalHeader title='Add new password' description='Add a new password to be safely stored in your vault.' closeModal={props.closeModal} />
         <form className='ModalForm' onSubmit={addNewPassword}>
           <div className='ModalForm__Inputs'>
-            {error && <FormError error={error} width={300} />}
+            {error && <FormError error={error} width={300} margin={false} />}
             <FormInput label='Identifier' small={true} name='identifier' />
             <FormInput label='Website URL' small={true} name='url' onChange={handleWebsiteURL} />
             <FormInput label='Username or email' small={true} name='details' />
