@@ -9,7 +9,7 @@ type FormInputTypes = {
 
 const FormInput = (props: FormInputTypes) => {
   return (
-    <div className={`${'Form__Text__Input'}${props.small ? ' Input__Size__Small' : ''}`}>
+    <div className={`${'FormInput'}${props.small ? ' FormInput__Small' : ''}`}>
       <input type={props.type} placeholder={props.label} name={props.name} autoComplete='off' />
       <label htmlFor={props.name}>{props.label}</label>
     </div>

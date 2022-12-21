@@ -9,9 +9,9 @@ type ModalButtonProps = {
 
 const ModalButton = (props: ModalButtonProps) => {
   return props.onClick ?
-    <button type={props.submit ? 'submit' : 'button'} className={`Modal__Button${props.filled ? ' Modal__Button__Filled' : ''}`} onClick={props.onClick}>{props.text}</button>
+    <button type={props.submit ? 'submit' : 'button'} className={`ModalButton${props.filled ? ' ModalButton__Filled' : ''}`} onClick={props.onClick}>{props.text}</button>
     :
-    <button type={props.submit ? 'submit' : 'button'} className={`Modal__Button${props.filled ? ' Modal__Button__Filled' : ''}`}>{props.text}</button>
+    <button type={props.submit ? 'submit' : 'button'} className={`ModalButton${props.filled ? ' ModalButton__Filled' : ''}`}>{props.text}</button>
 }
 
 ModalButton.defaultProps = {

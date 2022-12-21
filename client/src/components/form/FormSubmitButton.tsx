@@ -6,7 +6,7 @@ type FormSubmitButtonProps = {
 
 const FormSubmitButton = (props: FormSubmitButtonProps) => {
   return (
-    <button type='submit' className='Form__Submit__Button'>{props.text}</button>
+    <button type='submit' className='FormSubmitButton'>{props.text}</button>
   )
 }
 

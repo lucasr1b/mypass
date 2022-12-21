@@ -1,4 +1,4 @@
-.Modal__Upload {
+.ModalUpload {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -23,7 +23,7 @@
     }
   }
 
-  .Modal__Upload__Image {
+  .ModalUpload__Image {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -38,12 +38,12 @@
     }
   }
 
-  .Modal__Upload__Fetch {
+  .ModalUpload__Fetch {
     width: 240px;
     height: 45px;
   }
 
-  .Modal__Upload__Fetch__Requirement {
+  .ModalUpload__Fetch__Requirement {
     text-align: center;
     margin-top: 5px;
     font-size: 12px;

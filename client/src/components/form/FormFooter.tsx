@@ -9,7 +9,7 @@ type FormFooterProps = {
 
 const FormFooter = (props: FormFooterProps) => {
   return (
-    <div className='Form__Footer'>
+    <div className='FormFooter'>
       {props.text} <Link to={props.link}>{props.action}</Link>
     </div>
   )

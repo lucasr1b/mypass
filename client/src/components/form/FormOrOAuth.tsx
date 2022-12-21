@@ -2,7 +2,7 @@ import './FormOrOAuth.scss';
 
 const FormOrOAuth = () => {
   return (
-    <div className='Form__Or__OAuth'>
+    <div className='FormOrOAuth'>
       <div></div>
       <span>or</span>
       <div></div>

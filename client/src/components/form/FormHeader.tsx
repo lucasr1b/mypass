@@ -7,7 +7,7 @@ type FormHeaderProps = {
 
 const FormHeader = (props: FormHeaderProps) => {
   return (
-    <div className='Form__Header'>
+    <div className='FormHeader'>
       <h3>{props.title}</h3>
       <span>{props.description}</span>
     </div>

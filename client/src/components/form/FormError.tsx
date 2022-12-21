@@ -6,7 +6,7 @@ type FormErrorProps = {
 
 const FormError = (props: FormErrorProps) => {
   return (
-    <div className='Form__Error'>
+    <div className='FormError'>
       {props.error}
     </div>
   )

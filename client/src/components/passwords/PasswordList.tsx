@@ -50,8 +50,8 @@ const PasswordList = (props: PasswordListProps) => {
   if (!props.passwords) return <p>Unable to fetch passwords.</p>
 
   return (
-    <div className='Password__List'>
-      <div className='Password__List__Wrapper'>
+    <div className='PasswordList'>
+      <div className='PasswordList__Wrapper'>
         {props.passwords && (props.isSearching ? props.filteredSearch : props.passwords).map((password, index) =>
           <PasswordItem key={index} password={password} onClick={() => openModal(password)} />
         )}

@@ -34,7 +34,7 @@ const PasswordsHeader = (props: PasswordsHeaderProps) => {
 	}
 
 	return (
-		<div className='Passwords__Header'>
+		<div className='PasswordsHeader'>
 			<span>{
 				props.isSearching ?
 					props.filteredSearch.length + (props.filteredSearch.length > 1 || props.filteredSearch.length === 0 ? ' passwords' : ' password') :

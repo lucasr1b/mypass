@@ -28,11 +28,11 @@ const PasswordDetail = (props: PasswordDetailProps) => {
   }
 
   return (
-    <div className='Password__Detail'>
-      <div className='Password__Detail__Input'>
+    <div className='PasswordDetail'>
+      <div className='PasswordDetail__Input'>
         <input disabled type={props.type === 'password' ? type : props.type} value={props.value} />
-        <div className='Password__Detail__Actions'>
-          <div className={props.type === 'password' ? '' : 'Password__Detail__Action__Disabled'} onClick={toggleHide}><FontAwesomeIcon icon={isHidden ? faEye : faEyeSlash} /></div>
+        <div className='PasswordDetail__Actions'>
+          <div className={props.type === 'password' ? '' : 'PasswordDetail__Action__Disabled'} onClick={toggleHide}><FontAwesomeIcon icon={isHidden ? faEye : faEyeSlash} /></div>
           <div onClick={() => copy(props.value)}><FontAwesomeIcon icon={faCopy} /></div>
         </div>
       </div>

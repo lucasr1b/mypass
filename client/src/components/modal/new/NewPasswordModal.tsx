@@ -39,18 +39,18 @@ const NewPasswordModal = (props: NewPasswordModalProps) => {
   return (
     <>
       <Backdrop action={props.closeModal} />
-      <div className='New__Password__Modal'>
+      <div className='NewPasswordModal'>
         <ModalHeader title='Add new password' description='Add a new password to be safely stored in your vault.' closeModal={props.closeModal} />
-        <form className='Modal__Form' onSubmit={addNewPassword}>
-          <div className='Modal__Form__Inputs'>
+        <form className='ModalForm' onSubmit={addNewPassword}>
+          <div className='ModalForm__Inputs'>
             <FormInput label='Identifier' small={true} name='identifier' />
             <FormInput label='Website URL' small={true} name='url' />
             <FormInput label='Username or email' small={true} name='details' />
             <FormInput label='Password' type='password' small={true} name='password' />
           </div>
-          <div className='Modal__Form__Buttons'>
+          <div className='ModalForm__Buttons'>
             <ModalUpload />
-            <div className='Modal__Form__Actions'>
+            <div className='ModalForm__Actions'>
               <ModalButton text='Cancel' onClick={props.closeModal} />
               <ModalButton text='Save' submit={true} filled={true} />
             </div>

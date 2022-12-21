@@ -15,7 +15,7 @@ const PasswordsTable = (props: PasswordsTableProps) => {
 	const [filteredSearch, setFilteredSearch] = useState<Password[]>([]);
 
 	return (
-		<div className='Passwords__Table'>
+		<div className='PasswordsTable'>
 			<PasswordsHeader passwords={props.passwords} setFilteredSearch={setFilteredSearch} setIsSearching={setIsSearching} isSearching={isSearching} filteredSearch={filteredSearch} />
 			<PasswordList passwords={props.passwords} setPasswordList={props.setPasswordList} isSearching={isSearching} filteredSearch={filteredSearch} />
 		</div>

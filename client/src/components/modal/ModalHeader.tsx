@@ -9,12 +9,12 @@ type ModalHeaderProps = {
 
 const ModalHeader = (props: ModalHeaderProps) => {
   return (
-    <div className='Modal__Header'>
-      <div className='Modal__Header__Text'>
+    <div className='ModalHeader'>
+      <div className='ModalHeader__Text'>
         <h3>{props.title}</h3>
         <span>{props.description}</span>
       </div>
-      <div className='Modal__Header__Close' onClick={props.closeModal}>
+      <div className='ModalHeader__Close' onClick={props.closeModal}>
         <X />
       </div>
     </div>

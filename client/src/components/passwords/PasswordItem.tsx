@@ -9,13 +9,13 @@ type PasswordProps = {
 
 const PasswordItem = (props: PasswordProps) => {
 	return (
-		<div className='Password__Item' onClick={props.onClick}>
+		<div className='PasswordItem' onClick={props.onClick}>
 			<img src='icons/Google.png' alt={props.password.logo} />
-			<div className='Password__Item__Details'>
-				<span className='Password__Item__Details__Identifier'>{props.password.identifier}</span>
-				<span className='Password__Item__Details__Email'>{props.password.details}</span>
+			<div className='PasswordItem__Details'>
+				<span className='PasswordItem__Details__Identifier'>{props.password.identifier}</span>
+				<span className='PasswordItem__Details__Email'>{props.password.details}</span>
 			</div>
-			<div className='Password__Item__View'>
+			<div className='PasswordItem__View'>
 				<ChevronRight />
 			</div>
 		</div>

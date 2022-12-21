@@ -1,10 +1,10 @@
-.Modal__Header {
+.ModalHeader {
   display: flex;
   flex-direction: row;
   align-items: center;
   margin-bottom: 20px;
 
-  .Modal__Header__Text {
+  .ModalHeader__Text {
     display: flex;
     flex-direction: column;
     gap: 3px;
@@ -19,7 +19,7 @@
     }
   }
 
-  .Modal__Header__Close {
+  .ModalHeader__Close {
     display: flex;
     align-items: center;
     justify-content: center;

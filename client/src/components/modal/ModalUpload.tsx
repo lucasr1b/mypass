@@ -3,15 +3,15 @@ import { CloudUpload } from 'react-bootstrap-icons';
 
 const ModalUpload = () => {
   return (
-    <div className='Modal__Upload'>
-      <button className='Modal__Upload__Image'>
+    <div className='ModalUpload'>
+      <button className='ModalUpload__Image'>
         <CloudUpload />
         Upload Logo
       </button>
       <span>OR</span>
       <div>
-        <button className='Modal__Upload__Fetch'>Fetch favicon from website</button>
-        <span className='Modal__Upload__Fetch__Requirement'>Website URL is required to fetch</span>
+        <button className='ModalUpload__Fetch'>Fetch favicon from website</button>
+        <span className='ModalUpload__Fetch__Requirement'>Website URL is required to fetch</span>
       </div>
     </div>
   )

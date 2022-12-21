@@ -3,7 +3,7 @@ import './AddPasswordButton.scss';
 
 const AddPassword = ({ openModal }: any) => {
   return (
-    <div className='Add__Password__Button' onClick={openModal}>
+    <div className='AddPasswordButton' onClick={openModal}>
       <Plus />
     </div>
   )

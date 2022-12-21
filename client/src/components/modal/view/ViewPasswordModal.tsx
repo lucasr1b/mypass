@@ -35,13 +35,13 @@ const ViewPasswordModal = (props: ViewPasswordModalProps) => {
   return (
     <>
       <Backdrop action={props.closeModal} />
-      <div className='View__Password__Modal'>
+      <div className='ViewPasswordModal'>
         <ModalHeader title={props.password.identifier} description={date} closeModal={props.closeModal} />
-        <div className='View__Password__Modal__Details'>
+        <div className='ViewPasswordModal__Details'>
           <PasswordDetail type='text' value={props.password.details} />
           <PasswordDetail type='password' value={props.password.password} />
         </div>
-        <div className='View__Password__Modal__Actions'>
+        <div className='ViewPasswordModal__Actions'>
           <ModalButton text='Edit' />
           <ModalButton text='Delete' onClick={() => deletePassword(props.password._id)} />
         </div>
