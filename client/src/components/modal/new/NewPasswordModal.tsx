@@ -7,6 +7,7 @@ import ModalHeader from './../ModalHeader';
 import ModalUpload from './../ModalUpload';
 import ModalButton from './../ModalButton';
 import { useState } from 'react';
+import FormError from '../../form/FormError';
 
 type NewPasswordModalProps = {
   closeModal: any,
@@ -17,6 +18,7 @@ const NewPasswordModal = (props: NewPasswordModalProps) => {
 
   const [websiteURL, setWebsiteURL] = useState('');
   const [logo, setLogo] = useState('http://localhost:3000/icons/Google.png');
+  const [error, setError] = useState('');
 
   const addNewPassword = async (e: any) => {
     e.preventDefault();
@@ -37,7 +39,7 @@ const NewPasswordModal = (props: NewPasswordModalProps) => {
         props.closeModal();
       })
       .catch((res) => {
-        console.log(res.response.data.error);
+        setError(res.response.data.error);
       })
   }
 
@@ -52,6 +54,7 @@ const NewPasswordModal = (props: NewPasswordModalProps) => {
         <ModalHeader title='Add new password' description='Add a new password to be safely stored in your vault.' closeModal={props.closeModal} />
         <form className='ModalForm' onSubmit={addNewPassword}>
           <div className='ModalForm__Inputs'>
+            {error && <FormError error={error} width={300} />}
             <FormInput label='Identifier' small={true} name='identifier' />
             <FormInput label='Website URL' small={true} name='url' onChange={handleWebsiteURL} />
             <FormInput label='Username or email' small={true} name='details' />

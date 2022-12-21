@@ -4,6 +4,8 @@ import { getSessionUser } from '../utils/session';
 import { getPasswordsFromUser } from '../services/passwordService';
 import { ObjectId } from 'mongodb';
 
+let validationError: string;
+
 // @Desc Get all passwords
 // @Route /api/passwords
 // @Method GET
@@ -30,23 +32,28 @@ export const newPassword = async (req: Request, res: Response) => {
   const { identifier, url, details, password, logo } = req.body;
 
   if (user) {
-    const newPassword = await Password.create({
-      user: user.id,
-      identifier,
-      url,
-      details,
-      password,
-      logo,
-    });
-    res.status(200).json({
-      _id: newPassword._id,
-      user: user.id,
-      identifier: newPassword.identifier,
-      url: newPassword.url,
-      details: newPassword.details,
-      password: newPassword.password,
-      logo: newPassword.logo,
-    });
+    if (identifier && url && details && password && logo) {
+      const newPassword = await Password.create({
+        user: user.id,
+        identifier,
+        url,
+        details,
+        password,
+        logo,
+      });
+      res.status(200).json({
+        _id: newPassword._id,
+        user: user.id,
+        identifier: newPassword.identifier,
+        url: newPassword.url,
+        details: newPassword.details,
+        password: newPassword.password,
+        logo: newPassword.logo,
+      });
+    } else {
+      validationError = 'All fields are required';
+      res.status(400).json({ created: false, error: validationError })
+    }
   } else {
     res.status(401).json({ loggedIn: false });
   }
