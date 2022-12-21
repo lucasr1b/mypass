@@ -1,7 +1,7 @@
 .FormError {
   display: flex;
   align-items: center;
-  background-color: #f8d7da;
+  background-color: var(--form-error);
   color: #e84949;
   height: 45px;
   padding: 10px;

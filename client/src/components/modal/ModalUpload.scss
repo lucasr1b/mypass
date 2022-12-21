@@ -29,7 +29,7 @@
     }
 
     &:disabled {
-      background-color: rgb(164, 164, 164);
+      background-color: var(--accent-disabled);
       font-weight: normal;
       color: white;
       cursor: default;
