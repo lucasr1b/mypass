@@ -30,7 +30,7 @@ const ModalUpload = (props: ModalUploadProps) => {
   }, [props]);
 
   const fetchFaviconFromWebsite = (websiteURL: string) => {
-    const websiteDomain = websiteURL.replace(/(^\w+:|^)\/\//, '');
+    const websiteDomain = websiteURL.replace(/(^\w+:|^)\/\//, '').replace(/\/+$/, '');
     props.setLogo(`https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://${websiteDomain}/&size=256`);
     setHasFetched(true);
   }
