@@ -48,7 +48,8 @@ const ModalUpload = (props: ModalUploadProps) => {
       <span>OR</span>
       <div>
         <button className='ModalUpload__Fetch' type='button' disabled={isDisabled} onClick={() => fetchFaviconFromWebsite(props.websiteURL)}>Fetch favicon from website</button>
-        {!isWebsiteURLValid && <span className='ModalUpload__Fetch__Requirement'>Website URL is required to fetch</span>}
+        {!props.websiteURL && <span className='ModalUpload__Fetch__Requirement'>Website URL is required to fetch</span>}
+        {props.websiteURL && !isWebsiteURLValid && <span className='ModalUpload__Fetch__Requirement'>Valid Website URL is required to fetch</span>}
       </div>
     </div>
   )
