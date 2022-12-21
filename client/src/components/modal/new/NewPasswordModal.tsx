@@ -16,6 +16,7 @@ type NewPasswordModalProps = {
 const NewPasswordModal = (props: NewPasswordModalProps) => {
 
   const [websiteURL, setWebsiteURL] = useState('');
+  const [logo, setLogo] = useState('http://localhost:3000/icons/Google.png');
 
   const addNewPassword = async (e: any) => {
     e.preventDefault();
@@ -27,6 +28,7 @@ const NewPasswordModal = (props: NewPasswordModalProps) => {
       url: url.value,
       details: details.value,
       password: password.value,
+      logo,
     };
 
     await axios.post(`${API_URL}/passwords/new`, data, axiosConfig)
@@ -56,7 +58,7 @@ const NewPasswordModal = (props: NewPasswordModalProps) => {
             <FormInput label='Password' type='password' small={true} name='password' />
           </div>
           <div className='ModalForm__Buttons'>
-            <ModalUpload websiteURL={websiteURL} />
+            <ModalUpload websiteURL={websiteURL} logo={logo} setLogo={setLogo} />
             <div className='ModalForm__Actions'>
               <ModalButton text='Cancel' onClick={props.closeModal} />
               <ModalButton text='Save' submit={true} filled={true} />

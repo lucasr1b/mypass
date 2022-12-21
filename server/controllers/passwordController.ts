@@ -27,7 +27,7 @@ export const getPasswordsController = async (req: Request, res: Response) => {
 export const newPassword = async (req: Request, res: Response) => {
   const user = await getSessionUser(req);
 
-  const { identifier, url, details, password } = req.body;
+  const { identifier, url, details, password, logo } = req.body;
 
   if (user) {
     const newPassword = await Password.create({
@@ -36,7 +36,7 @@ export const newPassword = async (req: Request, res: Response) => {
       url,
       details,
       password,
-      logo: 'http://localhost:3000/icons/Google.png',
+      logo,
     });
     res.status(200).json({
       _id: newPassword._id,

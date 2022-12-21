@@ -10,7 +10,7 @@ type PasswordProps = {
 const PasswordItem = (props: PasswordProps) => {
 	return (
 		<div className='PasswordItem' onClick={props.onClick}>
-			<img src='icons/Google.png' alt={props.password.logo} />
+			<img src={props.password.logo} alt={props.password.logo} />
 			<div className='PasswordItem__Details'>
 				<span className='PasswordItem__Details__Identifier'>{props.password.identifier}</span>
 				<span className='PasswordItem__Details__Email'>{props.password.details}</span>

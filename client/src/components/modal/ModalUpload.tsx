@@ -1,16 +1,18 @@
 import { useEffect, useState } from 'react';
 import './ModalUpload.scss';
-import { CloudUpload, Regex } from 'react-bootstrap-icons';
+import { CloudUpload } from 'react-bootstrap-icons';
 
 type ModalUploadProps = {
   websiteURL: string;
+  logo: any;
+  setLogo: any;
 }
 
 const ModalUpload = (props: ModalUploadProps) => {
 
-  const [logo, setLogo] = useState('');
   const [isWebsiteURLValid, setIsWebsiteURLValid] = useState(false);
   const [isDisabled, setIsDisabled] = useState(true);
+  const [hasFetched, setHasFetched] = useState(false);
 
   useEffect(() => {
     const handleWebsiteURLValidity = () => {
@@ -29,13 +31,14 @@ const ModalUpload = (props: ModalUploadProps) => {
 
   const fetchFaviconFromWebsite = (websiteURL: string) => {
     const websiteDomain = websiteURL.replace(/(^\w+:|^)\/\//, '');
-    setLogo(`https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://${websiteDomain}/&size=256`);
+    props.setLogo(`https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://${websiteDomain}/&size=256`);
+    setHasFetched(true);
   }
 
   return (
     <div className='ModalUpload'>
-      {logo ?
-        <img src={logo} />
+      {hasFetched ?
+        <img src={props.logo} />
         :
         <button type='button' className='ModalUpload__Image'>
           <CloudUpload />
