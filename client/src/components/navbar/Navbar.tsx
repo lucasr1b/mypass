@@ -6,14 +6,20 @@ import Backdrop from '../common/Backdrop';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSignOut } from '@fortawesome/free-solid-svg-icons';
 
-const Navbar = (props: any) => {
+type NavbarProps = {
+  switchTheme?: any;
+  theme?: string;
+  buttonsDisabled?: boolean;
+}
+
+const Navbar = (props: NavbarProps) => {
 
   const [dropdownToggled, setDropdownToggled] = useState(false);
 
   return (
     <nav className='Navbar'>
       <img src='/logo.svg' className='Navbar__Logo' alt={'mypass'} />
-      {props.buttonsEnabled &&
+      {!props.buttonsDisabled &&
         <>
           <div className='Navbar__Buttons'>
             <button className='Navbar__Theme' onClick={props.switchTheme}>{props.theme === 'light' ? <MoonFill /> : <SunFill />}</button>
@@ -37,6 +43,11 @@ const Navbar = (props: any) => {
       }
     </nav>
   )
+}
+
+Navbar.defaultProps = {
+  theme: 'light',
+  buttonsDisabled: false,
 }
 
 export default Navbar;
