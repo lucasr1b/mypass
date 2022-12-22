@@ -28,8 +28,20 @@
     .Navbar__Auth {
       width: 120px;
       height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: var(--accent);
+      color: #6e49e8;
       border-radius: 50px;
       font-weight: 600;
+      font-size: 14px;
+
+      &:hover {
+        background-color: #6e49e8;
+        color: white;
+        cursor: pointer;
+      }
     }
 
     .Navbar__Theme {

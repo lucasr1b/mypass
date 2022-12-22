@@ -20,7 +20,7 @@ const Navbar = (props: NavbarProps) => {
 
   return (
     <nav className={`${'Navbar'}${props.smallPadding ? ' Navbar__Padding__Small' : ''}`}>
-      <img src='/logo.svg' className='Navbar__Logo' alt={'mypass'} />
+      <Link to='/'><img src='/logo.svg' className='Navbar__Logo' alt={'mypass'} /></Link>
       {props.buttonsEnabled &&
         <>
           <div className='Navbar__Buttons'>
@@ -45,8 +45,8 @@ const Navbar = (props: NavbarProps) => {
       }
       {props.isHome &&
         <div className='Navbar__Buttons'>
-          <button className='Navbar__Auth'>Login</button>
-          <button className='Navbar__Auth'>Sign up</button>
+          <Link to='/login' className='Navbar__Auth'>Login</Link>
+          <Link to='/signup' className='Navbar__Auth'>Sign up</Link>
         </div>
       }
     </nav>
