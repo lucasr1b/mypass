@@ -1,5 +1,5 @@
 .Navbar {
-  padding: 20px 80px;
+  padding: 20px 120px;
 
   .Navbar__Logo {
     width: 120px;
@@ -24,85 +24,92 @@
         cursor: pointer;
       }
     }
-  }
 
-  .Navbar__Theme {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 55px;
-
-    svg {
-      width: 16px;
-      height: 16px;
+    .Navbar__Auth {
+      width: 120px;
+      height: 40px;
+      border-radius: 50px;
+      font-weight: 600;
     }
-  }
 
-  .Navbar__Profile {
-    position: relative;
-    display: inline-block;
-
-    button {
+    .Navbar__Theme {
       display: flex;
       align-items: center;
+      justify-content: center;
+      width: 55px;
+
+      svg {
+        width: 16px;
+        height: 16px;
+      }
     }
 
-    img {
-      width: 24px;
-      height: auto;
-      border-radius: 50px;
-    }
+    .Navbar__Profile {
+      position: relative;
+      display: inline-block;
 
-    span {
-      font-weight: 600;
-      margin: 0 10px;
-    }
-
-    .Navbar__Dropdown {
-      display: flex;
-      flex-direction: column;
-      position: absolute;
-      right: 0;
-      height: fit-content;
-      width: 160px;
-      border-radius: 6px;
-      margin-top: 10px;
-      z-index: 999;
-      box-shadow: 4px 5px 10px var(--dropdown-shadow);
-
-      a {
+      button {
         display: flex;
         align-items: center;
-        gap: 10px;
-        padding-left: 15px;
-        height: 45px;
-        width: 100%;
-        font-size: 14px;
-        font-weight: 500;
-        background-color: var(--accent);
-        color: #6e49e8;
+      }
 
-        &:first-child,
-        &:last-child {
-          border: none;
-        }
+      img {
+        width: 24px;
+        height: auto;
+        border-radius: 50px;
+      }
 
-        &:first-child {
-          border-radius: 6px 6px 0px 0px;
-        }
+      span {
+        font-weight: 600;
+        margin: 0 10px;
+      }
 
-        &:last-child {
-          border-radius: 0px 0px 6px 6px;
-        }
+      .Navbar__Dropdown {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        right: 0;
+        height: fit-content;
+        width: 160px;
+        border-radius: 6px;
+        margin-top: 10px;
+        z-index: 999;
+        box-shadow: 4px 5px 10px var(--dropdown-shadow);
 
-        border-top: 1px solid var(--dropdown-border);
-        border-bottom: 1px solid var(--dropdown-border);
+        a {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          padding-left: 15px;
+          height: 45px;
+          width: 100%;
+          font-size: 14px;
+          font-weight: 500;
+          background-color: var(--accent);
+          color: #6e49e8;
 
-        &:hover {
-          background-color: #6e49e8;
-          border: none;
-          color: white;
-          cursor: pointer;
+          &:first-child,
+          &:last-child {
+            border: none;
+          }
+
+          &:first-child {
+            border-radius: 6px 6px 0px 0px;
+          }
+
+          &:last-child {
+            border-radius: 0px 0px 6px 6px;
+          }
+
+          border-top: 1px solid var(--dropdown-border);
+          border-bottom: 1px solid var(--dropdown-border);
+
+          &:hover {
+            background-color: #6e49e8;
+            border: none;
+            color: white;
+            cursor: pointer;
+          }
         }
       }
     }

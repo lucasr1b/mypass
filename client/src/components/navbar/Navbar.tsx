@@ -7,9 +7,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSignOut } from '@fortawesome/free-solid-svg-icons';
 
 type NavbarProps = {
+  isHome?: boolean;
+  buttonsEnabled?: boolean;
   switchTheme?: any;
   theme?: string;
-  buttonsEnabled?: boolean;
   smallPadding?: boolean;
 }
 
@@ -42,13 +43,20 @@ const Navbar = (props: NavbarProps) => {
           </div>
         </>
       }
+      {props.isHome &&
+        <div className='Navbar__Buttons'>
+          <button className='Navbar__Auth'>Login</button>
+          <button className='Navbar__Auth'>Sign up</button>
+        </div>
+      }
     </nav>
   )
 }
 
 Navbar.defaultProps = {
-  theme: 'light',
+  isHome: false,
   buttonsEnabled: false,
+  theme: 'light',
   smallPadding: false,
 }
 
