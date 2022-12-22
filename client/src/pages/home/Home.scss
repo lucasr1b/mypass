@@ -1,0 +1,89 @@
+.Home {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+
+  .Home__Container {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 100px;
+    gap: 200px;
+
+    .Home__Container__Content {
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+
+      h1 {
+        font-size: 42px;
+        width: 500px;
+      }
+
+      span {
+        display: inline;
+        color: #6e49e8;
+      }
+
+      h3 {
+        width: 500px;
+        color: #888491;
+        font-weight: normal;
+      }
+
+      a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 250px;
+        height: 55px;
+        background-color: #6e49e8;
+        color: white;
+        font-weight: 500;
+        border: none;
+        border-radius: 50px;
+        text-transform: uppercase;
+
+        &:hover {
+          background-color: #583ab8;
+          cursor: pointer;
+        }
+      }
+    }
+
+    .Home__Container__Image {
+      animation: bounce 6s ease-out infinite forwards;
+      -webkit-animation: bounce 6s ease-out infinite forwards;
+
+      img {
+        width: 700px;
+        height: auto;
+      }
+    }
+  }
+
+  @-webkit-keyframes bounce {
+    0%,
+    100% {
+      -webkit-transform: translateY(0);
+    }
+    50% {
+      -webkit-transform: translateY(-30px);
+    }
+  }
+
+  @keyframes bounce {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+
+  .bounce {
+    -webkit-animation-name: bounce;
+    animation-name: bounce;
+  }
+}
