@@ -14,7 +14,8 @@
     border-radius: 50%;
   }
 
-  button {
+  button,
+  .ModalUpload__Image {
     background-color: var(--accent);
     color: #6e49e8;
     border: none;

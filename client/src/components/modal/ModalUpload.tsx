@@ -10,6 +10,7 @@ type ModalUploadProps = {
 
 const ModalUpload = (props: ModalUploadProps) => {
 
+  const [file, setFile] = useState('');
   const [isWebsiteURLValid, setIsWebsiteURLValid] = useState(false);
   const [isDisabled, setIsDisabled] = useState(true);
   const [hasFetched, setHasFetched] = useState(false);
@@ -35,16 +36,30 @@ const ModalUpload = (props: ModalUploadProps) => {
     setHasFetched(true);
   }
 
+  const handleUpload = (e: any) => {
+    if (e.target.files.length > 0) {
+      setFile(URL.createObjectURL(e.target.files[0]));
+      console.log(URL.createObjectURL(e.target.files[0]));
+    }
+    else {
+      setFile('');
+    }
+  }
+
   return (
     <div className='ModalUpload'>
       {hasFetched ?
         <img src={props.logo} />
         :
-        <button type='button' className='ModalUpload__Image'>
-          <CloudUpload />
-          Upload Logo
-        </button>
+        file ?
+          <img src={file} />
+          :
+          <label htmlFor='file' className='ModalUpload__Image'>
+            <CloudUpload />
+            Upload Logo
+          </label>
       }
+      <input type='file' name='file' id='file' hidden onChange={handleUpload} />
       <span>OR</span>
       <div>
         <button className='ModalUpload__Fetch' type='button' disabled={isDisabled} onClick={() => fetchFaviconFromWebsite(props.websiteURL)}>Fetch favicon from website</button>
