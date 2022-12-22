@@ -9,7 +9,8 @@ import { faSignOut } from '@fortawesome/free-solid-svg-icons';
 type NavbarProps = {
   switchTheme?: any;
   theme?: string;
-  buttonsDisabled?: boolean;
+  buttonsEnabled?: boolean;
+  smallPadding?: boolean;
 }
 
 const Navbar = (props: NavbarProps) => {
@@ -17,9 +18,9 @@ const Navbar = (props: NavbarProps) => {
   const [dropdownToggled, setDropdownToggled] = useState(false);
 
   return (
-    <nav className='Navbar'>
+    <nav className={`${'Navbar'}${props.smallPadding ? ' Navbar__Padding__Small' : ''}`}>
       <img src='/logo.svg' className='Navbar__Logo' alt={'mypass'} />
-      {!props.buttonsDisabled &&
+      {props.buttonsEnabled &&
         <>
           <div className='Navbar__Buttons'>
             <button className='Navbar__Theme' onClick={props.switchTheme}>{props.theme === 'light' ? <MoonFill /> : <SunFill />}</button>
@@ -47,7 +48,8 @@ const Navbar = (props: NavbarProps) => {
 
 Navbar.defaultProps = {
   theme: 'light',
-  buttonsDisabled: false,
+  buttonsEnabled: false,
+  smallPadding: false,
 }
 
 export default Navbar;

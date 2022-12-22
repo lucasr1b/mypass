@@ -55,7 +55,7 @@ const Register = () => {
 
   return (
     <div className='Register'>
-      <Navbar buttonsDisabled={true} />
+      <Navbar />
       <div className='Authentication__Container'>
         <form className='Authentication__Form' onSubmit={registerUser}>
           <FormHeader title='Create an account' description='Create an account and start saving your passwords.' />

@@ -6,11 +6,12 @@ import Login from './pages/login/Login';
 import Register from './pages/register/Register';
 import './styles/theme.scss';
 import Logout from './pages/logout/Logout';
+import Home from './pages/home/Home';
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <h1>Hello World</h1>
+    element: <Home />
   },
   {
     path: '/app',

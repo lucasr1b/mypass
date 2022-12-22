@@ -1,5 +1,5 @@
 .Navbar {
-  padding: 20px;
+  padding: 20px 80px;
 
   .Navbar__Logo {
     width: 120px;
@@ -107,4 +107,8 @@
       }
     }
   }
+}
+
+.Navbar__Padding__Small {
+  padding: 20px;
 }

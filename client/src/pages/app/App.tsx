@@ -1,4 +1,3 @@
-import Navbar from '../../components/navbar/Navbar';
 import WelcomeBanner from '../../components/welcome/WelcomeBanner';
 import PasswordsTable from '../../components/passwords/PasswordsTable';
 import useLocalStorage from 'use-local-storage';
@@ -11,6 +10,7 @@ import { Cookies } from 'react-cookie';
 import axios from 'axios';
 import { API_URL, axiosConfig } from '../../utils/constants';
 import { Password } from '../../utils/types';
+import Navbar from '../../components/navbar/Navbar';
 
 const App = () => {
   const navigate = useNavigate();
@@ -63,7 +63,7 @@ const App = () => {
 
   return (
     <div className='App'>
-      <Navbar switchTheme={switchTheme} theme={theme} />
+      <Navbar smallPadding={true} buttonsEnabled={true} switchTheme={switchTheme} theme={theme} />
       <div className='App__Container'>
         <WelcomeBanner openModal={toggleAddPasswordModal} />
         <PasswordsTable passwords={passwords} setPasswordList={setPasswordList} />

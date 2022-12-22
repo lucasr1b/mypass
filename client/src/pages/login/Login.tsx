@@ -53,7 +53,7 @@ const Login = () => {
 
   return (
     <div className='Login'>
-      <Navbar buttonsDisabled={true} />
+      <Navbar />
       <div className='Authentication__Container'>
         <form className='Authentication__Form' onSubmit={loginUser}>
           <FormHeader title='Welcome back!' description='Login to your account to continue.' />
