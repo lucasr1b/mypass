@@ -9,4 +9,15 @@
       height: auto;
     }
   }
+
+  @media only screen and (max-width: 1440px) {
+    .Authentication__Container {
+      gap: 100px !important;
+    }
+    .Login__Image {
+      img {
+        width: 700px !important;
+      }
+    }
+  }
 }
