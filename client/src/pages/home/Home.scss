@@ -87,4 +87,30 @@
     -webkit-animation-name: bounce;
     animation-name: bounce;
   }
+
+  @media only screen and (max-width: 1440px) {
+    .Home__Container {
+      gap: 100px !important;
+    }
+    .Home__Container__Content {
+      h1 {
+        font-size: 36px !important;
+      }
+
+      h3 {
+        font-size: 18px;
+      }
+
+      a {
+        width: 200px !important;
+        height: 50px !important;
+        font-size: 16px !important;
+      }
+    }
+    .Home__Container__Image {
+      img {
+        width: 600px !important;
+      }
+    }
+  }
 }
