@@ -63,7 +63,7 @@ const App = () => {
 
   return (
     <div className='App'>
-      <Navbar smallPadding={true} buttonsEnabled={true} switchTheme={switchTheme} theme={theme} />
+      <Navbar buttonsEnabled={true} switchTheme={switchTheme} theme={theme} />
       <div className='App__Container'>
         <WelcomeBanner openModal={toggleAddPasswordModal} />
         <PasswordsTable passwords={passwords} setPasswordList={setPasswordList} />

@@ -10,8 +10,7 @@ type NavbarProps = {
   isHome?: boolean;
   buttonsEnabled?: boolean;
   switchTheme?: any;
-  theme?: string;
-  smallPadding?: boolean;
+  theme?: string
 }
 
 const Navbar = (props: NavbarProps) => {
@@ -19,7 +18,7 @@ const Navbar = (props: NavbarProps) => {
   const [dropdownToggled, setDropdownToggled] = useState(false);
 
   return (
-    <nav className={`${'Navbar'}${props.smallPadding ? ' Navbar__Padding__Small' : ''}`}>
+    <nav className={'Navbar'}>
       <Link to='/'><img src='/logo.svg' className='Navbar__Logo' alt={'mypass'} /></Link>
       {props.buttonsEnabled &&
         <>
@@ -57,7 +56,6 @@ Navbar.defaultProps = {
   isHome: false,
   buttonsEnabled: false,
   theme: 'light',
-  smallPadding: false,
 }
 
 export default Navbar;
