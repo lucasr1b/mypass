@@ -1,8 +1,14 @@
 import { Link } from 'react-router-dom';
 import Navbar from '../../components/navbar/Navbar';
 import './Home.scss';
+import { useEffect } from 'react';
 
 const Home = () => {
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', 'light');
+  })
+
   return (
     <div className='Home'>
       <Navbar isHome={true} />
