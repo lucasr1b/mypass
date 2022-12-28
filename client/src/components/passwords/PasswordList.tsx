@@ -4,6 +4,7 @@ import PasswordItem from './PasswordItem';
 import { API_URL, axiosConfig } from '../../utils/constants';
 import axios from 'axios';
 import ViewPasswordModal from '../modal/view/ViewPasswordModal';
+import './PasswordList.scss';
 
 type PasswordListProps = {
   passwords: Password[];
@@ -44,7 +45,9 @@ const PasswordList = (props: PasswordListProps) => {
   }
 
   if (isLoading) return (
-    <p>Loading...</p>
+    <div className='PasswordList__Loading'>
+      <img src='/loading.svg' className='PasswordList__Loading' />
+    </div>
   )
 
   if (!props.passwords) return <p>Unable to fetch passwords.</p>
