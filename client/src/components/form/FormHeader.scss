@@ -6,4 +6,12 @@
     margin-top: 2px;
     color: #888491;
   }
+  a {
+    color: #6e49e8;
+
+    &:hover {
+      text-decoration: underline;
+      color: #32216c;
+    }
+  }
 }

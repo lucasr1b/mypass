@@ -2,7 +2,6 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { Cookies } from 'react-cookie';
 import { useNavigate } from 'react-router-dom';
-import FormFooter from '../../components/form/FormFooter';
 import FormHeader from '../../components/form/FormHeader';
 import FormInput from '../../components/form/FormInput';
 import FormOrOAuth from '../../components/form/FormOrOAuth';
@@ -56,14 +55,13 @@ const Login = () => {
       <Navbar />
       <div className='Authentication__Container'>
         <form className='Authentication__Form' onSubmit={loginUser}>
-          <FormHeader title='Welcome back!' description='Login to your account to continue.' />
+          <FormHeader title='Welcome back!' description="Don't have an account?" action='Sign up for free' link='/signup' />
           <FormWithGoogle text='Login with Google' />
           <FormOrOAuth />
           {error && <FormError error={error} />}
           <FormInput label={'Email address'} name='email' />
           <FormInput label={'Password'} type='password' name='password' />
           <FormSubmitButton text='Login' />
-          <FormFooter text="Don't have an account?" action='Sign up for free' link='/signup' />
         </form>
         <div className='Login__Image'>
           <img src='login.svg' alt='Vault' />
