@@ -5,6 +5,7 @@ import App from './pages/app/App';
 import Login from './pages/login/Login';
 import Register from './pages/register/Register';
 import './styles/theme.scss';
+import './styles/global.scss'
 import Logout from './pages/logout/Logout';
 import Home from './pages/home/Home';
 
