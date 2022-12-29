@@ -17,7 +17,7 @@ type NewPasswordModalProps = {
 const NewPasswordModal = (props: NewPasswordModalProps) => {
 
   const [websiteURL, setWebsiteURL] = useState('');
-  const [logo, setLogo] = useState('http://localhost:3000/icons/Google.png');
+  const [logo, setLogo] = useState('http://localhost:3000/icons/default.png');
   const [error, setError] = useState('');
 
   const addNewPassword = async (e: any) => {
