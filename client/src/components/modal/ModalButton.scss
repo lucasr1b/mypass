@@ -9,22 +9,22 @@
   font-weight: 500;
   font-size: 14px;
   background-color: transparent;
-  border: 1px solid #6e49e8;
-  color: #6e49e8;
+  border: 1px solid var(--primary);
+  color: var(--primary);
 
   &:hover {
     cursor: pointer;
-    background-color: #6e49e8;
+    background-color: var(--primary);
     color: white;
   }
 }
 
 .ModalButton__Filled {
-  background-color: #6e49e8;
+  background-color: var(--primary);
   color: white;
   border: none;
 
   &:hover {
-    background-color: #583ab8;
+    background-color: var(--primary-hover);
   }
 }

@@ -7,7 +7,7 @@
     color: #acafc1;
   }
   a {
-    color: #6e49e8;
+    color: var(--text);
 
     &:hover {
       text-decoration: underline;

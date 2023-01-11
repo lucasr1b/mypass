@@ -24,14 +24,14 @@
     }
 
     span {
-      color: #70707f;
+      color: var(--secondary-text);
       font-weight: 300;
     }
 
     button {
       width: 180px;
       height: 40px;
-      background-color: #6e49e8;
+      background-color: var(--primary);
       color: white;
       border: none;
       border-radius: 6px;
@@ -39,7 +39,7 @@
       margin-top: 15px;
 
       &:hover {
-        background-color: #583ab8;
+        background-color: var(--primary-hover);
         color: white;
         cursor: pointer;
       }

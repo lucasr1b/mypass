@@ -15,11 +15,11 @@
       height: 35px;
       border-radius: 50px;
       background-color: var(--accent);
-      color: #6e49e8;
+      color: var(--primary);
       border: none;
 
       &:hover {
-        background-color: #6e49e8;
+        background-color: var(--primary);
         color: white;
         cursor: pointer;
       }
@@ -32,13 +32,13 @@
       align-items: center;
       justify-content: center;
       background-color: var(--accent);
-      color: #6e49e8;
+      color: var(--primary);
       border-radius: 50px;
       font-weight: 600;
       font-size: 14px;
 
       &:hover {
-        background-color: #6e49e8;
+        background-color: var(--primary);
         color: white;
         cursor: pointer;
       }
@@ -98,7 +98,7 @@
           width: 100%;
           font-size: 14px;
           font-weight: 500;
-          color: #6e49e8;
+          color: var(--primary);
 
           &:last-child {
             border: none;
@@ -115,7 +115,7 @@
           border-bottom: 1px solid var(--secondary-accent);
 
           &:hover {
-            background-color: #6e49e8;
+            background-color: var(--primary);
             border: none;
             color: white;
             cursor: pointer;

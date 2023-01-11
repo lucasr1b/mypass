@@ -23,12 +23,12 @@
 
       span {
         display: inline;
-        color: #6e49e8;
+        color: var(--primary);
       }
 
       h3 {
         width: 500px;
-        color: #acafc1;
+        color: #888491;
         font-weight: normal;
       }
 
@@ -38,7 +38,7 @@
         justify-content: center;
         width: 250px;
         height: 55px;
-        background-color: #6e49e8;
+        background-color: var(--primary);
         color: white;
         font-weight: 500;
         border: none;

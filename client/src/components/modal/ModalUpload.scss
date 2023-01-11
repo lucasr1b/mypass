@@ -17,14 +17,14 @@
   button,
   .ModalUpload__Image {
     background-color: var(--accent);
-    color: #6e49e8;
+    color: var(--primary);
     border: none;
     font-weight: 500;
     font-size: 14px;
     border-radius: 6px;
 
     &:hover {
-      background-color: #6e49e8;
+      background-color: var(--primary);
       color: white;
       cursor: pointer;
     }

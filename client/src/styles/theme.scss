@@ -1,6 +1,9 @@
 :root {
   --background: white;
-  --primary: #22222f;
+  --primary: #6e49e8; // Light & dark
+  --primary-hover: #583ab8; // Light & dark
+  --text: #22222f;
+  --secondary-text: #70707f; // Light & dark
   --accent: #e8ecf1;
   --accent-hover: #cfd3d8;
   --accent-disabled: #a4a4a4;
@@ -11,7 +14,7 @@
 }
 [data-theme="dark"] {
   --background: #100f10;
-  --primary: white;
+  --text: white;
   --accent: #1d1d20;
   --accent-hover: #111126;
   --accent-disabled: #444548;
@@ -23,5 +26,5 @@
 
 body {
   background-color: var(--background);
-  color: var(--primary);
+  color: var(--text);
 }
