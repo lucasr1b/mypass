@@ -23,7 +23,7 @@ const Navbar = (props: NavbarProps) => {
       {props.buttonsEnabled &&
         <>
           <div className='Navbar__Buttons'>
-            <button className='Navbar__Theme' onClick={props.switchTheme}>{props.theme === 'light' ? <MoonFill /> : <SunFill />}</button>
+            <button className='Navbar__Theme' onClick={props.switchTheme} aria-label='theme'>{props.theme === 'light' ? <MoonFill /> : <SunFill />}</button>
             <div className='Navbar__Profile'>
               <button onClick={() => setDropdownToggled(!dropdownToggled)}>
                 <img src='profile.jpg' alt={'profile'} /> <span>{localStorage.getItem('name')?.split(' ')[0]}</span> {dropdownToggled ? <CaretUpFill /> : <CaretDownFill />}
@@ -33,7 +33,6 @@ const Navbar = (props: NavbarProps) => {
                   <Backdrop action={() => setDropdownToggled(false)} transparent={true} />
                   <div className='Navbar__Dropdown'>
                     <a><GearFill /> Settings</a>
-                    <a> <MoonStarsFill />Theme</a>
                     <Link to='/logout'><FontAwesomeIcon icon={faSignOut} />Logout</Link>
                   </div>
                 </>

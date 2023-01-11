@@ -42,8 +42,7 @@ const ViewPasswordModal = (props: ViewPasswordModalProps) => {
           <PasswordDetail type='password' value={props.password.password} />
         </div>
         <div className='ViewPasswordModal__Actions'>
-          <ModalButton text='Edit' />
-          <ModalButton text='Delete' onClick={() => deletePassword(props.password._id)} />
+          <ModalButton text='Close' onClick={props.closeModal} />
         </div>
       </div>
     </>

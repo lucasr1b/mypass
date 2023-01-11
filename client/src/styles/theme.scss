@@ -1,11 +1,10 @@
 :root {
   --background: white;
-  --primary: black;
-  --accent: #e9e5f5;
-  --accent-hover: #c1b6e4;
+  --primary: #22222f;
+  --accent: #e8ecf1;
+  --accent-hover: #cfd3d8;
   --accent-disabled: #a4a4a4;
-  --secondary-accent: #d0ced3;
-  --dropdown-border: #ccc4e5;
+  --secondary-accent: #dadce0;
   --dropdown-shadow: #00000030;
   --modal-backdrop: rgba(0, 0, 0, 0.2);
   --form-error: #f8d7da;
@@ -13,11 +12,10 @@
 [data-theme="dark"] {
   --background: #100f10;
   --primary: white;
-  --accent: #181834;
+  --accent: #1d1d20;
   --accent-hover: #111126;
   --accent-disabled: #444548;
   --secondary-accent: #2c2c2f;
-  --dropdown-border: #272752;
   --dropdown-shadow: #00000040;
   --modal-backdrop: rgba(0, 0, 0, 0.4);
   --form-error: #2b1718;
