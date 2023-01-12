@@ -16,21 +16,21 @@
 
   button,
   .ModalUpload__Image {
-    background-color: var(--accent);
-    color: var(--primary);
+    background-color: var(--primary);
+    color: white;
     border: none;
     font-weight: 500;
     font-size: 14px;
     border-radius: 6px;
 
     &:hover {
-      background-color: var(--accent-hover);
+      background-color: var(--primary-hover);
       cursor: pointer;
     }
 
     &:disabled {
       background-color: var(--disabled);
-      color: var(--secondary-text);
+      color: var(--disabled-text);
       font-weight: normal;
       cursor: default;
     }
