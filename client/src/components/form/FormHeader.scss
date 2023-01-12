@@ -7,11 +7,11 @@
     color: #acafc1;
   }
   a {
-    color: var(--text);
+    color: var(--primary);
 
     &:hover {
       text-decoration: underline;
-      color: #32216c;
+      color: var(--primary-hover);
     }
   }
 }
