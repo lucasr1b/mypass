@@ -17,19 +17,21 @@
 
       h1 {
         font-family: "Epilogue";
+        color: var(--text);
         font-size: 42px;
         width: 600px;
       }
 
       span {
         display: inline;
+        font-weight: 600;
         color: var(--primary);
       }
 
       h3 {
         width: 500px;
-        color: #888491;
-        font-weight: normal;
+        color: var(--secondary-text);
+        font-weight: 400;
       }
 
       a {
