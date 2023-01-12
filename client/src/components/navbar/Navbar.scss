@@ -115,9 +115,7 @@
           border-bottom: 1px solid var(--secondary-accent);
 
           &:hover {
-            background-color: var(--primary);
-            border: none;
-            color: white;
+            background-color: var(--accent-hover);
             cursor: pointer;
           }
         }
