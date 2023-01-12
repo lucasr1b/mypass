@@ -44,7 +44,7 @@ const Navbar = (props: NavbarProps) => {
       {props.isHome &&
         <div className='Navbar__Buttons'>
           <Link to='/login' className='Navbar__Auth'>Login</Link>
-          <Link to='/signup' className='Navbar__Auth'>Sign up</Link>
+          <Link to='/register' className='Navbar__Auth'>Sign up</Link>
         </div>
       }
     </nav>

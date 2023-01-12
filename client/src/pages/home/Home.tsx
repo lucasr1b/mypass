@@ -16,7 +16,7 @@ const Home = () => {
         <div className='Home__Container__Content'>
           <h1>A <span>secure vault</span> for saving your passwords on the go.</h1>
           <h3>You can store your passwords safely inside of your vault and access them from any device with an internet connection.</h3>
-          <Link to='/signup'>Create an account</Link>
+          <Link to='/register'>Create an account</Link>
         </div>
         <div className={`${'Home__Container__Image'} ${'bounce'}`}>
           <img src='/home.svg' />
