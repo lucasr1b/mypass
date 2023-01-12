@@ -30,9 +30,9 @@
     }
 
     &:disabled {
-      background-color: var(--accent-disabled);
+      background-color: var(--disabled);
+      color: var(--secondary-text);
       font-weight: normal;
-      color: white;
       cursor: default;
     }
   }
@@ -61,6 +61,6 @@
     text-align: center;
     margin-top: 5px;
     font-size: 12px;
-    color: #6c7284;
+    color: var(--secondary-text);
   }
 }

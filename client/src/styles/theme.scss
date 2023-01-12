@@ -3,10 +3,11 @@
   --primary: #6e49e8; // Light & dark
   --primary-hover: #583ab8; // Light & dark
   --text: #22222f;
-  --secondary-text: #70707f; // Light & dark
+  --secondary-text: #77777f;
   --accent: #e8ecf1;
   --accent-hover: #cfd3d8;
-  --accent-disabled: #a4a4a4;
+  --disabled: #e5e5e5;
+  --disabled-text: #aeaeae;
   --secondary-accent: #dadce0;
   --dropdown-shadow: #00000030;
   --modal-backdrop: rgba(0, 0, 0, 0.2);
@@ -15,9 +16,11 @@
 [data-theme="dark"] {
   --background: #100f10;
   --text: white;
+  --secondary-text: #82828d;
   --accent: #1d1d20;
   --accent-hover: #2d2d2f;
-  --accent-disabled: #444548;
+  --disabled: #363639;
+  --disabled-text: #82828d;
   --secondary-accent: #2c2c2f;
   --dropdown-shadow: #00000040;
   --modal-backdrop: rgba(0, 0, 0, 0.4);
