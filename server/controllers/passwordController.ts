@@ -78,3 +78,36 @@ export const deletePasswordController = async (req: Request, res: Response) => {
     res.status(401).json({ loggedIn: false });
   }
 }
+
+// @Desc Update a new password
+// @Route /api/passwords/update
+// @Method POST
+
+export const updatePasswordController = async (req: Request, res: Response) => {
+  const user = await getSessionUser(req);
+
+  const { id, identifier, url, details, password, logo } = req.body;
+
+  console.log(id);
+
+  if (user) {
+    if (identifier && url && details && password && logo) {
+      const updatedPassword = await Password.findOneAndUpdate({ '_id': new ObjectId(id) }, {
+        identifier,
+        url,
+        details,
+        password,
+        logo,
+      });
+      res.status(200).json({
+        updated: true,
+        updatedPassword
+      });
+    } else {
+      validationError = 'You cannot leave fields empty';
+      res.status(400).json({ updated: false, error: validationError })
+    }
+  } else {
+    res.status(401).json({ loggedIn: false });
+  }
+}

@@ -6,6 +6,8 @@ import ModalButton from '../ModalButton';
 import ModalHeader from '../ModalHeader';
 import ModalUpload from '../ModalUpload';
 import './EditPasswordModal.scss';
+import axios from 'axios';
+import { API_URL, axiosConfig } from '../../../utils/constants';
 
 type EditPasswordModalProps = {
   closeModal: any,
@@ -14,16 +16,36 @@ type EditPasswordModalProps = {
 
 const EditPasswordModal = (props: EditPasswordModalProps) => {
 
-  const [websiteURL, setWebsiteURL] = useState('');
+  const [websiteURL, setWebsiteURL] = useState(props.password.logo);
   const [logo, setLogo] = useState('http://localhost:3000/icons/default.png');
   const [error, setError] = useState('');
 
-  const editPassword = () => {
-    console.log('Edited password');
-  }
-
   const handleWebsiteURL = (e: any) => {
     setWebsiteURL(e.target.value);
+  }
+
+  const updatePassword = async (e: any) => {
+    e.preventDefault();
+
+    const { identifier, url, details, password } = document.forms[0];
+
+    const data = {
+      id: props.password._id,
+      identifier: identifier.value,
+      url: websiteURL,
+      details: details.value,
+      password: password.value,
+      logo,
+    };
+
+    await axios.post(`${API_URL}/passwords/update`, data, axiosConfig)
+      .then((res) => {
+        console.log(res.data);
+        props.closeModal();
+      })
+      .catch((res) => {
+        setError(res.response.data.error);
+      })
   }
 
 
@@ -32,7 +54,7 @@ const EditPasswordModal = (props: EditPasswordModalProps) => {
       <Backdrop action={props.closeModal} />
       <div className='EditPasswordModal'>
         <ModalHeader title={`Editing ${props.password.identifier}`} description='Add a new password to be safely stored in your vault.' closeModal={props.closeModal} />
-        <form className='ModalForm' onSubmit={editPassword}>
+        <form className='ModalForm' onSubmit={updatePassword}>
           <div className='ModalForm__Inputs'>
             {error && <FormError error={error} width={300} margin={false} />}
             <FormInput label='Identifier' value={props.password.identifier} small={true} name='identifier' />
