@@ -37,7 +37,7 @@ const PasswordItem = (props: PasswordProps) => {
 				</div>
 			</div>
 			<div className='PasswordItem__Actions'>
-				<div className='PasswordItem__More' onClick={handleOptions}>
+				<div className='PasswordItem__Actions__More' onClick={handleOptions}>
 					<ThreeDotsVertical />
 				</div>
 				{dropdownToggled &&
