@@ -12,6 +12,8 @@ import { API_URL, axiosConfig } from '../../../utils/constants';
 type EditPasswordModalProps = {
   closeModal: any,
   password: any,
+  passwords: any,
+  setPasswordList: any,
 }
 
 const EditPasswordModal = (props: EditPasswordModalProps) => {
@@ -40,7 +42,9 @@ const EditPasswordModal = (props: EditPasswordModalProps) => {
 
     await axios.post(`${API_URL}/passwords/update`, data, axiosConfig)
       .then((res) => {
-        console.log(res.data);
+        props.setPasswordList(props.passwords.map((password: any) => {
+          return password._id === props.password._id ? res.data.updatedPassword : password
+        }));
         props.closeModal();
       })
       .catch((res) => {

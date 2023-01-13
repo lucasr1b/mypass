@@ -72,7 +72,7 @@ const PasswordList = (props: PasswordListProps) => {
         )}
       </div>
       {isViewPasswordModalOpened && <ViewPasswordModal closeModal={closeViewPasswordModal} password={password} />}
-      {isEditPasswordModalOpened && <EditPasswordModal closeModal={closeEditPasswordModal} password={password} />}
+      {isEditPasswordModalOpened && <EditPasswordModal closeModal={closeEditPasswordModal} password={password} passwords={props.passwords} setPasswordList={props.setPasswordList} />}
     </div>
   )
 }

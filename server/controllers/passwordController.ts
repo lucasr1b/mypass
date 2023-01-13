@@ -92,13 +92,18 @@ export const updatePasswordController = async (req: Request, res: Response) => {
 
   if (user) {
     if (identifier && url && details && password && logo) {
-      const updatedPassword = await Password.findOneAndUpdate({ '_id': new ObjectId(id) }, {
-        identifier,
-        url,
-        details,
-        password,
-        logo,
-      });
+      const updatedPassword = await Password.findOneAndUpdate({ '_id': new ObjectId(id) },
+        {
+          identifier,
+          url,
+          details,
+          password,
+          logo,
+        },
+        {
+          returnOriginal: false,
+        },
+      ).select('-__v');
       res.status(200).json({
         updated: true,
         updatedPassword
