@@ -5,6 +5,7 @@ import { API_URL, axiosConfig } from '../../utils/constants';
 import axios from 'axios';
 import ViewPasswordModal from '../modal/view/ViewPasswordModal';
 import './PasswordList.scss';
+import EditPasswordModal from '../modal/edit/EditPasswordModal';
 
 type PasswordListProps = {
   passwords: Password[];
@@ -16,7 +17,8 @@ type PasswordListProps = {
 const PasswordList = (props: PasswordListProps) => {
 
   const [isLoading, setIsLoading] = useState(true);
-  const [isModalOpened, setIsModalOpened] = useState(false);
+  const [isViewPasswordModalOpened, setIsViewPasswordModalOpened] = useState(false);
+  const [isEditPasswordModalOpened, setIsEditPasswordModalOpened] = useState(false);
   const [password, setPassword] = useState({});
 
   useEffect(() => {
@@ -34,13 +36,23 @@ const PasswordList = (props: PasswordListProps) => {
     fetchPasswords();
   }, [])
 
-  const closeModal = () => {
-    setIsModalOpened(false);
+  const closeViewPasswordModal = () => {
+    setIsViewPasswordModalOpened(false);
     setPassword({});
   }
 
-  const openModal = (password: Password) => {
-    setIsModalOpened(true);
+  const openViewPasswordModal = (password: Password) => {
+    setIsViewPasswordModalOpened(true);
+    setPassword(password);
+  }
+
+  const closeEditPasswordModal = () => {
+    setIsEditPasswordModalOpened(false);
+    setPassword({});
+  }
+
+  const openEditPasswordModal = (password: Password) => {
+    setIsEditPasswordModalOpened(true);
     setPassword(password);
   }
 
@@ -56,10 +68,11 @@ const PasswordList = (props: PasswordListProps) => {
     <div className='PasswordList'>
       <div className='PasswordList__Wrapper'>
         {props.passwords && (props.isSearching ? props.filteredSearch : props.passwords).map((password, index) =>
-          <PasswordItem key={index} password={password} onClick={() => openModal(password)} passwords={props.passwords} setPasswordList={props.setPasswordList} />
+          <PasswordItem key={index} password={password} onClick={() => openViewPasswordModal(password)} editPassword={() => openEditPasswordModal(password)} passwords={props.passwords} setPasswordList={props.setPasswordList} />
         )}
       </div>
-      {isModalOpened && <ViewPasswordModal closeModal={closeModal} password={password} />}
+      {isViewPasswordModalOpened && <ViewPasswordModal closeModal={closeViewPasswordModal} password={password} />}
+      {isEditPasswordModalOpened && <EditPasswordModal closeModal={closeEditPasswordModal} password={password} />}
     </div>
   )
 }

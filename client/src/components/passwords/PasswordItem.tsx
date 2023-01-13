@@ -11,6 +11,7 @@ type PasswordProps = {
 	onClick: any;
 	passwords: any;
 	setPasswordList: any;
+	editPassword: any;
 }
 
 const PasswordItem = (props: PasswordProps) => {
@@ -25,6 +26,11 @@ const PasswordItem = (props: PasswordProps) => {
 		await axios.post(`${API_URL}/passwords/delete`, { id }, axiosConfig);
 		props.setPasswordList(props.passwords.filter((password: any) => password._id !== id))
 		handleOptions();
+	}
+
+	const editPassword = () => {
+		setDropdownToggled(false);
+		props.editPassword();
 	}
 
 	return (
@@ -44,7 +50,7 @@ const PasswordItem = (props: PasswordProps) => {
 					<>
 						<Backdrop action={() => setDropdownToggled(false)} transparent={true} />
 						<div className='PasswordItem__Actions__Dropdown'>
-							<button>Edit</button>
+							<button onClick={editPassword}>Edit</button>
 							<button onClick={() => deletePassword(props.password._id)}>Delete</button>
 						</div></>
 				}
