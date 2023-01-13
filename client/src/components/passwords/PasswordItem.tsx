@@ -1,18 +1,30 @@
+import { useState } from 'react';
 import { Password } from '../../utils/types';
 import './PasswordItem.scss';
 import { ThreeDotsVertical } from 'react-bootstrap-icons';
+import Backdrop from '../common/Backdrop';
+import { API_URL, axiosConfig } from '../../utils/constants';
+import axios from 'axios';
 
 type PasswordProps = {
 	password: Password,
 	onClick: any;
+	passwords: any;
+	setPasswordList: any;
 }
 
 const PasswordItem = (props: PasswordProps) => {
 
-	const handleOptions = (e: any) => {
-		e.preventDefault();
+	const [dropdownToggled, setDropdownToggled] = useState(false);
 
-		console.log('Hello World');
+	const handleOptions = () => {
+		setDropdownToggled(!dropdownToggled)
+	}
+
+	const deletePassword = async (id: string) => {
+		await axios.post(`${API_URL}/passwords/delete`, { id }, axiosConfig);
+		props.setPasswordList(props.passwords.filter((password: any) => password._id !== id))
+		handleOptions();
 	}
 
 	return (
@@ -24,8 +36,18 @@ const PasswordItem = (props: PasswordProps) => {
 					<span className='PasswordItem__Details__Email'>{props.password.details}</span>
 				</div>
 			</div>
-			<div className='PasswordItem__Actions' onClick={handleOptions}>
-				<ThreeDotsVertical />
+			<div className='PasswordItem__Actions'>
+				<div className='PasswordItem__More' onClick={handleOptions}>
+					<ThreeDotsVertical />
+				</div>
+				{dropdownToggled &&
+					<>
+						<Backdrop action={() => setDropdownToggled(false)} transparent={true} />
+						<div className='PasswordItem__Actions__Dropdown'>
+							<button>Edit</button>
+							<button onClick={() => deletePassword(props.password._id)}>Delete</button>
+						</div></>
+				}
 			</div>
 		</div>
 	);

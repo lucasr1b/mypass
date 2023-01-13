@@ -56,10 +56,10 @@ const PasswordList = (props: PasswordListProps) => {
     <div className='PasswordList'>
       <div className='PasswordList__Wrapper'>
         {props.passwords && (props.isSearching ? props.filteredSearch : props.passwords).map((password, index) =>
-          <PasswordItem key={index} password={password} onClick={() => openModal(password)} />
+          <PasswordItem key={index} password={password} onClick={() => openModal(password)} passwords={props.passwords} setPasswordList={props.setPasswordList} />
         )}
       </div>
-      {isModalOpened && <ViewPasswordModal closeModal={closeModal} password={password} passwords={props.passwords} setPasswordList={props.setPasswordList} />}
+      {isModalOpened && <ViewPasswordModal closeModal={closeModal} password={password} />}
     </div>
   )
 }

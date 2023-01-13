@@ -11,8 +11,6 @@ import { API_URL, axiosConfig } from '../../../utils/constants';
 type ViewPasswordModalProps = {
   closeModal: any;
   password: any;
-  passwords: any;
-  setPasswordList: any;
 }
 
 const ViewPasswordModal = (props: ViewPasswordModalProps) => {
@@ -25,12 +23,6 @@ const ViewPasswordModal = (props: ViewPasswordModalProps) => {
       setDate(`Created on ${moment(props.password.createdAt).format('Do of MMM YYYY')}`);
     else setDate(`Last updated on ${moment(props.password.updatedAt).format('Do of MMM YYYY')}`);
   }, [date, props.password])
-
-  const deletePassword = async (id: string) => {
-    await axios.post(`${API_URL}/passwords/delete`, { id }, axiosConfig);
-    props.setPasswordList(props.passwords.filter((password: any) => password._id !== id))
-    props.closeModal();
-  }
 
   return (
     <>
