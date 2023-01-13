@@ -18,7 +18,7 @@ type EditPasswordModalProps = {
 
 const EditPasswordModal = (props: EditPasswordModalProps) => {
 
-  const [websiteURL, setWebsiteURL] = useState(props.password.logo);
+  const [websiteURL, setWebsiteURL] = useState(props.password.url);
   const [logo, setLogo] = useState('http://localhost:3000/icons/default.png');
   const [error, setError] = useState('');
 
