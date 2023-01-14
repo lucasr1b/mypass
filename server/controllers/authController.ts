@@ -33,6 +33,7 @@ export const authRegisterUserController = async (req: Request, res: Response) =>
         if (password.length >= 8) {
           if (password === cpassword) {
             const user = await User.create({
+              type: 'email',
               name,
               email,
               password
@@ -100,8 +101,45 @@ export const authLoginUserController = async (req: Request, res: Response) => {
   }
 }
 
+
+// @Desc Register user with Google
+// @Route /api/auth/register/google
+// @Method POST
+
+export const authGoogleRegisterUserController = async (req: Request, res: Response) => {
+  try {
+    const { name, email } = req.body;
+
+    if (name && email) {
+      const user = await User.create({
+        type: 'google',
+        name,
+        email,
+      });
+
+      const token = createToken(user._id.toString(), maxAge);
+
+      res.cookie('TOKEN', token, {
+        maxAge: maxAge,
+      });
+
+      res.status(201).json({
+        created: true,
+        user: {
+          id: user._id,
+          name: user.name,
+          email: user.email,
+        },
+      });
+    }
+  } catch (err: any) {
+    console.log(err);
+    res.status(400).json({ created: false, error: (err.message.includes('duplicate key error') ? 'An account with this email already exists.' : err.message) });
+  }
+}
+
 // @Desc Login user with Google
-// @Route /api/auth/google
+// @Route /api/auth/login/google
 // @Method POST
 export const authGoogleLoginController = async (req: Request, res: Response) => {
   try {

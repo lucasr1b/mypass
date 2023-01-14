@@ -56,7 +56,7 @@ const Login = () => {
       <div className='Authentication__Container'>
         <form className='Authentication__Form' onSubmit={loginUser}>
           <FormHeader title='Welcome back!' description="Don't have an account?" action='Sign up for free' link='/register' />
-          <FormWithGoogle text='Login with Google' setError={setError} />
+          <FormWithGoogle text='Login with Google' setError={setError} type='login' />
           <FormOrOAuth />
           {error && <FormError error={error} />}
           <FormInput label={'Email address'} name='email' />
