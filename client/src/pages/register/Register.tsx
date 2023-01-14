@@ -31,10 +31,10 @@ const Register = () => {
   const registerUser = async (e: any) => {
     e.preventDefault();
 
-    const { fname, email, password, cpassword } = document.forms[0];
+    const { uname, email, password, cpassword } = document.forms[0];
 
     const data = {
-      name: fname.value,
+      name: uname.value,
       email: email.value,
       password: password.value,
       cpassword: cpassword.value,
@@ -59,7 +59,7 @@ const Register = () => {
         <form className='Authentication__Form' onSubmit={registerUser}>
           <FormHeader title='Create an account' description='Already have an account?' action='Login' link='/login' />
           {error && <FormError error={error} />}
-          <FormInput label={'Full name'} name='fname' />
+          <FormInput label={'Name'} name='uname' />
           <FormInput label={'Email address'} name='email' />
           <FormInput label={'Password'} type='password' name='password' />
           <FormInput label={'Confirm password'} type='password' name='cpassword' />
