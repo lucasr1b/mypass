@@ -38,8 +38,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 250px;
-        height: 55px;
+        width: fit-content;
         background-color: var(--primary);
         color: white;
         font-weight: 500;
@@ -47,6 +46,7 @@
         border-radius: 50px;
         font-size: 18px;
         margin-top: 10px;
+        padding: 15px 40px;
 
         &:hover {
           background-color: #583ab8;
@@ -106,8 +106,7 @@
       }
 
       a {
-        width: 200px !important;
-        height: 50px !important;
+        padding: 15px 40px !important;
         font-size: 16px !important;
       }
     }
