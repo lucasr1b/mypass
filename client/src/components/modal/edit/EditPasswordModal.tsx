@@ -4,7 +4,7 @@ import FormError from '../../form/FormError';
 import FormInput from '../../form/FormInput';
 import ModalButton from '../ModalButton';
 import ModalHeader from '../ModalHeader';
-import ModalUpload from '../ModalUpload';
+import ModalUpload from '../ModalLogo';
 import './EditPasswordModal.scss';
 import axios from 'axios';
 import { API_URL, axiosConfig } from '../../../utils/constants';
@@ -19,7 +19,7 @@ type EditPasswordModalProps = {
 const EditPasswordModal = (props: EditPasswordModalProps) => {
 
   const [websiteURL, setWebsiteURL] = useState(props.password.url);
-  const [logo, setLogo] = useState('http://localhost:3000/icons/default.png');
+  const [logo, setLogo] = useState(props.password.logo);
   const [error, setError] = useState('');
 
   const handleWebsiteURL = (e: any) => {

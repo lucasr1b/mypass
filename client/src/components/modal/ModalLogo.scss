@@ -1,21 +1,10 @@
-.ModalUpload {
+.ModalLogo {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 20px;
 
-  span {
-    font-weight: 500;
-  }
-
-  img {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-  }
-
-  button,
-  .ModalUpload__Image {
+  button {
     background-color: var(--primary);
     color: white;
     border: none;
@@ -36,27 +25,32 @@
     }
   }
 
-  .ModalUpload__Image {
+  span {
+    font-weight: 500;
+  }
+
+  .ModalLogo__Favicon {
+    position: relative;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 5px;
     width: 150px;
     height: 150px;
+    background-color: var(--accent);
+    border-radius: 50%;
 
-    svg {
-      width: 25px;
-      height: 25px;
+    img {
+      width: 64px;
+      height: 64px;
     }
   }
 
-  .ModalUpload__Fetch {
+  .ModalLogo__Fetch {
     width: 240px;
     height: 45px;
   }
 
-  .ModalUpload__Fetch__Requirement {
+  .ModalLogo__Fetch__Requirement {
     text-align: center;
     margin-top: 5px;
     font-size: 12px;

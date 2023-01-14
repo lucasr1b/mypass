@@ -4,7 +4,7 @@ import Backdrop from '../../common/Backdrop';
 import { API_URL, axiosConfig } from '../../../utils/constants';
 import axios from 'axios';
 import ModalHeader from './../ModalHeader';
-import ModalUpload from './../ModalUpload';
+import ModalUpload from '../ModalLogo';
 import ModalButton from './../ModalButton';
 import { useState } from 'react';
 import FormError from '../../form/FormError';
