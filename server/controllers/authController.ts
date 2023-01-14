@@ -99,3 +99,28 @@ export const authLoginUserController = async (req: Request, res: Response) => {
     res.status(400).json({ error: err.message });
   }
 }
+
+// @Desc Login user with Google
+// @Route /api/auth/google
+// @Method POST
+export const authGoogleLoginController = async (req: Request, res: Response) => {
+  try {
+    const { email } = req.body;
+
+    const user = await User.findOne({ email });
+
+    if (user) {
+      const token = createToken(user._id.toString(), maxAge);
+
+      res.cookie('TOKEN', token, {
+        maxAge
+      });
+      res.status(200).json({ user: { id: user._id, name: user.name, email: user.email } });
+    } else {
+      res.status(401).json({ error: 'No matching accounts were found with that email.' });
+    }
+  } catch (err: any) {
+    console.log(err);
+    res.status(400).json({ error: err.message });
+  }
+}

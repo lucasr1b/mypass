@@ -64,7 +64,7 @@ const Register = () => {
           <FormInput label={'Password'} type='password' name='password' />
           <FormInput label={'Confirm password'} type='password' name='cpassword' />
           <FormSubmitButton text='Create account' />
-          <FormWithGoogle text='Sign up with Google' />
+          <FormWithGoogle text='Sign up with Google' setError={setError} />
         </form>
         <div className='Register__Image'>
           <img src='register.svg' alt='Astronaut' />
