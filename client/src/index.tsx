@@ -8,6 +8,7 @@ import './styles/theme.scss';
 import './styles/global.scss'
 import Logout from './pages/logout/Logout';
 import Home from './pages/home/Home';
+import { GoogleOAuthProvider } from '@react-oauth/google';
 
 const router = createBrowserRouter([
   {
@@ -34,5 +35,7 @@ const router = createBrowserRouter([
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
-  <RouterProvider router={router} />
+  <GoogleOAuthProvider clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID as string}>
+    <RouterProvider router={router} />
+  </GoogleOAuthProvider>
 );
