@@ -10,7 +10,10 @@ type FormErrorProps = {
 const FormError = (props: FormErrorProps) => {
   return (
     <div className='FormError' style={{ width: props.width, marginBottom: (props.margin ? '10px' : '') }}>
-      <ExclamationCircleFill /><span>{props.error}</span>
+      <div className='FormError__Icon'>
+        <ExclamationCircleFill />
+      </div>
+      <span>{props.error}</span>
     </div>
   )
 }

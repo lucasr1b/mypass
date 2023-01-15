@@ -6,8 +6,16 @@
   height: fit-content;
   padding: 15px;
   border-radius: 8px;
+  gap: 15px;
 
-  span {
-    margin-left: 10px;
+  .FormError__Icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+      width: 20px;
+      height: 20px;
+    }
   }
 }

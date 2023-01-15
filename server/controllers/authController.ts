@@ -83,18 +83,27 @@ export const authLoginUserController = async (req: Request, res: Response) => {
   try {
     const { email, password } = req.body;
 
-    const user = await User.findOne({ email });
+    if (email && password) {
+      const user = await User.findOne({ email });
 
-    if (user && await user.comparePassword(password)) {
-      const token = createToken(user._id.toString(), maxAge);
+      if (user && user.type === 'email') {
+        if (await user.comparePassword(password)) {
+          const token = createToken(user._id.toString(), maxAge);
 
-      res.cookie('TOKEN', token, {
-        maxAge
-      });
-      res.status(200).json({ user: { id: user._id, name: user.name, email: user.email } });
+          res.cookie('TOKEN', token, {
+            maxAge
+          });
+          res.status(200).json({ user: { id: user._id, name: user.name, email: user.email } });
+        } else {
+          res.status(401).json({ error: 'Email or password is incorrect.' });
+        }
+      } else {
+        res.status(401).json({ error: 'The account associated with that email was made with Google, login with Google.' });
+      }
     } else {
-      res.status(401).json({ error: 'Email or password is incorrect.' });
+      res.status(401).json({ error: 'All fields are required.' });
     }
+
   } catch (err: any) {
     console.log(err);
     res.status(400).json({ error: err.message });
