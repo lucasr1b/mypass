@@ -9,13 +9,12 @@
   font-weight: 500;
   font-size: 14px;
   background-color: transparent;
-  border: 1px solid var(--primary);
+  border: 1px solid var(--accent-hover);
   color: var(--primary);
 
   &:hover {
     cursor: pointer;
-    background-color: var(--primary);
-    color: white;
+    background-color: var(--accent);
   }
 }
 
