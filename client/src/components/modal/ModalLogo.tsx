@@ -45,7 +45,7 @@ const ModalLogo = (props: ModalLogoProps) => {
       <div>
         <button className='ModalLogo__Fetch' type='button' disabled={isDisabled} onClick={() => fetchFaviconFromWebsite(props.websiteURL)}>Fetch favicon from website</button>
         {!props.websiteURL && <span className='ModalLogo__Fetch__Requirement'>Website URL is required to fetch</span>}
-        {props.websiteURL && !isWebsiteURLValid && <span className='ModalLogo__Fetch__Requirement'>Valid Website URL is required to fetch</span>}
+        {props.websiteURL && !isWebsiteURLValid && <span className='ModalLogo__Fetch__Requirement'>A valid website URL is required to fetch</span>}
         {props.websiteURL && isWebsiteURLValid && <span className='ModalLogo__Fetch__Requirement'>Fetch from {getDomainOnly(props.websiteURL)}</span>}
       </div>
     </div>

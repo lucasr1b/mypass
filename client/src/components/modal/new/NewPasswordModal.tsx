@@ -56,10 +56,10 @@ const NewPasswordModal = (props: NewPasswordModalProps) => {
         <form className='ModalForm' onSubmit={addNewPassword}>
           <div className='ModalForm__Inputs'>
             {error && <FormError error={error} width={300} margin={false} />}
-            <FormInput label='Identifier' small={true} name='identifier' />
+            <FormInput label='Identifier' small={true} required={true} name='identifier' />
             <FormInput label='Website URL' small={true} name='url' onChange={handleWebsiteURL} />
-            <FormInput label='Username or email' small={true} name='details' />
-            <FormInput label='Password' type='password' small={true} name='password' />
+            <FormInput label='Username or email' small={true} required={true} name='details' />
+            <FormInput label='Password' type='password' small={true} required={true} name='password' />
           </div>
           <div className='ModalForm__Buttons'>
             <ModalUpload websiteURL={websiteURL} logo={logo} setLogo={setLogo} />
