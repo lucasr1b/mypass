@@ -32,11 +32,14 @@ export const newPassword = async (req: Request, res: Response) => {
   const { identifier, url, details, password, logo } = req.body;
 
   if (user) {
-    if (identifier && url && details && password && logo) {
+    if (identifier && details && password && logo) {
+      let websiteUrl;
+      !url ? websiteUrl = '' : websiteUrl = url;
+
       const newPassword = await Password.create({
         user: user.id,
         identifier,
-        url,
+        websiteUrl,
         details,
         password,
         logo,
@@ -51,7 +54,7 @@ export const newPassword = async (req: Request, res: Response) => {
         logo: newPassword.logo,
       });
     } else {
-      validationError = 'All fields are required';
+      validationError = 'You cannot leave required fields empty.';
       res.status(400).json({ created: false, error: validationError })
     }
   } else {
@@ -91,7 +94,10 @@ export const updatePasswordController = async (req: Request, res: Response) => {
   console.log(id);
 
   if (user) {
-    if (identifier && url && details && password && logo) {
+    if (identifier && details && password && logo) {
+      let websiteUrl;
+      !url ? websiteUrl = '' : websiteUrl = url;
+
       const updatedPassword = await Password.findOneAndUpdate({ '_id': new ObjectId(id) },
         {
           identifier,
@@ -109,7 +115,7 @@ export const updatePasswordController = async (req: Request, res: Response) => {
         updatedPassword
       });
     } else {
-      validationError = 'You cannot leave fields empty';
+      validationError = 'You cannot leave required fields empty.';
       res.status(400).json({ updated: false, error: validationError })
     }
   } else {
