@@ -11,7 +11,7 @@ type PasswordProps = {
 	onClick: any;
 	passwords: any;
 	setPasswordList: any;
-	editPassword: any;
+	UpdatePassword: any;
 }
 
 const PasswordItem = (props: PasswordProps) => {
@@ -28,9 +28,9 @@ const PasswordItem = (props: PasswordProps) => {
 		handleOptions();
 	}
 
-	const editPassword = () => {
+	const UpdatePassword = () => {
 		setDropdownToggled(false);
-		props.editPassword();
+		props.UpdatePassword();
 	}
 
 	return (
@@ -50,7 +50,7 @@ const PasswordItem = (props: PasswordProps) => {
 					<>
 						<Backdrop action={() => setDropdownToggled(false)} transparent={true} />
 						<div className='PasswordItem__Actions__Dropdown'>
-							<button onClick={editPassword}>Edit</button>
+							<button onClick={UpdatePassword}>Edit</button>
 							<button onClick={() => deletePassword(props.password._id)}>Delete</button>
 						</div></>
 				}

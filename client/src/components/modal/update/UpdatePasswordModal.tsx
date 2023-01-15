@@ -5,18 +5,18 @@ import FormInput from '../../form/FormInput';
 import ModalButton from '../ModalButton';
 import ModalHeader from '../ModalHeader';
 import ModalUpload from '../ModalLogo';
-import './EditPasswordModal.scss';
+import './UpdatePasswordModal.scss';
 import axios from 'axios';
 import { API_URL, axiosConfig } from '../../../utils/constants';
 
-type EditPasswordModalProps = {
+type UpdatePasswordModalProps = {
   closeModal: any,
   password: any,
   passwords: any,
   setPasswordList: any,
 }
 
-const EditPasswordModal = (props: EditPasswordModalProps) => {
+const UpdatePasswordModal = (props: UpdatePasswordModalProps) => {
 
   const [websiteURL, setWebsiteURL] = useState(props.password.url);
   const [logo, setLogo] = useState(props.password.logo);
@@ -56,8 +56,8 @@ const EditPasswordModal = (props: EditPasswordModalProps) => {
   return (
     <>
       <Backdrop action={props.closeModal} />
-      <div className='EditPasswordModal'>
-        <ModalHeader title={`Editing ${props.password.identifier}`} description='Add a new password to be safely stored in your vault.' closeModal={props.closeModal} />
+      <div className='UpdatePasswordModal'>
+        <ModalHeader title={props.password.identifier} description={`Update the information to be safely stored in your vault.`} closeModal={props.closeModal} />
         <form className='ModalForm' onSubmit={updatePassword}>
           <div className='ModalForm__Inputs'>
             {error && <FormError error={error} width={300} margin={false} />}
@@ -70,7 +70,7 @@ const EditPasswordModal = (props: EditPasswordModalProps) => {
             <ModalUpload websiteURL={websiteURL} logo={logo} setLogo={setLogo} />
             <div className='ModalForm__Actions'>
               <ModalButton text='Cancel' onClick={props.closeModal} />
-              <ModalButton text='Save' submit={true} filled={true} />
+              <ModalButton text='Update' submit={true} filled={true} />
             </div>
           </div>
         </form>
@@ -79,4 +79,4 @@ const EditPasswordModal = (props: EditPasswordModalProps) => {
   )
 }
 
-export default EditPasswordModal;
+export default UpdatePasswordModal;
