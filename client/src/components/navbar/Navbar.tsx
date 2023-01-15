@@ -8,6 +8,7 @@ import { faSignOut } from '@fortawesome/free-solid-svg-icons';
 
 type NavbarProps = {
   isHome?: boolean;
+  isLoggedIn?: boolean;
   buttonsEnabled?: boolean;
   switchTheme?: any;
   theme?: string
@@ -43,8 +44,15 @@ const Navbar = (props: NavbarProps) => {
       }
       {props.isHome &&
         <div className='Navbar__Buttons'>
-          <Link to='/login' className='Navbar__Auth'>Login</Link>
-          <Link to='/register' className='Navbar__Auth'>Sign up</Link>
+          {!props.isLoggedIn ?
+            <>
+              <Link to='/login' className='Navbar__Auth'>Login</Link>
+              <Link to='/register' className='Navbar__Auth'>Sign up</Link>
+            </>
+            :
+            <Link to='/app' className='Navbar__Auth'>Open vault</Link>
+          }
+
         </div>
       }
     </nav>
@@ -53,6 +61,7 @@ const Navbar = (props: NavbarProps) => {
 
 Navbar.defaultProps = {
   isHome: false,
+  isLoggedIn: false,
   buttonsEnabled: false,
   theme: 'light',
 }

@@ -38,7 +38,7 @@ const Home = () => {
 
   return (
     <div className='Home'>
-      <Navbar isHome={true} />
+      <Navbar isHome={true} isLoggedIn={loggedIn} />
       <div className='Home__Container'>
         <div className='Home__Container__Content'>
           <h1>A <span>secure vault</span> for saving your passwords on the go.</h1>
