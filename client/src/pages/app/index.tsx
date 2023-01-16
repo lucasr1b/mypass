@@ -1,7 +1,7 @@
 import WelcomeBanner from '../../components/welcome/WelcomeBanner';
 import PasswordsTable from '../../components/passwords/PasswordsTable';
 import useLocalStorage from 'use-local-storage';
-import '../../styles/App.module.scss';
+import styles from '../../styles/App.module.scss';
 import AddPasswordButton from '../../components/passwords/AddPasswordButton';
 import NewPasswordModal from '../../components/modal/new/NewPasswordModal';
 import { useEffect, useState } from 'react';
@@ -62,9 +62,9 @@ const App = () => {
   }
 
   return (
-    <div className='App'>
+    <div className={styles.app}>
       <Navbar buttonsEnabled={true} switchTheme={switchTheme} theme={theme} />
-      <div className='App__Container'>
+      <div className={styles.appContainer}>
         <WelcomeBanner openModal={toggleAddPasswordModal} />
         <PasswordsTable passwords={passwords} setPasswordList={setPasswordList} />
         {modalToggled && <NewPasswordModal closeModal={toggleAddPasswordModal} addPassword={addPasssword} />}

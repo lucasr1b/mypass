@@ -9,7 +9,7 @@ import FormWithGoogle from '../../components/form/FormWithGoogle';
 import Navbar from '../../components/navbar/Navbar';
 import '../../styles/authentication.module.scss';
 import { API_URL, axiosConfig } from '../../utils/constants';
-import '../../styles/Login.module.scss';
+import styles from '../../styles/Login.module.scss';
 import FormError from '../../components/form/FormError';
 import { setSessionDetails } from '../../utils/helpers';
 import { useRouter } from 'next/router';
@@ -51,7 +51,7 @@ const Login = () => {
   }
 
   return (
-    <div className='Login'>
+    <div className={styles.login}>
       <Navbar />
       <div className='Authentication__Container'>
         <form className='Authentication__Form' onSubmit={loginUser}>
@@ -63,7 +63,7 @@ const Login = () => {
           <FormInput label={'Password'} type='password' name='password' />
           <FormSubmitButton text='Login' />
         </form>
-        <div className='Login__Image'>
+        <div className={styles.loginImage}>
           <img src='login.svg' alt='Vault' />
         </div>
       </div>

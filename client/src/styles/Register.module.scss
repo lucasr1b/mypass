@@ -1,9 +1,9 @@
-.Register {
-  .Authentication__Container {
+.register {
+  .authenticationContainer {
     gap: 200px;
   }
 
-  .Register__Image {
+  .registerImage {
     img {
       width: 700px;
       height: auto;
@@ -11,10 +11,10 @@
   }
 
   @media only screen and (max-width: 1440px) {
-    .Authentication__Container {
+    .authenticationContainer {
       gap: 150px !important;
     }
-    .Login__Image {
+    .registerImage {
       img {
         width: 600px !important;
       }

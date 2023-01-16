@@ -1,9 +1,9 @@
-.Login {
-  .Authentication__Container {
+.login {
+  .authenticationContainer {
     gap: 150px;
   }
 
-  .Login__Image {
+  .loginImage {
     img {
       width: 800px;
       height: auto;
@@ -11,10 +11,10 @@
   }
 
   @media only screen and (max-width: 1440px) {
-    .Authentication__Container {
+    .authenticationContainer {
       gap: 100px !important;
     }
-    .Login__Image {
+    .loginImage {
       img {
         width: 700px !important;
       }

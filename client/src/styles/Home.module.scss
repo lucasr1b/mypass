@@ -1,16 +1,16 @@
-.Home {
+.home {
   display: flex;
   flex-direction: column;
   height: 100vh;
 
-  .Home__Container {
+  .homeContainer {
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 200px;
 
-    .Home__Container__Content {
+    .homeContainerContent {
       display: flex;
       flex-direction: column;
       gap: 20px;
@@ -55,7 +55,7 @@
       }
     }
 
-    .Home__Container__Image {
+    .homeContainerImage {
       animation: bounce 6s ease-out infinite forwards;
       -webkit-animation: bounce 6s ease-out infinite forwards;
 
@@ -92,10 +92,10 @@
   }
 
   @media only screen and (max-width: 1440px) {
-    .Home__Container {
+    .homeContainer {
       gap: 100px !important;
     }
-    .Home__Container__Content {
+    .homeContainerContent {
       h1 {
         width: 500px !important;
         font-size: 36px !important;
@@ -110,7 +110,7 @@
         font-size: 16px !important;
       }
     }
-    .Home__Container__Image {
+    .homeContainerImage {
       img {
         width: 600px !important;
       }

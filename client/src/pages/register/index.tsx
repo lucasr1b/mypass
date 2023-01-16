@@ -8,7 +8,7 @@ import FormWithGoogle from '../../components/form/FormWithGoogle';
 import Navbar from '../../components/navbar/Navbar';
 import '../../styles/authentication.module.scss';
 import { API_URL, axiosConfig } from '../../utils/constants';
-import '../../styles/Register.module.scss';
+import styles from '../../styles/Register.module.scss';
 import FormError from '../../components/form/FormError';
 import { setSessionDetails } from '../../utils/helpers';
 import { useRouter } from 'next/router';
@@ -53,7 +53,7 @@ const Register = () => {
   }
 
   return (
-    <div className='Register'>
+    <div className={styles.register}>
       <Navbar />
       <div className='Authentication__Container'>
         <form className='Authentication__Form' onSubmit={registerUser}>
@@ -66,7 +66,7 @@ const Register = () => {
           <FormSubmitButton text='Create account' />
           <FormWithGoogle text='Sign up with Google' setError={setError} type='register' />
         </form>
-        <div className='Register__Image'>
+        <div className={styles.registerImage}>
           <img src='register.svg' alt='Astronaut' />
         </div>
       </div>
