@@ -8,7 +8,7 @@ import ModalUpload from '../ModalLogo';
 import ModalButton from './../ModalButton';
 import { useState } from 'react';
 import FormError from '../../form/FormError';
-import '../ModalForm.scss';
+import '../../../styles/modalform.module.scss';
 
 type NewPasswordModalProps = {
   closeModal: any,

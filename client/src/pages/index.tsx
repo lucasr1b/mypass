@@ -1,5 +1,5 @@
 import Navbar from '../components/navbar/Navbar';
-import '../styles/Home.scss';
+import '../styles/Home.module.scss';
 import { useEffect, useState } from 'react';
 import { Cookies } from 'react-cookie';
 import axios from 'axios';
