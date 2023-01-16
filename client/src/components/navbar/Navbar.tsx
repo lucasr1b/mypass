@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './Navbar.module.scss';
 import { MoonFill, CaretDownFill, CaretUpFill, SunFill, GearFill, MoonStarsFill } from 'react-bootstrap-icons';
 import Backdrop from '../common/Backdrop';
@@ -33,9 +33,17 @@ const Navbar = (props: NavbarProps) => {
 
   jdenticon.configure(jdenticon_config);
 
-  const svgString = jdenticon.toSvg(localStorage.getItem('email'), 64);
-  const svg = new Blob([svgString], { type: "image/svg+xml" });
-  const url = URL.createObjectURL(svg)
+  const [url, setUrl] = useState('');
+  const [name, setName] = useState('');
+
+  useEffect(() => {
+
+    setName(localStorage.getItem('name')?.split(' ')[0] as string);
+
+    const svgString = jdenticon.toSvg(localStorage.getItem('email'), 64);
+    const svg = new Blob([svgString], { type: "image/svg+xml" });
+    setUrl(URL.createObjectURL(svg));
+  })
 
   return (
     <nav className={'Navbar'}>
@@ -49,7 +57,7 @@ const Navbar = (props: NavbarProps) => {
                 <div className='Navbar__Profile__Picture'>
                   <img src={url} alt='profile' />
                 </div>
-                <span>{localStorage.getItem('name')?.split(' ')[0]}</span> {dropdownToggled ? <CaretUpFill /> : <CaretDownFill />}
+                <span>{name}</span> {dropdownToggled ? <CaretUpFill /> : <CaretDownFill />}
               </button>
               {dropdownToggled &&
                 <>
