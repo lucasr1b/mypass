@@ -1,17 +1,16 @@
-.Login,
-.Register {
+.wrapper {
   display: flex;
   flex-direction: column;
   height: 100vh;
 
-  .Authentication__Container {
+  .container {
     display: flex;
     align-items: center;
     flex-direction: row;
     flex: 1;
     padding: 0 130px;
 
-    .Authentication__Form {
+    .form {
       display: flex;
       flex-direction: column;
       gap: 20px;

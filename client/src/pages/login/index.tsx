@@ -7,7 +7,7 @@ import FormOrOAuth from '../../components/form/FormOrOAuth';
 import FormSubmitButton from '../../components/form/FormSubmitButton';
 import FormWithGoogle from '../../components/form/FormWithGoogle';
 import Navbar from '../../components/navbar/Navbar';
-import '../../styles/common/authentication.module.scss';
+import authenticationStyles from '../../styles/common/authentication.module.scss';
 import { API_URL, axiosConfig } from '../../utils/constants';
 import styles from '../../styles/pages/Login.module.scss';
 import FormError from '../../components/form/FormError';
@@ -51,10 +51,10 @@ const Login = () => {
   }
 
   return (
-    <div className={styles.login}>
+    <div className={`${styles.login} ${authenticationStyles.wrapper}`}>
       <Navbar />
-      <div className='Authentication__Container'>
-        <form className='Authentication__Form' onSubmit={loginUser}>
+      <div className={authenticationStyles.container}>
+        <form className={authenticationStyles.form} onSubmit={loginUser}>
           <FormHeader title='Welcome back!' description="Don't have an account?" action='Sign up for free' link='/register' />
           <FormWithGoogle text='Login with Google' setError={setError} type='login' />
           <FormOrOAuth />

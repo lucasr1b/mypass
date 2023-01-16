@@ -6,9 +6,9 @@ import FormInput from '../../components/form/FormInput';
 import FormSubmitButton from '../../components/form/FormSubmitButton';
 import FormWithGoogle from '../../components/form/FormWithGoogle';
 import Navbar from '../../components/navbar/Navbar';
-import '../../styles/common/authentication.module.scss';
+import authenticationStyles from '../../styles/common/authentication.module.scss';
 import { API_URL, axiosConfig } from '../../utils/constants';
-import styles from '../../styles/Register.module.scss';
+import styles from '../../styles/pages/Register.module.scss';
 import FormError from '../../components/form/FormError';
 import { setSessionDetails } from '../../utils/helpers';
 import { useRouter } from 'next/router';
@@ -53,10 +53,10 @@ const Register = () => {
   }
 
   return (
-    <div className={styles.register}>
+    <div className={`${styles.login} ${authenticationStyles.wrapper}`}>
       <Navbar />
-      <div className='Authentication__Container'>
-        <form className='Authentication__Form' onSubmit={registerUser}>
+      <div className={authenticationStyles.container}>
+        <form className={authenticationStyles.form} onSubmit={registerUser}>
           <FormHeader title='Create an account' description='Already have an account?' action='Login' link='/login' />
           {error && <FormError error={error} />}
           <FormInput label={'Name'} name='uname' />
