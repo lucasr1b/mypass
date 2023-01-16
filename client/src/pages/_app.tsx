@@ -1,3 +1,4 @@
+import { GoogleOAuthProvider } from '@react-oauth/google'
 import '../styles/global.scss'
 import '../styles/theme.scss'
 import type { AppProps } from 'next/app'
@@ -11,7 +12,9 @@ export const App = ({ Component, pageProps }: AppProps) => {
       <Head>
         <title>mypass</title>
       </Head>
-      <Component {...pageProps} />
+      <GoogleOAuthProvider clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID as string}>
+        <Component {...pageProps} />
+      </GoogleOAuthProvider>
     </>
   )
 }
