@@ -1,4 +1,4 @@
-import './ModalHeader.scss';
+import './ModalHeader.module.scss';
 import { X } from 'react-bootstrap-icons';
 
 type ModalHeaderProps = {

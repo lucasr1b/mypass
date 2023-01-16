@@ -1,4 +1,4 @@
-import './FormHeader.scss';
+import './FormHeader.module.scss';
 
 type FormHeaderProps = {
   title: string;

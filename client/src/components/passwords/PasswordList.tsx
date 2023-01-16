@@ -4,7 +4,7 @@ import PasswordItem from './PasswordItem';
 import { API_URL, axiosConfig } from '../../utils/constants';
 import axios from 'axios';
 import ViewPasswordModal from '../modal/view/ViewPasswordModal';
-import './PasswordList.scss';
+import './PasswordList.module.scss';
 import UpdatePasswordModal from '../modal/update/UpdatePasswordModal';
 
 type PasswordListProps = {

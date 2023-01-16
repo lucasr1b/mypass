@@ -1,4 +1,4 @@
-import './PasswordsHeader.scss';
+import './PasswordsHeader.module.scss';
 import { Password } from '../../utils/types';
 import PasswordSearch from './PasswordSearch';
 

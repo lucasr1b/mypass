@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Password } from '../../utils/types';
-import './PasswordItem.scss';
+import './PasswordItem.module.scss';
 import { ThreeDotsVertical } from 'react-bootstrap-icons';
 import Backdrop from '../common/Backdrop';
 import { API_URL, axiosConfig } from '../../utils/constants';

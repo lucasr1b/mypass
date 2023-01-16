@@ -1,5 +1,5 @@
 import { Plus } from "react-bootstrap-icons";
-import './AddPasswordButton.scss';
+import './AddPasswordButton.module.scss';
 
 const AddPassword = ({ openModal }: any) => {
   return (

@@ -1,4 +1,4 @@
-import './FormWithGoogle.scss';
+import './FormWithGoogle.module.scss';
 import { useGoogleLogin } from '@react-oauth/google';
 import axios from 'axios';
 import { API_URL, axiosConfig } from '../../utils/constants';

@@ -1,6 +1,6 @@
 import PasswordsHeader from './PasswordsHeader';
 import PasswordList from './PasswordList';
-import './PasswordsTable.scss';
+import './PasswordsTable.module.scss';
 import { useState } from 'react';
 import { Password } from '../../utils/types';
 

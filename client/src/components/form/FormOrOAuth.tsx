@@ -1,4 +1,4 @@
-import './FormOrOAuth.scss';
+import './FormOrOAuth.module.scss';
 
 const FormOrOAuth = () => {
   return (

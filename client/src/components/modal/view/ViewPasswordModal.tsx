@@ -1,4 +1,4 @@
-import './ViewPasswordModal.scss';
+import './ViewPasswordModal.module.scss';
 import Backdrop from '../../common/Backdrop';
 import ModalHeader from '../ModalHeader';
 import PasswordDetail from './PasswordDetail';

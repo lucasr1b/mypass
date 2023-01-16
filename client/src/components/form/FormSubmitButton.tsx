@@ -1,4 +1,4 @@
-import './FormSubmitButton.scss';
+import './FormSubmitButton.module.scss';
 
 type FormSubmitButtonProps = {
   text: string;

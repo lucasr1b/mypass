@@ -1,5 +1,5 @@
 import FormInput from '../../form/FormInput';
-import './NewPasswordModal.scss';
+import './NewPasswordModal.module.scss';
 import Backdrop from '../../common/Backdrop';
 import { API_URL, axiosConfig } from '../../../utils/constants';
 import axios from 'axios';

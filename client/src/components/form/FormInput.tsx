@@ -1,4 +1,4 @@
-import './FormInput.scss';
+import './FormInput.module.scss';
 
 type FormInputTypes = {
   label: string;

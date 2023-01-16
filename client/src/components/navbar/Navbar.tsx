@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import './Navbar.scss';
+import './Navbar.module.scss';
 import { MoonFill, CaretDownFill, CaretUpFill, SunFill, GearFill, MoonStarsFill } from 'react-bootstrap-icons';
 import Backdrop from '../common/Backdrop';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';

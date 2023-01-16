@@ -1,4 +1,4 @@
-import './Backdrop.scss';
+import './Backdrop.module.scss';
 
 type BackdropProps = {
   action: any;

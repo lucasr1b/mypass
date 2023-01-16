@@ -1,5 +1,5 @@
 import { ExclamationCircleFill, X } from 'react-bootstrap-icons';
-import './FormError.scss';
+import './FormError.module.scss';
 
 type FormErrorProps = {
   error: string;

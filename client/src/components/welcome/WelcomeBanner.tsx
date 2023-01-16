@@ -1,4 +1,4 @@
-import './WelcomeBanner.scss';
+import './WelcomeBanner.module.scss';
 
 const WelcomeBanner = ({ openModal }: any) => {
   return (

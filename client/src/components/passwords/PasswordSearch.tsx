@@ -1,5 +1,5 @@
 import { Search } from 'react-bootstrap-icons';
-import './PasswordSearch.scss';
+import './PasswordSearch.module.scss';
 
 type PasswordSearchProps = {
   search: any;

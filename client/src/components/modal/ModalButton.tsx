@@ -1,4 +1,4 @@
-import './ModalButton.scss';
+import './ModalButton.module.scss';
 
 type ModalButtonProps = {
   text: string;
