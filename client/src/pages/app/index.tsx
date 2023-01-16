@@ -1,19 +1,19 @@
 import WelcomeBanner from '../../components/welcome/WelcomeBanner';
 import PasswordsTable from '../../components/passwords/PasswordsTable';
 import useLocalStorage from 'use-local-storage';
-import './App.scss';
+import '../../styles/App.scss';
 import AddPasswordButton from '../../components/passwords/AddPasswordButton';
 import NewPasswordModal from '../../components/modal/new/NewPasswordModal';
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { Cookies } from 'react-cookie';
 import axios from 'axios';
 import { API_URL, axiosConfig } from '../../utils/constants';
 import { Password } from '../../utils/types';
 import Navbar from '../../components/navbar/Navbar';
+import { useRouter } from 'next/router';
 
 const App = () => {
-  const navigate = useNavigate();
+  const router = useRouter();
 
   const [theme, setTheme] = useLocalStorage('theme', 'light');
   const [modalToggled, setModalToggled] = useState(false);
@@ -26,13 +26,13 @@ const App = () => {
 
     const verifyAuthentication = async () => {
       if (!cookies.get('TOKEN')) {
-        navigate('/login')
+        router.push('/login')
       } else {
         await axios.get(`${API_URL}/auth`, axiosConfig)
           .then(res => {
             if (res.status === 401) {
               cookies.remove('TOKEN');
-              navigate('/login');
+              router.push('/login');
             }
           }).catch(err => {
             console.log(err);
@@ -41,7 +41,7 @@ const App = () => {
     }
 
     verifyAuthentication();
-  }, [navigate, theme]);
+  }, [router, theme]);
 
   const switchTheme = () => {
     const newTheme = theme === 'light' ? 'dark' : 'light';

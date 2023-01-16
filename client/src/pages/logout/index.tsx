@@ -1,17 +1,17 @@
 import { useEffect } from 'react';
 import { Cookies } from 'react-cookie';
-import { useNavigate } from 'react-router-dom';
 import { resetSessionDetails } from '../../utils/helpers';
+import { useRouter } from 'next/router';
 
 const Logout = () => {
-  const navigate = useNavigate();
+  const router = useRouter();
 
   useEffect(() => {
     const cookies = new Cookies();
 
     resetSessionDetails(cookies);
-    navigate('/login');
-  }, [navigate]);
+    router.push('/login');
+  }, [router]);
 
   return (
     <div>Logging out...</div>

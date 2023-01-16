@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import './Navbar.scss';
 import { MoonFill, CaretDownFill, CaretUpFill, SunFill, GearFill, MoonStarsFill } from 'react-bootstrap-icons';
-import { Link } from 'react-router-dom';
 import Backdrop from '../common/Backdrop';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSignOut } from '@fortawesome/free-solid-svg-icons';
@@ -40,7 +39,7 @@ const Navbar = (props: NavbarProps) => {
 
   return (
     <nav className={'Navbar'}>
-      <Link to='/'><img src='/logo.svg' className='Navbar__Logo' alt={'mypass'} /></Link>
+      <a href='/'><img src='/logo.svg' className='Navbar__Logo' alt={'mypass'} /></a>
       {props.buttonsEnabled &&
         <>
           <div className='Navbar__Buttons'>
@@ -57,7 +56,7 @@ const Navbar = (props: NavbarProps) => {
                   <Backdrop action={() => setDropdownToggled(false)} transparent={true} />
                   <div className='Navbar__Dropdown'>
                     <a><GearFill /> Settings</a>
-                    <Link to='/logout'><FontAwesomeIcon icon={faSignOut} />Logout</Link>
+                    <a href='/logout'><FontAwesomeIcon icon={faSignOut} />Logout</a>
                   </div>
                 </>
               }
@@ -70,11 +69,11 @@ const Navbar = (props: NavbarProps) => {
         <div className='Navbar__Buttons'>
           {!props.isLoggedIn ?
             <>
-              <Link to='/login' className='Navbar__Auth'>Login</Link>
-              <Link to='/register' className='Navbar__Auth'>Sign up</Link>
+              <a href='/login' className='Navbar__Auth'>Login</a>
+              <a href='/register' className='Navbar__Auth'>Sign up</a>
             </>
             :
-            <Link to='/app' className='Navbar__Auth'>Open vault</Link>
+            <a href='/app' className='Navbar__Auth'>Open vault</a>
           }
 
         </div>

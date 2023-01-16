@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import './FormHeader.scss';
 
 type FormHeaderProps = {
@@ -12,7 +11,7 @@ const FormHeader = (props: FormHeaderProps) => {
   return (
     <div className='FormHeader'>
       <h3>{props.title}</h3>
-      <span>{props.description} {props.action && <Link to={props.link}>{props.action}</Link>}</span>
+      <span>{props.description} {props.action && <a href={props.link}>{props.action}</a>}</span>
     </div>
   )
 }
