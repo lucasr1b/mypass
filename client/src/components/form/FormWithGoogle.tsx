@@ -1,4 +1,4 @@
-import './FormWithGoogle.module.scss';
+import styles from './FormWithGoogle.module.scss';
 import { useGoogleLogin } from '@react-oauth/google';
 import axios from 'axios';
 import { API_URL, axiosConfig } from '../../utils/constants';
@@ -52,7 +52,7 @@ const FormWithGoogle = (props: FormWithGoogleProps) => {
   });
 
   return (
-    <div className='FormWithGoogle' onClick={() => (props.type === 'login' ? login() : register())}>
+    <div className={styles.withGoogle} onClick={() => (props.type === 'login' ? login() : register())}>
       <img src='icons/Google.png' alt='Google' />
       <span>{props.text}</span>
     </div>

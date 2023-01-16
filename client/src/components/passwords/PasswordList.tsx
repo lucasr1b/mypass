@@ -4,7 +4,7 @@ import PasswordItem from './PasswordItem';
 import { API_URL, axiosConfig } from '../../utils/constants';
 import axios from 'axios';
 import ViewPasswordModal from '../modal/view/ViewPasswordModal';
-import './PasswordList.module.scss';
+import styles from './PasswordList.module.scss';
 import UpdatePasswordModal from '../modal/update/UpdatePasswordModal';
 
 type PasswordListProps = {
@@ -57,8 +57,8 @@ const PasswordList = (props: PasswordListProps) => {
   }
 
   if (isLoading) return (
-    <div className='PasswordList__Loading'>
-      <img src='/loading.svg' className='PasswordList__Loading' />
+    <div className={styles.loading}>
+      <img src='/loading.svg' />
     </div>
   )
 

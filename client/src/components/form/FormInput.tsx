@@ -1,4 +1,4 @@
-import './FormInput.module.scss';
+import styles from './FormInput.module.scss';
 
 type FormInputTypes = {
   label: string;
@@ -12,7 +12,7 @@ type FormInputTypes = {
 
 const FormInput = (props: FormInputTypes) => {
   return (
-    <div className={`${'FormInput'}${props.small ? ' FormInput__Small' : ''}`}>
+    <div className={`${styles.input} ${props.small ? styles.smallInput : ''}`}>
       {props.onChange ?
         <input type={props.type} placeholder={`${props.label} ${props.required ? '*' : ''}`} defaultValue={props.value} name={props.name} autoComplete='off' onChange={props.onChange} />
         :

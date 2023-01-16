@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import './Navbar.module.scss';
+import styles from './Navbar.module.scss';
 import { MoonFill, CaretDownFill, CaretUpFill, SunFill, GearFill, MoonStarsFill } from 'react-bootstrap-icons';
 import Backdrop from '../common/Backdrop';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -43,18 +43,18 @@ const Navbar = (props: NavbarProps) => {
     const svgString = jdenticon.toSvg(localStorage.getItem('email'), 64);
     const svg = new Blob([svgString], { type: "image/svg+xml" });
     setUrl(URL.createObjectURL(svg));
-  })
+  }, [])
 
   return (
-    <nav className={'Navbar'}>
-      <a href='/'><img src='/logo.svg' className='Navbar__Logo' alt={'mypass'} /></a>
+    <nav className={styles.navbar}>
+      <a href='/'><img src='/logo.svg' className={styles.logo} alt={'mypass'} /></a>
       {props.buttonsEnabled &&
         <>
-          <div className='Navbar__Buttons'>
-            <button className='Navbar__Theme' onClick={props.switchTheme} aria-label='theme'>{props.theme === 'light' ? <MoonFill /> : <SunFill />}</button>
-            <div className='Navbar__Profile'>
+          <div className={styles.buttons}>
+            <button className={styles.theme} onClick={props.switchTheme} aria-label='theme'>{props.theme === 'light' ? <MoonFill /> : <SunFill />}</button>
+            <div className={styles.profile}>
               <button onClick={() => setDropdownToggled(!dropdownToggled)}>
-                <div className='Navbar__Profile__Picture'>
+                <div className={styles.profilePicture}>
                   <img src={url} alt='profile' />
                 </div>
                 <span>{name}</span> {dropdownToggled ? <CaretUpFill /> : <CaretDownFill />}
@@ -62,7 +62,7 @@ const Navbar = (props: NavbarProps) => {
               {dropdownToggled &&
                 <>
                   <Backdrop action={() => setDropdownToggled(false)} transparent={true} />
-                  <div className='Navbar__Dropdown'>
+                  <div className={styles.dropdown}>
                     <a><GearFill /> Settings</a>
                     <a href='/logout'><FontAwesomeIcon icon={faSignOut} />Logout</a>
                   </div>
@@ -74,14 +74,14 @@ const Navbar = (props: NavbarProps) => {
       }
       {
         props.isHome &&
-        <div className='Navbar__Buttons'>
+        <div className={styles.buttons}>
           {!props.isLoggedIn ?
             <>
-              <a href='/login' className='Navbar__Auth'>Login</a>
-              <a href='/register' className='Navbar__Auth'>Sign up</a>
+              <a href='/login' className={styles.auth}>Login</a>
+              <a href='/register' className={styles.auth}>Sign up</a>
             </>
             :
-            <a href='/app' className='Navbar__Auth'>Open vault</a>
+            <a href='/app' className={styles.auth}>Open vault</a>
           }
 
         </div>

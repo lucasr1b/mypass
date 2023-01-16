@@ -1,12 +1,12 @@
-.Navbar {
+.navbar {
   padding: 20px 40px;
 
-  .Navbar__Logo {
+  .logo {
     width: 120px;
     height: auto;
   }
 
-  .Navbar__Buttons {
+  .buttons {
     float: right;
     display: flex;
     gap: 20px;
@@ -24,7 +24,7 @@
       }
     }
 
-    .Navbar__Auth {
+    .auth {
       width: 120px;
       height: 40px;
       display: flex;
@@ -42,7 +42,7 @@
       }
     }
 
-    .Navbar__Theme {
+    .theme {
       display: flex;
       align-items: center;
       justify-content: center;
@@ -54,7 +54,7 @@
       }
     }
 
-    .Navbar__Profile {
+    .profile {
       position: relative;
       display: inline-block;
 
@@ -63,7 +63,7 @@
         align-items: center;
       }
 
-      .Navbar__Profile__Picture {
+      .profilePicture {
         display: flex;
         align-items: center;
         justify-content: center;
@@ -83,7 +83,7 @@
         margin: 0 10px;
       }
 
-      .Navbar__Dropdown {
+      .dropdown {
         display: flex;
         flex-direction: column;
         position: absolute;

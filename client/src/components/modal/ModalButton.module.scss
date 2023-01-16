@@ -1,4 +1,4 @@
-.ModalButton {
+.button {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -18,7 +18,7 @@
   }
 }
 
-.ModalButton__Filled {
+.buttonFilled {
   background-color: var(--primary);
   color: white;
   border: none;

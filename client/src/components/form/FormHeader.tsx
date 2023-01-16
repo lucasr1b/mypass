@@ -1,4 +1,4 @@
-import './FormHeader.module.scss';
+import styles from './FormHeader.module.scss';
 
 type FormHeaderProps = {
   title: string;
@@ -9,7 +9,7 @@ type FormHeaderProps = {
 
 const FormHeader = (props: FormHeaderProps) => {
   return (
-    <div className='FormHeader'>
+    <div className={styles.header}>
       <h3>{props.title}</h3>
       <span>{props.description} {props.action && <a href={props.link}>{props.action}</a>}</span>
     </div>

@@ -1,4 +1,4 @@
-.ModalLogo {
+.logo {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -29,7 +29,7 @@
     font-weight: 500;
   }
 
-  .ModalLogo__Favicon {
+  .favicon {
     position: relative;
     display: flex;
     align-items: center;
@@ -45,12 +45,12 @@
     }
   }
 
-  .ModalLogo__Fetch {
+  .fetch {
     width: 240px;
     height: 45px;
   }
 
-  .ModalLogo__Fetch__Requirement {
+  .fetchRequirement {
     text-align: center;
     margin-top: 5px;
     font-size: 12px;

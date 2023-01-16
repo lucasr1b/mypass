@@ -1,4 +1,4 @@
-.Backdrop {
+.overlay {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -11,6 +11,6 @@
   z-index: 99;
 }
 
-.Backdrop__Transparent {
+.transparentOverlay {
   background-color: transparent;
 }

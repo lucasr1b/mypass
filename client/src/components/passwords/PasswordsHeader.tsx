@@ -1,4 +1,4 @@
-import './PasswordsHeader.module.scss';
+import styles from './PasswordsHeader.module.scss';
 import { Password } from '../../utils/types';
 import PasswordSearch from './PasswordSearch';
 
@@ -34,7 +34,7 @@ const PasswordsHeader = (props: PasswordsHeaderProps) => {
 	}
 
 	return (
-		<div className='PasswordsHeader'>
+		<div className={styles.header}>
 			<span>{
 				props.isSearching ?
 					props.filteredSearch.length + (props.filteredSearch.length > 1 || props.filteredSearch.length === 0 ? ' passwords' : ' password') :

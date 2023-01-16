@@ -1,5 +1,5 @@
 import FormInput from '../../form/FormInput';
-import './NewPasswordModal.module.scss';
+import styles from './NewPasswordModal.module.scss';
 import Backdrop from '../../common/Backdrop';
 import { API_URL, axiosConfig } from '../../../utils/constants';
 import axios from 'axios';
@@ -8,7 +8,7 @@ import ModalUpload from '../ModalLogo';
 import ModalButton from './../ModalButton';
 import { useState } from 'react';
 import FormError from '../../form/FormError';
-import '../../../styles/modalform.module.scss';
+import modalStyles from '../../../styles/modal.module.scss';
 
 type NewPasswordModalProps = {
   closeModal: any,
@@ -51,19 +51,19 @@ const NewPasswordModal = (props: NewPasswordModalProps) => {
   return (
     <>
       <Backdrop action={props.closeModal} />
-      <div className='NewPasswordModal'>
+      <div className={styles.modal}>
         <ModalHeader title='Add new password' description='Add a new password to be safely stored in your vault.' closeModal={props.closeModal} />
-        <form className='ModalForm' onSubmit={addNewPassword}>
-          <div className='ModalForm__Inputs'>
+        <form className={modalStyles.form} onSubmit={addNewPassword}>
+          <div className={modalStyles.inputs}>
             {error && <FormError error={error} width={300} margin={false} />}
             <FormInput label='Identifier' small={true} required={true} name='identifier' />
             <FormInput label='Website URL' small={true} name='url' onChange={handleWebsiteURL} />
             <FormInput label='Username or email' small={true} required={true} name='details' />
             <FormInput label='Password' type='password' small={true} required={true} name='password' />
           </div>
-          <div className='ModalForm__Buttons'>
+          <div className={modalStyles.buttons}>
             <ModalUpload websiteURL={websiteURL} logo={logo} setLogo={setLogo} />
-            <div className='ModalForm__Actions'>
+            <div className={modalStyles.actions}>
               <ModalButton text='Cancel' onClick={props.closeModal} />
               <ModalButton text='Save' submit={true} filled={true} />
             </div>

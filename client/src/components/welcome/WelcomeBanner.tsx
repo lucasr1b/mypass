@@ -1,10 +1,10 @@
-import './WelcomeBanner.module.scss';
+import styles from './WelcomeBanner.module.scss';
 
 const WelcomeBanner = ({ openModal }: any) => {
   return (
-    <div className='WelcomeBanner'>
+    <div className={styles.banner}>
       <img src='welcome.svg' alt={'Welcome'} />
-      <div className='WelcomeBanner__Content'>
+      <div className={styles.content}>
         <h1>Welcome to your vault!</h1>
         <span>You can safely store passwords in your vault and keep them synchronized across all of your devices.</span>
         <button onClick={openModal}>Add a new password</button>

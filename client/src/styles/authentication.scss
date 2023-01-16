@@ -1,0 +1,21 @@
+.Login,
+.Register {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+
+  .Authentication__Container {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    flex: 1;
+    padding: 0 130px;
+
+    .Authentication__Form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      width: 400px;
+    }
+  }
+}

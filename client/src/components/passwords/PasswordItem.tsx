@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Password } from '../../utils/types';
-import './PasswordItem.module.scss';
+import styles from './PasswordItem.module.scss';
 import { ThreeDotsVertical } from 'react-bootstrap-icons';
 import Backdrop from '../common/Backdrop';
 import { API_URL, axiosConfig } from '../../utils/constants';
@@ -34,22 +34,22 @@ const PasswordItem = (props: PasswordProps) => {
 	}
 
 	return (
-		<div className='PasswordItem'>
-			<div className='PasswordItem__Info' onClick={props.onClick}>
+		<div className={styles.password}>
+			<div className={styles.info} onClick={props.onClick}>
 				<img src={props.password.logo} alt={props.password.logo} />
-				<div className='PasswordItem__Details'>
-					<span className='PasswordItem__Details__Identifier'>{props.password.identifier}</span>
-					<span className='PasswordItem__Details__Email'>{props.password.details}</span>
+				<div className={styles.details}>
+					<span className={styles.identifier}>{props.password.identifier}</span>
+					<span className={styles.email}>{props.password.details}</span>
 				</div>
 			</div>
-			<div className='PasswordItem__Actions'>
-				<div className='PasswordItem__Actions__More' onClick={handleOptions}>
+			<div className={styles.actions}>
+				<div className={styles.moreActions} onClick={handleOptions}>
 					<ThreeDotsVertical />
 				</div>
 				{dropdownToggled &&
 					<>
 						<Backdrop action={() => setDropdownToggled(false)} transparent={true} />
-						<div className='PasswordItem__Actions__Dropdown'>
+						<div className={styles.dropdown}>
 							<button onClick={UpdatePassword}>Edit</button>
 							<button onClick={() => deletePassword(props.password._id)}>Delete</button>
 						</div></>

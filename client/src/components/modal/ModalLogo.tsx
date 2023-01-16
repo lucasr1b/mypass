@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import './ModalLogo.module.scss';
+import styles from './ModalLogo.module.scss';
 
 type ModalLogoProps = {
   websiteURL: string;
@@ -37,16 +37,16 @@ const ModalLogo = (props: ModalLogoProps) => {
   }
 
   return (
-    <div className='ModalLogo'>
-      <div className='ModalLogo__Favicon'>
+    <div className={styles.logo}>
+      <div className={styles.favicon}>
         <img src={props.logo} />
       </div>
       <span>OR</span>
       <div>
-        <button className='ModalLogo__Fetch' type='button' disabled={isDisabled} onClick={() => fetchFaviconFromWebsite(props.websiteURL)}>Fetch favicon from website</button>
-        {!props.websiteURL && <span className='ModalLogo__Fetch__Requirement'>Website URL is required to fetch</span>}
-        {props.websiteURL && !isWebsiteURLValid && <span className='ModalLogo__Fetch__Requirement'>A valid website URL is required to fetch</span>}
-        {props.websiteURL && isWebsiteURLValid && <span className='ModalLogo__Fetch__Requirement'>Fetch from {getDomainOnly(props.websiteURL)}</span>}
+        <button className={styles.fetch} type='button' disabled={isDisabled} onClick={() => fetchFaviconFromWebsite(props.websiteURL)}>Fetch favicon from website</button>
+        {!props.websiteURL && <span className={styles.fetchRequirement}>Website URL is required to fetch</span>}
+        {props.websiteURL && !isWebsiteURLValid && <span className={styles.fetchRequirement}>A valid website URL is required to fetch</span>}
+        {props.websiteURL && isWebsiteURLValid && <span className={styles.fetchRequirement}>Fetch from {getDomainOnly(props.websiteURL)}</span>}
       </div>
     </div>
   )

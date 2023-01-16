@@ -1,4 +1,4 @@
-.FormError {
+.error {
   display: flex;
   align-items: center;
   background-color: var(--form-error);
@@ -8,7 +8,7 @@
   border-radius: 8px;
   gap: 15px;
 
-  .FormError__Icon {
+  .errorIcon {
     display: flex;
     align-items: center;
     justify-content: center;

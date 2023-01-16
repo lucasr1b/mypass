@@ -5,8 +5,8 @@ import FormInput from '../../form/FormInput';
 import ModalButton from '../ModalButton';
 import ModalHeader from '../ModalHeader';
 import ModalUpload from '../ModalLogo';
-import './UpdatePasswordModal.module.scss';
-import '../../../styles/modalform.module.scss';
+import styles from './UpdatePasswordModal.module.scss';
+import modalStyles from '../../../styles/modal.module.scss';
 import axios from 'axios';
 import { API_URL, axiosConfig } from '../../../utils/constants';
 
@@ -57,19 +57,19 @@ const UpdatePasswordModal = (props: UpdatePasswordModalProps) => {
   return (
     <>
       <Backdrop action={props.closeModal} />
-      <div className='UpdatePasswordModal'>
+      <div className={styles.modal}>
         <ModalHeader title={props.password.identifier} description={`Update the information to be safely stored in your vault.`} closeModal={props.closeModal} />
-        <form className='ModalForm' onSubmit={updatePassword}>
-          <div className='ModalForm__Inputs'>
+        <form className={modalStyles.form} onSubmit={updatePassword}>
+          <div className={modalStyles.inputs}>
             {error && <FormError error={error} width={300} margin={false} />}
             <FormInput label='Identifier' value={props.password.identifier} small={true} name='identifier' />
             <FormInput label='Website URL' value={props.password.url} small={true} name='url' onChange={handleWebsiteURL} />
             <FormInput label='Username or email' value={props.password.details} small={true} name='details' />
             <FormInput label='Password' type='password' value={props.password.password} small={true} name='password' />
           </div>
-          <div className='ModalForm__Buttons'>
+          <div className={modalStyles.buttons}>
             <ModalUpload websiteURL={websiteURL} logo={logo} setLogo={setLogo} />
-            <div className='ModalForm__Actions'>
+            <div className={modalStyles.actions}>
               <ModalButton text='Cancel' onClick={props.closeModal} />
               <ModalButton text='Update' submit={true} filled={true} />
             </div>

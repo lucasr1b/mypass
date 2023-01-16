@@ -1,4 +1,4 @@
-import './ModalHeader.module.scss';
+import styles from './ModalHeader.module.scss';
 import { X } from 'react-bootstrap-icons';
 
 type ModalHeaderProps = {
@@ -9,12 +9,12 @@ type ModalHeaderProps = {
 
 const ModalHeader = (props: ModalHeaderProps) => {
   return (
-    <div className='ModalHeader'>
-      <div className='ModalHeader__Text'>
+    <div className={styles.header}>
+      <div className={styles.text}>
         <h3>{props.title}</h3>
         <span>{props.description}</span>
       </div>
-      <div className='ModalHeader__Close' onClick={props.closeModal}>
+      <div className={styles.close} onClick={props.closeModal}>
         <X />
       </div>
     </div>
