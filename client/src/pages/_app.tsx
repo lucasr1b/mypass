@@ -1,6 +1,6 @@
 import { GoogleOAuthProvider } from '@react-oauth/google'
 import '../styles/global.scss'
-import '../styles/theme.scss'
+import '../styles/common/theme.scss'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
 

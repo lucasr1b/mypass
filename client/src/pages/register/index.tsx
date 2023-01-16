@@ -6,7 +6,7 @@ import FormInput from '../../components/form/FormInput';
 import FormSubmitButton from '../../components/form/FormSubmitButton';
 import FormWithGoogle from '../../components/form/FormWithGoogle';
 import Navbar from '../../components/navbar/Navbar';
-import '../../styles/authentication.module.scss';
+import '../../styles/common/authentication.module.scss';
 import { API_URL, axiosConfig } from '../../utils/constants';
 import styles from '../../styles/Register.module.scss';
 import FormError from '../../components/form/FormError';

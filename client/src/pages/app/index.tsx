@@ -1,7 +1,7 @@
 import WelcomeBanner from '../../components/welcome/WelcomeBanner';
 import PasswordsTable from '../../components/passwords/PasswordsTable';
 import useLocalStorage from 'use-local-storage';
-import styles from '../../styles/App.module.scss';
+import styles from '../../styles/pages/App.module.scss';
 import AddPasswordButton from '../../components/passwords/AddPasswordButton';
 import NewPasswordModal from '../../components/modal/new/NewPasswordModal';
 import { useEffect, useState } from 'react';
