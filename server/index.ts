@@ -1,5 +1,5 @@
 require('dotenv').config();
-import express, { Express, } from 'express';
+import express, { Express, Request, Response } from 'express';
 import cors from 'cors';
 import connectToDB from './db/db';
 import passwordRoutes from './routes/passwordRoutes';
@@ -23,6 +23,10 @@ app.use(express.static('public'));
 app.use('/api/passwords', passwordRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/auth', authRoutes);
+
+app.get('/api/ping', (req: Request, res: Response) => {
+  res.send('Pong!');
+})
 
 app.listen(port, () => {
   console.log(`Started server on port ${port}`);
