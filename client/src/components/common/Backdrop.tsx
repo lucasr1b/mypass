@@ -6,7 +6,7 @@ type BackdropProps = {
 }
 
 const Backdrop = (props: BackdropProps) => {
-  return <div className={`${styles.overlay}${props.transparent ? styles.transparentOverlay : ''}`} onClick={props.action}></div>
+  return <div className={`${styles.overlay} ${props.transparent ? styles.transparentOverlay : ''}`} onClick={props.action}></div>
 }
 
 Backdrop.defaultProps = {

@@ -6,7 +6,7 @@ import ModalButton from '../ModalButton';
 import ModalHeader from '../ModalHeader';
 import ModalUpload from '../ModalLogo';
 import styles from './UpdatePasswordModal.module.scss';
-import modalStyles from '../../../styles/modal.module.scss';
+import modalStyles from '../../../styles/common/modal.module.scss';
 import axios from 'axios';
 import { API_URL, axiosConfig } from '../../../utils/constants';
 
