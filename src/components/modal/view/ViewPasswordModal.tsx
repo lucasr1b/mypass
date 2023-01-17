@@ -6,7 +6,7 @@ import ModalButton from '../ModalButton';
 import { useEffect, useState } from 'react';
 import moment from 'moment';
 import axios from 'axios';
-import { API_URL, axiosConfig } from '../../../utils/constants';
+import { axiosConfig } from '../../../utils/constants';
 
 type ViewPasswordModalProps = {
   closeModal: any;

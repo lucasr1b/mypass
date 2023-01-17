@@ -1,7 +1,7 @@
 import FormInput from '../../form/FormInput';
 import styles from './NewPasswordModal.module.scss';
 import Backdrop from '../../common/Backdrop';
-import { API_URL, axiosConfig } from '../../../utils/constants';
+import { axiosConfig } from '../../../utils/constants';
 import axios from 'axios';
 import ModalHeader from './../ModalHeader';
 import ModalUpload from '../ModalLogo';
@@ -34,7 +34,7 @@ const NewPasswordModal = (props: NewPasswordModalProps) => {
       logo,
     };
 
-    await axios.post(`${API_URL}/passwords/new`, data, axiosConfig)
+    await axios.post(`api/passwords/new`, data, axiosConfig)
       .then((res) => {
         props.addPassword(res.data);
         props.closeModal();

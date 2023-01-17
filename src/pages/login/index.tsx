@@ -7,7 +7,7 @@ import FormSubmitButton from '../../components/form/FormSubmitButton';
 import FormWithGoogle from '../../components/form/FormWithGoogle';
 import Navbar from '../../components/navbar/Navbar';
 import authenticationStyles from '../../styles/common/authentication.module.scss';
-import { API_URL, axiosConfig } from '../../utils/constants';
+import { axiosConfig } from '../../utils/constants';
 import styles from '../../styles/pages/Login.module.scss';
 import FormError from '../../components/form/FormError';
 import { setSessionDetails } from '../../utils/helpers';
@@ -35,7 +35,7 @@ const Login = () => {
       password: password.value,
     };
 
-    await axios.post(`${API_URL}/auth/login`, data, axiosConfig)
+    await axios.post(`api/auth/login`, data, axiosConfig)
       .then((res) => {
         setSessionDetails(res.data);
         router.push('/app');

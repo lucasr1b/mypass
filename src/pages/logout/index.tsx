@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { resetSessionDetails } from '../../utils/helpers';
 import { useRouter } from 'next/router';
 import axios from 'axios';
-import { API_URL, axiosConfig } from '../../utils/constants';
+import { axiosConfig } from '../../utils/constants';
 
 const Logout = () => {
   const router = useRouter();
@@ -10,7 +10,7 @@ const Logout = () => {
   useEffect(() => {
 
     const logout = async () => {
-      await axios.post(`${API_URL}/auth/logout`, {}, axiosConfig)
+      await axios.post(`api/auth/logout`, {}, axiosConfig)
         .then(() => {
           resetSessionDetails();
           router.push('/login');

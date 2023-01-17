@@ -3,7 +3,7 @@ import { Password } from '../../utils/types';
 import styles from './PasswordItem.module.scss';
 import { ThreeDotsVertical } from 'react-bootstrap-icons';
 import Backdrop from '../common/Backdrop';
-import { API_URL, axiosConfig } from '../../utils/constants';
+import { axiosConfig } from '../../utils/constants';
 import axios from 'axios';
 
 type PasswordProps = {
@@ -23,7 +23,7 @@ const PasswordItem = (props: PasswordProps) => {
 	}
 
 	const deletePassword = async (id: string) => {
-		await axios.post(`${API_URL}/passwords/delete`, { id }, axiosConfig);
+		await axios.post(`api/passwords/delete`, { id }, axiosConfig);
 		props.setPasswordList(props.passwords.filter((password: any) => password._id !== id))
 		handleOptions();
 	}

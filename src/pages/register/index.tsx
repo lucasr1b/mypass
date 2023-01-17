@@ -1,12 +1,12 @@
 import axios from 'axios';
-import { useEffect, useState } from 'react'; 
+import { useEffect, useState } from 'react';
 import FormHeader from '../../components/form/FormHeader';
 import FormInput from '../../components/form/FormInput';
 import FormSubmitButton from '../../components/form/FormSubmitButton';
 import FormWithGoogle from '../../components/form/FormWithGoogle';
 import Navbar from '../../components/navbar/Navbar';
 import authenticationStyles from '../../styles/common/authentication.module.scss';
-import { API_URL, axiosConfig } from '../../utils/constants';
+import { axiosConfig } from '../../utils/constants';
 import styles from '../../styles/pages/Register.module.scss';
 import FormError from '../../components/form/FormError';
 import { setSessionDetails } from '../../utils/helpers';
@@ -33,7 +33,7 @@ const Register = () => {
       cpassword: cpassword.value,
     };
 
-    await axios.post(`${API_URL}/auth/register`, data, axiosConfig)
+    await axios.post(`api/auth/register`, data, axiosConfig)
       .then((res) => {
         setSessionDetails(res.data);
         router.push('/app');

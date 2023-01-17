@@ -8,7 +8,7 @@ import ModalUpload from '../ModalLogo';
 import styles from './UpdatePasswordModal.module.scss';
 import modalStyles from '../../../styles/common/modal.module.scss';
 import axios from 'axios';
-import { API_URL, axiosConfig } from '../../../utils/constants';
+import { axiosConfig } from '../../../utils/constants';
 
 type UpdatePasswordModalProps = {
   closeModal: any,
@@ -41,7 +41,7 @@ const UpdatePasswordModal = (props: UpdatePasswordModalProps) => {
       logo,
     };
 
-    await axios.post(`${API_URL}/passwords/update`, data, axiosConfig)
+    await axios.post(`api/passwords/update`, data, axiosConfig)
       .then((res) => {
         props.setPasswordList(props.passwords.map((password: any) => {
           return password._id === props.password._id ? res.data.updatedPassword : password
