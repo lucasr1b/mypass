@@ -46,6 +46,6 @@ const PasswordSchema = new mongoose.Schema({
   timestamps: true,
 })
 
-const Password = mongoose.models.IPassword || mongoose.model<IPassword>('Password', PasswordSchema);
+const Password = mongoose.models.Password || mongoose.model<IPassword>('Password', PasswordSchema);
 
 export default Password;
