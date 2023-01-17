@@ -4,6 +4,60 @@ import dbConnect from '../lib/mongodb';
 
 dbConnect();
 
+// @Desc Register user
+// @Route /api/auth/register
+// @Method POST
+
+export const authRegisterUserController = async (req: NextApiRequest, res: NextApiResponse) => {
+  try {
+    const { name, email, password, cpassword } = req.body;
+
+    if (name && email && password && cpassword) {
+      // if (validator.validate(email)) {
+      if (password.length >= 8) {
+        if (password === cpassword) {
+          const user = await User.create({
+            type: 'email',
+            name,
+            email,
+            password
+          });
+
+          req.session.user = {
+            id: user._id,
+            name: user.name,
+            email: user.email,
+          };
+
+          await req.session.save();
+          console.log(req.session.user);
+
+          res.status(201).json({
+            created: true,
+            user: {
+              id: user._id,
+              name: user.name,
+              email: user.email,
+            },
+          });
+        } else {
+          res.status(400).json({ created: false, error: 'Passwords do not match' });
+        }
+      } else {
+        res.status(400).json({ created: false, error: 'Passwords must be at least 8 characters long' });
+      }
+      // } else {
+      //   res.status(400).json({ created: false, error: 'Email is already taken or invalid' });
+      // }
+    } else {
+      res.status(400).json({ created: false, error: 'All fields are required' });
+    }
+  } catch (err: any) {
+    console.log(err);
+    res.status(400).json({ created: false, error: (err.message.includes('duplicate key error') ? 'All fields are required' : err.message) });
+  }
+}
+
 export const authLoginUserController = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
     const { email, password } = req.body;
