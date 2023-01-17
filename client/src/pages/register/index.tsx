@@ -19,14 +19,8 @@ const Register = () => {
   const [error, setError] = useState('');
 
   useEffect(() => {
-    const cookies = new Cookies();
-
     document.documentElement.setAttribute('data-theme', 'light');
-
-    if (cookies.get('TOKEN')) {
-      router.push('/app');
-    }
-  }, [router]);
+  }, []);
 
   const registerUser = async (e: any) => {
     e.preventDefault();

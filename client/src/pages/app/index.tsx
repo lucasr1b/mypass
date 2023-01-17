@@ -5,43 +5,20 @@ import styles from '../../styles/pages/App.module.scss';
 import AddPasswordButton from '../../components/passwords/AddPasswordButton';
 import NewPasswordModal from '../../components/modal/new/NewPasswordModal';
 import { useEffect, useState } from 'react';
-import { Cookies } from 'react-cookie';
-import axios from 'axios';
-import { API_URL, axiosConfig } from '../../utils/constants';
 import { Password } from '../../utils/types';
 import Navbar from '../../components/navbar/Navbar';
-import { useRouter } from 'next/router';
 
 const App = () => {
-  const router = useRouter();
 
   const [theme, setTheme] = useLocalStorage('theme', 'light');
   const [modalToggled, setModalToggled] = useState(false);
   const [passwords, setPasswords] = useState<Password[]>([]);
 
   useEffect(() => {
-    const cookies = new Cookies();
 
     document.documentElement.setAttribute('data-theme', theme);
 
-    const verifyAuthentication = async () => {
-      if (!cookies.get('TOKEN')) {
-        router.push('/login')
-      } else {
-        await axios.get(`${API_URL}/auth`, axiosConfig)
-          .then(res => {
-            if (res.status === 401) {
-              cookies.remove('TOKEN');
-              router.push('/login');
-            }
-          }).catch(err => {
-            console.log(err);
-          });
-      }
-    }
-
-    verifyAuthentication();
-  }, [router, theme]);
+  }, [theme]);
 
   const switchTheme = () => {
     const newTheme = theme === 'light' ? 'dark' : 'light';

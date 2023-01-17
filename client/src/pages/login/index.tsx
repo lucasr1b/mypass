@@ -1,6 +1,5 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import { Cookies } from 'react-cookie';
 import FormHeader from '../../components/form/FormHeader';
 import FormInput from '../../components/form/FormInput';
 import FormOrOAuth from '../../components/form/FormOrOAuth';
@@ -13,6 +12,8 @@ import styles from '../../styles/pages/Login.module.scss';
 import FormError from '../../components/form/FormError';
 import { setSessionDetails } from '../../utils/helpers';
 import { useRouter } from 'next/router';
+import { withIronSessionSsr } from 'iron-session/next';
+import { sessionOptions } from '../../lib/session';
 
 const Login = () => {
   const router = useRouter();
@@ -20,14 +21,9 @@ const Login = () => {
   const [error, setError] = useState('');
 
   useEffect(() => {
-    const cookies = new Cookies();
 
     document.documentElement.setAttribute('data-theme', 'light');
-
-    if (cookies.get('TOKEN')) {
-      router.push('/app');
-    }
-  }, [router]);
+  }, []);
 
   const loginUser = async (e: any) => {
     e.preventDefault();
@@ -70,5 +66,24 @@ const Login = () => {
     </div>
   )
 }
+
+export const getServerSideProps = withIronSessionSsr(
+  async ({ req }) => {
+    const user = req.session.user;
+
+    if (user) {
+      return {
+        redirect: {
+          destination: '/app',
+          permanent: false,
+        },
+      }
+    }
+
+    return {
+      props: {},
+    }
+  }, sessionOptions
+);
 
 export default Login;
