@@ -58,6 +58,10 @@ export const authRegisterUserController = async (req: NextApiRequest, res: NextA
   }
 }
 
+// @Desc Login user
+// @Route /api/auth/login
+// @Method POST
+
 export const authLoginUserController = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
     const { email, password } = req.body;
@@ -85,6 +89,71 @@ export const authLoginUserController = async (req: NextApiRequest, res: NextApiR
       res.status(401).json({ error: 'All fields are required.' });
     }
 
+  } catch (err: any) {
+    console.log(err);
+    res.status(400).json({ error: err.message });
+  }
+}
+
+// @Desc Register user with Google
+// @Route /api/auth/register/google
+// @Method POST
+
+export const authRegisterWithGoogleController = async (req: NextApiRequest, res: NextApiResponse) => {
+  try {
+    const { name, email } = req.body;
+
+    if (name && email) {
+      const user = await User.create({
+        type: 'google',
+        name,
+        email,
+      });
+
+      req.session.user = {
+        id: user._id,
+        name: user.name,
+        email: user.email,
+      };
+
+      await req.session.save();
+
+      res.status(201).json({
+        created: true,
+        user: {
+          id: user._id,
+          name: user.name,
+          email: user.email,
+        },
+      });
+    }
+  } catch (err: any) {
+    console.log(err);
+    res.status(400).json({ created: false, error: (err.message.includes('duplicate key error') ? 'An account with this email already exists.' : err.message) });
+  }
+}
+
+// @Desc Login user with Google
+// @Route /api/auth/login/google
+// @Method POST
+export const authLoginWithGoogleController = async (req: NextApiRequest, res: NextApiResponse) => {
+  try {
+    const { email } = req.body;
+
+    const user = await User.findOne({ email });
+
+    if (user) {
+      req.session.user = {
+        id: user._id,
+        name: user.name,
+        email: user.email,
+      };
+
+      await req.session.save();
+      res.status(200).json({ user: { id: user._id, name: user.name, email: user.email } });
+    } else {
+      res.status(401).json({ error: 'No matching accounts were found with that email.' });
+    }
   } catch (err: any) {
     console.log(err);
     res.status(400).json({ error: err.message });
