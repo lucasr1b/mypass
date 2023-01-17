@@ -1,6 +1,6 @@
 import { AxiosRequestConfig } from 'axios';
 
-export const API_URL = 'https://mypass-4aph.onrender.com/api';
+export const API_URL = 'http://localhost:3000/api';
 
 export const axiosConfig: AxiosRequestConfig = {
   headers: {

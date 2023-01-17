@@ -1,0 +1,24 @@
+.withGoogle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 400px;
+  height: 50px;
+  border: 1px solid var(--secondary-accent);
+  border-radius: 8px;
+
+  img {
+    width: 24px;
+    height: 24px;
+  }
+
+  span {
+    color: var(--secondary-text);
+  }
+
+  &:hover {
+    background-color: var(--accent);
+    cursor: pointer;
+  }
+}

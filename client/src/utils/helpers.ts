@@ -5,8 +5,7 @@ export const setSessionDetails = (data: any) => {
   localStorage.setItem('email', data.user.email);
 }
 
-export const resetSessionDetails = (cookies: Cookies) => {
+export const resetSessionDetails = () => {
   localStorage.removeItem('name');
   localStorage.removeItem('email');
-  cookies.remove('TOKEN');
 }

@@ -1,0 +1,119 @@
+.home {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+
+  .homeContainer {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 200px;
+
+    .homeContainerContent {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+
+      h1 {
+        font-family: "Epilogue";
+        color: var(--text);
+        font-size: 42px;
+        width: 600px;
+      }
+
+      span {
+        display: inline;
+        font-weight: 600;
+        color: var(--primary);
+      }
+
+      h3 {
+        width: 500px;
+        color: var(--secondary-text);
+        font-weight: 400;
+      }
+
+      a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: fit-content;
+        background-color: var(--primary);
+        color: white;
+        font-weight: 500;
+        border: none;
+        border-radius: 50px;
+        font-size: 18px;
+        margin-top: 10px;
+        padding: 15px 40px;
+
+        &:hover {
+          background-color: #583ab8;
+          cursor: pointer;
+        }
+      }
+    }
+
+    .homeContainerImage {
+      animation: bounce 6s ease-out infinite forwards;
+      -webkit-animation: bounce 6s ease-out infinite forwards;
+
+      img {
+        width: 700px;
+        height: auto;
+      }
+    }
+  }
+
+  @-webkit-keyframes bounce {
+    0%,
+    100% {
+      -webkit-transform: translateY(0);
+    }
+    50% {
+      -webkit-transform: translateY(-30px);
+    }
+  }
+
+  @keyframes bounce {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+
+  .bounce {
+    -webkit-animation-name: bounce;
+    animation-name: bounce;
+  }
+
+  @media only screen and (max-width: 1440px) {
+    .homeContainer {
+      gap: 100px !important;
+    }
+    .homeContainerContent {
+      h1 {
+        width: 500px !important;
+        font-size: 36px !important;
+      }
+
+      h3 {
+        font-size: 18px;
+      }
+
+      a {
+        padding: 15px 40px !important;
+        font-size: 16px !important;
+      }
+    }
+    .homeContainerImage {
+      img {
+        width: 600px !important;
+      }
+    }
+  }
+}

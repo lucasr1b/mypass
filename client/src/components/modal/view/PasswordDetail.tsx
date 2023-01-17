@@ -1,4 +1,4 @@
-import './PasswordDetail.scss';
+import styles from './PasswordDetail.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCopy, faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { useState } from 'react';
@@ -30,14 +30,14 @@ const PasswordDetail = (props: PasswordDetailProps) => {
   }
 
   return (
-    <div className='PasswordDetail'>
-      <div className='PasswordDetail__Input'>
+    <div className={styles.details}>
+      <div className={styles.input}>
         <input disabled type={props.type === 'password' ? type : props.type} value={props.value} />
-        <div className='PasswordDetail__Actions'>
-          <div className={props.type === 'password' ? '' : 'PasswordDetail__Action__Disabled'} onClick={toggleHide}><FontAwesomeIcon icon={isHidden ? faEye : faEyeSlash} /></div>
-          <div className="Tooltip">
+        <div className={styles.actions}>
+          <div className={props.type === 'password' ? '' : styles.actionDisabled} onClick={toggleHide}><FontAwesomeIcon icon={isHidden ? faEye : faEyeSlash} /></div>
+          <div className={styles.tooltip}>
             <div onClick={() => copy(props.value)} onMouseOut={resetTooltipText}>
-              <span className='Tooltip__Text' id='tooltip'>{tooltipText}</span>
+              <span className={styles.tooltipText} id='tooltip'>{tooltipText}</span>
               <FontAwesomeIcon icon={faCopy} />
             </div>
           </div>

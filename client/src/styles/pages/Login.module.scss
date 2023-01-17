@@ -1,0 +1,23 @@
+.login {
+  .authenticationContainer {
+    gap: 150px;
+  }
+
+  .loginImage {
+    img {
+      width: 800px;
+      height: auto;
+    }
+  }
+
+  @media only screen and (max-width: 1440px) {
+    .authenticationContainer {
+      gap: 100px !important;
+    }
+    .loginImage {
+      img {
+        width: 700px !important;
+      }
+    }
+  }
+}

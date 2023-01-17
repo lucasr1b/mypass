@@ -1,4 +1,4 @@
-import './ModalButton.scss';
+import styles from './ModalButton.module.scss';
 
 type ModalButtonProps = {
   text: string;
@@ -9,9 +9,9 @@ type ModalButtonProps = {
 
 const ModalButton = (props: ModalButtonProps) => {
   return props.onClick ?
-    <button type={props.submit ? 'submit' : 'button'} className={`ModalButton${props.filled ? ' ModalButton__Filled' : ''}`} onClick={props.onClick}>{props.text}</button>
+    <button type={props.submit ? 'submit' : 'button'} className={`${styles.button} ${props.filled ? styles.buttonFilled : ''}`} onClick={props.onClick}>{props.text}</button>
     :
-    <button type={props.submit ? 'submit' : 'button'} className={`ModalButton${props.filled ? ' ModalButton__Filled' : ''}`}>{props.text}</button>
+    <button type={props.submit ? 'submit' : 'button'} className={`${styles.button} ${props.filled ? styles.buttonFilled : ''}`}>{props.text}</button>
 }
 
 ModalButton.defaultProps = {

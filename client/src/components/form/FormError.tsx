@@ -1,5 +1,5 @@
 import { ExclamationCircleFill, X } from 'react-bootstrap-icons';
-import './FormError.scss';
+import styles from './FormError.module.scss';
 
 type FormErrorProps = {
   error: string;
@@ -9,8 +9,8 @@ type FormErrorProps = {
 
 const FormError = (props: FormErrorProps) => {
   return (
-    <div className='FormError' style={{ width: props.width, marginBottom: (props.margin ? '10px' : '') }}>
-      <div className='FormError__Icon'>
+    <div className={styles.error} style={{ width: props.width, marginBottom: (props.margin ? '10px' : '') }}>
+      <div className={styles.errorIcon}>
         <ExclamationCircleFill />
       </div>
       <span>{props.error}</span>

@@ -1,0 +1,23 @@
+.register {
+  .authenticationContainer {
+    gap: 200px;
+  }
+
+  .registerImage {
+    img {
+      width: 700px;
+      height: auto;
+    }
+  }
+
+  @media only screen and (max-width: 1440px) {
+    .authenticationContainer {
+      gap: 150px !important;
+    }
+    .registerImage {
+      img {
+        width: 600px !important;
+      }
+    }
+  }
+}

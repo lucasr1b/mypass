@@ -1,4 +1,4 @@
-import './FormSubmitButton.scss';
+import styles from './FormSubmitButton.module.scss';
 
 type FormSubmitButtonProps = {
   text: string;
@@ -6,7 +6,7 @@ type FormSubmitButtonProps = {
 
 const FormSubmitButton = (props: FormSubmitButtonProps) => {
   return (
-    <button type='submit' className='FormSubmitButton'>{props.text}</button>
+    <button type='submit' className={styles.submitButton}>{props.text}</button>
   )
 }
 

@@ -1,4 +1,4 @@
-import './ViewPasswordModal.scss';
+import styles from './ViewPasswordModal.module.scss';
 import Backdrop from '../../common/Backdrop';
 import ModalHeader from '../ModalHeader';
 import PasswordDetail from './PasswordDetail';
@@ -27,13 +27,13 @@ const ViewPasswordModal = (props: ViewPasswordModalProps) => {
   return (
     <>
       <Backdrop action={props.closeModal} />
-      <div className='ViewPasswordModal'>
+      <div className={styles.modal}>
         <ModalHeader title={props.password.identifier} description={date} closeModal={props.closeModal} />
-        <div className='ViewPasswordModal__Details'>
+        <div className={styles.details}>
           <PasswordDetail type='text' value={props.password.details} />
           <PasswordDetail type='password' value={props.password.password} />
         </div>
-        <div className='ViewPasswordModal__Actions'>
+        <div className={styles.actions}>
           <ModalButton text='Close' onClick={props.closeModal} />
         </div>
       </div>

@@ -1,8 +1,8 @@
-import './FormOrOAuth.scss';
+import styles from './FormOrOAuth.module.scss';
 
 const FormOrOAuth = () => {
   return (
-    <div className='FormOrOAuth'>
+    <div className={styles.or}>
       <div></div>
       <span>or</span>
       <div></div>

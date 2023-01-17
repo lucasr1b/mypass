@@ -1,0 +1,14 @@
+.submitButton {
+  width: 400px;
+  height: 50px;
+  border: none;
+  background-color: var(--primary);
+  color: white;
+  border-radius: 8px;
+  font-size: 16px;
+
+  &:hover {
+    background-color: var(--primary-hover);
+    cursor: pointer;
+  }
+}

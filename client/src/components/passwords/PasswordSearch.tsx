@@ -1,5 +1,5 @@
 import { Search } from 'react-bootstrap-icons';
-import './PasswordSearch.scss';
+import styles from './PasswordSearch.module.scss';
 
 type PasswordSearchProps = {
   search: any;
@@ -7,13 +7,13 @@ type PasswordSearchProps = {
 
 const PasswordSearch = (props: PasswordSearchProps) => {
   return (
-    <div className='PasswordSearch'>
+    <div className={styles.search}>
       <input
         placeholder='Search passwords'
-        className='PasswordSearch__Input'
+        className={styles.input}
         onChange={props.search}
       />
-      <div className='PasswordSearch__Icon'>
+      <div className={styles.icon}>
         <Search />
       </div>
     </div>
