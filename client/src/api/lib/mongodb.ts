@@ -1,41 +1,24 @@
-import { Db, MongoClient } from "mongodb";
+import mongoose from 'mongoose';
 
-const MONGODB_URI = process.env.MONGODB_URI;
-const MONGODB_DB = process.env.MONGODB_DB;
+const { MONGODB_URI } = process.env;
 
-let cachedClient: MongoClient;
-let cachedDb: Db;
+if (!MONGODB_URI) throw new Error('MONGODB_URI not defined');
 
-export async function connectToDatabase() {
-  // check the cached.
-  if (cachedClient && cachedDb) {
-    // load from cache
-    return {
-      client: cachedClient,
-      db: cachedDb,
-    };
-  }
+let cached = global.mongoose
 
-  // check the MongoDB URI
-  if (!MONGODB_URI) {
-    throw new Error('Define the MONGODB_URI environmental variable');
-  }
-  // check the MongoDB DB
-  if (!MONGODB_DB) {
-    throw new Error('Define the MONGODB_DB environmental variable');
-  }
-
-  // Connect to cluster
-  let client = new MongoClient(MONGODB_URI);
-  await client.connect();
-  let db = client.db(MONGODB_DB);
-
-  // set cache
-  cachedClient = client;
-  cachedDb = db;
-
-  return {
-    client: cachedClient,
-    db: cachedDb,
-  };
+if (!cached) {
+  cached = global.mongoose = { conn: null, promise: null }
 }
+
+async function dbConnect() {
+  if (cached.conn) return cached.conn;
+
+  if (!cached.promise) {
+    cached.promise = mongoose.connect(`${MONGODB_URI}`).then(mongoose => mongoose)
+  }
+
+  cached.conn = await cached.promise;
+  return cached.conn
+}
+
+export default dbConnect;
