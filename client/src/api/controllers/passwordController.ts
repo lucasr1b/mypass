@@ -81,3 +81,41 @@ export const deletePasswordController = async (req: NextApiRequest, res: NextApi
   }
 }
 
+// @Desc Update a new password
+// @Route /api/passwords/update
+// @Method POST
+
+export const updatePasswordController = async (req: NextApiRequest, res: NextApiResponse) => {
+  const user = await req.session.user;
+
+  const { id, identifier, url, details, password, logo } = req.body;
+
+  if (user) {
+    if (identifier && details && password && logo) {
+      let websiteUrl;
+      !url ? websiteUrl = '' : websiteUrl = url;
+
+      const updatedPassword = await Password.findOneAndUpdate({ '_id': new ObjectId(id) },
+        {
+          identifier,
+          url,
+          details,
+          password,
+          logo,
+        },
+        {
+          returnOriginal: false,
+        },
+      ).select('-__v');
+      res.status(200).json({
+        updated: true,
+        updatedPassword
+      });
+    } else {
+      validationError = 'You cannot leave required fields empty.';
+      res.status(400).json({ updated: false, error: validationError })
+    }
+  } else {
+    res.status(401).json({ loggedIn: false });
+  }
+}
