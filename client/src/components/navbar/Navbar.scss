@@ -1,0 +1,132 @@
+.Navbar {
+  padding: 20px 40px;
+
+  .Navbar__Logo {
+    width: 120px;
+    height: auto;
+  }
+
+  .Navbar__Buttons {
+    float: right;
+    display: flex;
+    gap: 20px;
+
+    button {
+      height: 35px;
+      border-radius: 50px;
+      background-color: var(--accent);
+      color: var(--primary);
+      border: none;
+
+      &:hover {
+        background-color: var(--accent-hover);
+        cursor: pointer;
+      }
+    }
+
+    .Navbar__Auth {
+      width: 120px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: var(--accent);
+      color: var(--primary);
+      border-radius: 50px;
+      font-weight: 500;
+      font-size: 14px;
+
+      &:hover {
+        background-color: var(--accent-hover);
+        cursor: pointer;
+      }
+    }
+
+    .Navbar__Theme {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 55px;
+
+      svg {
+        width: 16px;
+        height: 16px;
+      }
+    }
+
+    .Navbar__Profile {
+      position: relative;
+      display: inline-block;
+
+      button {
+        display: flex;
+        align-items: center;
+      }
+
+      .Navbar__Profile__Picture {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50px;
+
+        width: 30px;
+        height: 30px;
+        background-color: white;
+        img {
+          width: 24px;
+          height: auto;
+        }
+      }
+
+      span {
+        font-weight: 600;
+        margin: 0 10px;
+      }
+
+      .Navbar__Dropdown {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        right: 0;
+        height: fit-content;
+        width: 160px;
+        background-color: var(--accent);
+        border-radius: 6px;
+        margin-top: 10px;
+        z-index: 999;
+        box-shadow: 0px 2px 6px var(--dropdown-shadow);
+
+        a {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          padding-left: 15px;
+          height: 45px;
+          width: 100%;
+          font-size: 14px;
+          font-weight: 500;
+          color: var(--primary);
+
+          &:last-child {
+            border: none;
+          }
+
+          &:first-child {
+            border-radius: 6px 6px 0px 0px;
+          }
+
+          &:last-child {
+            border-radius: 0px 0px 6px 6px;
+          }
+
+          border-bottom: 1px solid var(--secondary-accent);
+
+          &:hover {
+            background-color: var(--accent-hover);
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+}

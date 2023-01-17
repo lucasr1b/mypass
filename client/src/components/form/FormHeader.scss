@@ -1,0 +1,17 @@
+.FormHeader {
+  h3 {
+    font-size: 26px;
+  }
+  span {
+    margin-top: 2px;
+    color: var(--secondary-text);
+  }
+  a {
+    color: var(--primary);
+
+    &:hover {
+      text-decoration: underline;
+      color: var(--primary-hover);
+    }
+  }
+}

@@ -1,0 +1,24 @@
+.ModalForm {
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+
+  .ModalForm__Inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .ModalForm__Buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    .ModalForm__Actions {
+      display: flex;
+      gap: 10px;
+      align-self: flex-end;
+      margin-bottom: 40px;
+    }
+  }
+}

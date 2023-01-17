@@ -1,0 +1,33 @@
+:root {
+  --background: white;
+  --primary: #6e49e8; // Light & dark
+  --primary-hover: #583ab8; // Light & dark
+  --text: #22222f;
+  --secondary-text: #77777f;
+  --accent: #e8ecf1;
+  --accent-hover: #d8dbdf;
+  --disabled: #eeeeee;
+  --disabled-text: #aeaeae;
+  --secondary-accent: #dadce0;
+  --dropdown-shadow: #00000030;
+  --modal-backdrop: rgba(0, 0, 0, 0.2);
+  --form-error: #f8d7da;
+}
+[data-theme="dark"] {
+  --background: #100f10;
+  --text: white;
+  --secondary-text: #82828d;
+  --accent: #1d1d20;
+  --accent-hover: #2d2d35;
+  --disabled: #1c1c1e;
+  --disabled-text: #44444b;
+  --secondary-accent: #2c2c2f;
+  --dropdown-shadow: #00000040;
+  --modal-backdrop: rgba(0, 0, 0, 0.6);
+  --form-error: #2b1718;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--text);
+}

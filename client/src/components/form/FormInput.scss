@@ -1,0 +1,68 @@
+.FormInput {
+  position: relative;
+  height: 50px;
+  width: 400px;
+
+  input {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    width: 100%;
+    border: 1px solid var(--secondary-accent);
+    border-radius: 7px;
+    font-size: 16px;
+    padding: 0 15px;
+    outline: none;
+    background: none;
+    color: var(--text);
+    z-index: 1;
+
+    &::placeholder {
+      color: transparent;
+    }
+  }
+
+  label {
+    position: absolute;
+    top: 15px;
+    left: 10px;
+    padding: 0 5px;
+    background-color: var(--background);
+    color: var(--secondary-text);
+    font-size: 16px;
+    transition: 0.2s;
+    z-index: 0;
+  }
+}
+
+input:focus + label {
+  top: -7px;
+  left: 10px;
+  z-index: 10;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--primary);
+}
+
+input:not(:placeholder-shown) + label {
+  top: -7px;
+  left: 10px;
+  z-index: 10;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+input:focus {
+  border: 2px solid var(--primary);
+  padding: 0 14px;
+}
+
+.FormInput__Small {
+  height: 45px;
+  width: 300px;
+
+  label {
+    top: 12px;
+  }
+}
