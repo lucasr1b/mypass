@@ -1,6 +1,5 @@
 import axios from 'axios';
-import { useEffect, useState } from 'react';
-import { Cookies } from 'react-cookie';
+import { useEffect, useState } from 'react'; 
 import FormHeader from '../../components/form/FormHeader';
 import FormInput from '../../components/form/FormInput';
 import FormSubmitButton from '../../components/form/FormSubmitButton';
