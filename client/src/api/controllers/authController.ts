@@ -136,6 +136,7 @@ export const authRegisterWithGoogleController = async (req: NextApiRequest, res:
 // @Desc Login user with Google
 // @Route /api/auth/login/google
 // @Method POST
+
 export const authLoginWithGoogleController = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
     const { email } = req.body;
@@ -159,6 +160,10 @@ export const authLoginWithGoogleController = async (req: NextApiRequest, res: Ne
     res.status(400).json({ error: err.message });
   }
 }
+
+// @Desc Logout
+// @Route /api/auth/logout
+// @Method POST
 
 export async function logoutUserController(req: NextApiRequest, res: NextApiResponse) {
   if (!req.session.user) {
