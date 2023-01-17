@@ -1,6 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { getPasswordsFromUser } from '../services/passwordService';
 import Password from '../models/Password';
+import { ObjectId } from 'mongodb';
 
 let validationError: string;
 
@@ -59,3 +60,24 @@ export const newPasswordController = async (req: NextApiRequest, res: NextApiRes
     res.status(401).json({ loggedIn: false });
   }
 }
+
+// @Desc Delete a new password
+// @Route /api/passwords/delete
+// @Method POST
+
+export const deletePasswordController = async (req: NextApiRequest, res: NextApiResponse) => {
+  const user = await req.session.user;
+
+  const { id } = req.body;
+
+  if (user) {
+    const deletedPassword = await Password.findOneAndDelete({ '_id': new ObjectId(id) }).select('-password');
+    res.status(200).json({
+      deleted: true,
+      deletedPassword,
+    });
+  } else {
+    res.status(401).json({ loggedIn: false });
+  }
+}
+
