@@ -65,3 +65,20 @@ export const validateUserCrendetialFieldsAndCreateSession = async (req: NextApiR
     return 'All fields are required.';
   }
 }
+
+export const validateLoginWithGoogleAndCreateSession = async (req: NextApiRequest, email: string) => {
+  const user = await User.findOne({ email });
+
+  if (user) {
+    req.session.user = {
+      id: user._id,
+      name: user.name,
+      email: user.email,
+    };
+    await req.session.save();
+
+    return user;
+  } else {
+    return 'That account doesn\'t exist.';
+  }
+}

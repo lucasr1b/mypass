@@ -1,7 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import User from '../models/User';
 import dbConnect from '../lib/mongodb';
-import { validateUserCreationFields, createUserAndSession, validateUserCrendetialFieldsAndCreateSession } from '../services/authService';
+import { validateUserCreationFields, createUserAndSession, validateUserCrendetialFieldsAndCreateSession, validateLoginWithGoogleAndCreateSession } from '../services/authService';
 
 dbConnect();
 
@@ -82,19 +81,12 @@ export const authLoginWithGoogleController = async (req: NextApiRequest, res: Ne
   try {
     const { email } = req.body;
 
-    const user = await User.findOne({ email });
+    const userLoginWithGoogleValidation = await validateLoginWithGoogleAndCreateSession(req, email);
 
-    if (user) {
-      req.session.user = {
-        id: user._id,
-        name: user.name,
-        email: user.email,
-      };
-
-      await req.session.save();
-      res.status(200).json({ user: { id: user._id, name: user.name, email: user.email } });
+    if (userLoginWithGoogleValidation === true) {
+      res.status(200).json({ user: req.session.user });
     } else {
-      res.status(401).json({ error: 'No matching accounts were found with that email.' });
+      res.status(400).json({ error: userLoginWithGoogleValidation })
     }
   } catch (err: any) {
     console.log(err);
