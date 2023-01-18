@@ -1,10 +1,12 @@
+import { withIronSessionSsr } from 'iron-session/next';
 import Navbar from '../components/navbar/Navbar';
 import styles from '../styles/pages/Home.module.scss';
 import { useEffect, useState } from 'react';
+import { sessionOptions } from '../lib/session';
 
-const Home = () => {
+const Home = (props: any) => {
 
-  const [loggedIn, setLoggedIn] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(props.isLoggedIn);
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', 'light');
@@ -27,5 +29,20 @@ const Home = () => {
   )
 }
 
+export const getServerSideProps = withIronSessionSsr(
+  async ({ req }) => {
+    const user = req.session.user;
+
+    if (user) {
+      return {
+        props: { isLoggedIn: true }
+      }
+    }
+
+    return {
+      props: { isLoggedIn: false },
+    }
+  }, sessionOptions
+);
 
 export default Home;
