@@ -39,9 +39,9 @@ const App = () => {
   }
 
   return (
-    <div className={styles.app}>
+    <div>
       <Navbar buttonsEnabled={true} switchTheme={switchTheme} theme={theme} />
-      <div className={styles.appContainer}>
+      <div className={styles.container}>
         <WelcomeBanner openModal={toggleAddPasswordModal} />
         <PasswordsTable passwords={passwords} setPasswordList={setPasswordList} />
         {modalToggled && <NewPasswordModal closeModal={toggleAddPasswordModal} addPassword={addPasssword} />}

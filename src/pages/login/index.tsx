@@ -47,7 +47,7 @@ const Login = () => {
   }
 
   return (
-    <div className={`${styles.login} ${authenticationStyles.wrapper}`}>
+    <div className={authenticationStyles.wrapper}>
       <Navbar />
       <div className={`${styles.container} ${authenticationStyles.container}`}>
         <form className={authenticationStyles.form} onSubmit={loginUser}>

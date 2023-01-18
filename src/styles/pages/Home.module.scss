@@ -3,14 +3,14 @@
   flex-direction: column;
   height: 100vh;
 
-  .homeContainer {
+  .container {
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 200px;
 
-    .homeContainerContent {
+    .containerContent {
       display: flex;
       flex-direction: column;
       gap: 20px;
@@ -55,7 +55,7 @@
       }
     }
 
-    .homeContainerImage {
+    .containerImage {
       animation: bounce 6s ease-out infinite forwards;
       -webkit-animation: bounce 6s ease-out infinite forwards;
 
@@ -92,10 +92,10 @@
   }
 
   @media only screen and (max-width: 1440px) {
-    .homeContainer {
+    .container {
       gap: 100px !important;
     }
-    .homeContainerContent {
+    .containerContent {
       h1 {
         width: 500px !important;
         font-size: 36px !important;
@@ -110,7 +110,7 @@
         font-size: 16px !important;
       }
     }
-    .homeContainerImage {
+    .containerImage {
       img {
         width: 600px !important;
       }

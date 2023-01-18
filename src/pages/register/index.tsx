@@ -46,7 +46,7 @@ const Register = () => {
   }
 
   return (
-    <div className={`${styles.register} ${authenticationStyles.wrapper}`}>
+    <div className={authenticationStyles.wrapper}>
       <Navbar />
       <div className={`${styles.container} ${authenticationStyles.container}`}>
         <form className={authenticationStyles.form} onSubmit={registerUser}>
