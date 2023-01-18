@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import dbConnect from '../lib/mongodb';
-import { validateUserCreationFields, createUserAndSession, validateUserCrendetialFieldsAndCreateSession, validateLoginWithGoogleAndCreateSession } from '../services/authService';
+import { validateUserCreationFields, createUserAndSession, validateUserCrendetialFieldsAndCreateSession, validateLoginWithGoogleAndCreateSession, validateRegisterWithGoogleAndCreateSession } from '../services/authService';
 
 dbConnect();
 
@@ -12,7 +12,7 @@ export const authRegisterUserController = async (req: NextApiRequest, res: NextA
   try {
     const { name, email, password, cpassword } = req.body;
 
-    const userCreationFieldsValidation = validateUserCreationFields(name, email, password, cpassword);
+    const userCreationFieldsValidation = await validateUserCreationFields(name, email, password, cpassword);
 
     if (userCreationFieldsValidation === true) {
       const user = await createUserAndSession(req, name, email, password);
@@ -26,7 +26,7 @@ export const authRegisterUserController = async (req: NextApiRequest, res: NextA
     }
   } catch (err: any) {
     console.log(err);
-    res.status(400).json({ created: false, error: (err.message.includes('duplicate key error') ? 'All fields are required' : err.message) });
+    res.status(400).json({ created: false, error: err.message });
   }
 }
 
@@ -59,13 +59,15 @@ export const authRegisterWithGoogleController = async (req: NextApiRequest, res:
   try {
     const { name, email } = req.body;
 
-    if (name && email) {
-      const user = await createUserAndSession(req, 'google', name, email)
+    const userRegisterWithGoogleValidation = await validateRegisterWithGoogleAndCreateSession(req, name, email);
 
+    if (userRegisterWithGoogleValidation === true) {
       res.status(201).json({
         created: true,
-        user
+        user: req.session.user
       });
+    } else {
+      res.status(400).json({ error: userRegisterWithGoogleValidation });
     }
   } catch (err: any) {
     console.log(err);

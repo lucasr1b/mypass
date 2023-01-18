@@ -2,21 +2,26 @@ import { NextApiRequest } from 'next';
 import User from '../models/User';
 import { createSession } from '../utils/helpers';
 
-export const validateUserCreationFields = (name: string, email: string, password: string, cpassword: string) => {
+export const validateUserCreationFields = async (name: string, email: string, password: string, cpassword: string) => {
   if (name && email && password && cpassword) {
+    const doesAccountExist = await User.findOne({ email });
     // if (validator.validate(email)) { // Validate email and check if it exists
-    if (password.length >= 8) {
-      if (password === cpassword) {
-        return true;
+    if (!doesAccountExist) {
+      if (password.length >= 8) {
+        if (password === cpassword) {
+          return true;
+        } else {
+          return 'Passwords do not match';
+        }
       } else {
-        return 'Passwords do not match';
+        return 'Passwords must be at least 8 characters long';
       }
+      // } else {
+      //   res.status(400).json({ created: false, error: 'Email is already taken or invalid' });
+      // }
     } else {
-      return 'Passwords must be at least 8 characters long';
+      return 'An account with that email already exists';
     }
-    // } else {
-    //   res.status(400).json({ created: false, error: 'Email is already taken or invalid' });
-    // }
   } else {
     return 'All fields are required';
   }
@@ -33,14 +38,23 @@ export const createUserAndSession = async (req: NextApiRequest, name: string, em
   return user;
 }
 
-export const createUserWithGoogleAndSession = async (req: NextApiRequest, name: string, email: string) => {
-  const user = await User.create({
-    type: 'google',
-    name,
-    email,
-  });
-  await createSession(req, user._id, user.name, user.email);
-  return user;
+export const validateRegisterWithGoogleAndCreateSession = async (req: NextApiRequest, name: string, email: string) => {
+  if (name && email) {
+    const doesAccountExist = await User.findOne({ email });
+    if (!doesAccountExist) {
+      const user = await User.create({
+        type: 'google',
+        name,
+        email,
+      });
+      await createSession(req, user._id, user.name, user.email);
+      return user;
+    } else {
+      return 'An account with that email already exists';
+    }
+  } else {
+    return 'Something went wrong, try again.'
+  }
 }
 
 export const validateUserCrendetialFieldsAndCreateSession = async (req: NextApiRequest, email: string, password: string) => {
