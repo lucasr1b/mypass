@@ -46,9 +46,9 @@ const Register = () => {
   }
 
   return (
-    <div className={`${styles.login} ${authenticationStyles.wrapper}`}>
+    <div className={`${styles.register} ${authenticationStyles.wrapper}`}>
       <Navbar />
-      <div className={authenticationStyles.container}>
+      <div className={`${styles.container} ${authenticationStyles.container}`}>
         <form className={authenticationStyles.form} onSubmit={registerUser}>
           <FormHeader title='Create an account' description='Already have an account?' action='Login' link='/login' />
           {error && <FormError error={error} />}

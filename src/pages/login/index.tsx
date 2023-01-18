@@ -49,7 +49,7 @@ const Login = () => {
   return (
     <div className={`${styles.login} ${authenticationStyles.wrapper}`}>
       <Navbar />
-      <div className={authenticationStyles.container}>
+      <div className={`${styles.container} ${authenticationStyles.container}`}>
         <form className={authenticationStyles.form} onSubmit={loginUser}>
           <FormHeader title='Welcome back!' description="Don't have an account?" action='Sign up for free' link='/register' />
           <FormWithGoogle text='Login with Google' setError={setError} type='login' />
