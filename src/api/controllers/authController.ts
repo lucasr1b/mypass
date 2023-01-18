@@ -1,6 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import User from '../models/User';
 import dbConnect from '../lib/mongodb';
+import { createUserAndSession, validateUserCreationFields } from '../services/authService';
 
 dbConnect();
 
@@ -12,44 +13,17 @@ export const authRegisterUserController = async (req: NextApiRequest, res: NextA
   try {
     const { name, email, password, cpassword } = req.body;
 
-    if (name && email && password && cpassword) {
-      // if (validator.validate(email)) {
-      if (password.length >= 8) {
-        if (password === cpassword) {
-          const user = await User.create({
-            type: 'email',
-            name,
-            email,
-            password
-          });
+    const userCreationFieldsValidation = validateUserCreationFields(name, email, password, cpassword);
 
-          req.session.user = {
-            id: user._id,
-            name: user.name,
-            email: user.email,
-          };
+    if (userCreationFieldsValidation === true) {
+      const user = await createUserAndSession(req, name, email, password);
 
-          await req.session.save();
-
-          res.status(201).json({
-            created: true,
-            user: {
-              id: user._id,
-              name: user.name,
-              email: user.email,
-            },
-          });
-        } else {
-          res.status(400).json({ created: false, error: 'Passwords do not match' });
-        }
-      } else {
-        res.status(400).json({ created: false, error: 'Passwords must be at least 8 characters long' });
-      }
-      // } else {
-      //   res.status(400).json({ created: false, error: 'Email is already taken or invalid' });
-      // }
+      res.status(201).json({
+        created: true,
+        user
+      });
     } else {
-      res.status(400).json({ created: false, error: 'All fields are required' });
+      res.status(400).json({ created: false, error: userCreationFieldsValidation });
     }
   } catch (err: any) {
     console.log(err);
