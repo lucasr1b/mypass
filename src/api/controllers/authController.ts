@@ -69,21 +69,25 @@ export const authLoginUserController = async (req: NextApiRequest, res: NextApiR
     if (email && password) {
       const user = await User.findOne({ email });
 
-      if (user && user.type === 'email') {
-        if (await user.comparePassword(password)) {
-          req.session.user = {
-            id: user._id,
-            name: user.name,
-            email: user.email,
-          };
-          await req.session.save();
-          console.log(req.session.user);
-          res.status(200).json({ user: req.session.user });
+      if (user) {
+        if (user.type === 'email') {
+          if (await user.comparePassword(password)) {
+            req.session.user = {
+              id: user._id,
+              name: user.name,
+              email: user.email,
+            };
+            await req.session.save();
+            console.log(req.session.user);
+            res.status(200).json({ user: req.session.user });
+          } else {
+            res.status(401).json({ error: 'Email or password is incorrect.' });
+          }
         } else {
-          res.status(401).json({ error: 'Email or password is incorrect.' });
+          res.status(401).json({ error: 'The account associated with that email was made with Google, login with Google.' });
         }
       } else {
-        res.status(401).json({ error: 'The account associated with that email was made with Google, login with Google.' });
+        res.status(401).json({ error: 'That account doesn\'t exist.' });
       }
     } else {
       res.status(401).json({ error: 'All fields are required.' });
