@@ -1,5 +1,6 @@
 import { NextApiRequest } from 'next';
 import User from '../models/User';
+import { createSession } from '../utils/helpers';
 
 export const validateUserCreationFields = (name: string, email: string, password: string, cpassword: string) => {
   if (name && email && password && cpassword) {
@@ -28,11 +29,29 @@ export const createUserAndSession = async (req: NextApiRequest, name: string, em
     email,
     password
   });
-  req.session.user = {
-    id: user._id,
-    name: user.name,
-    email: user.email,
-  };
-  await req.session.save();
+  await createSession(req, user._id, user.name, user.email);
   return user;
+}
+
+export const validateUserCrendetialFieldsAndCreateSession = async (req: NextApiRequest, email: string, password: string) => {
+  if (email && password) {
+    const user = await User.findOne({ email });
+
+    if (user) {
+      if (user.type === 'email') {
+        if (await user.comparePassword(password)) {
+          await createSession(req, user._id, user.name, user.email);
+          return true;
+        } else {
+          return 'Email or password is incorrect.';
+        }
+      } else {
+        return 'The account associated with that email was made with Google, login with Google.';
+      }
+    } else {
+      return 'Email or password is incorrect.';
+    }
+  } else {
+    return 'All fields are required.';
+  }
 }

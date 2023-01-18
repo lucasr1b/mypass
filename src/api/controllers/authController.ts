@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import User from '../models/User';
 import dbConnect from '../lib/mongodb';
-import { createUserAndSession, validateUserCreationFields } from '../services/authService';
+import { validateUserCreationFields, createUserAndSession, validateUserCrendetialFieldsAndCreateSession } from '../services/authService';
 
 dbConnect();
 
@@ -39,32 +39,13 @@ export const authLoginUserController = async (req: NextApiRequest, res: NextApiR
   try {
     const { email, password } = req.body;
 
-    if (email && password) {
-      const user = await User.findOne({ email });
+    const userCrendetialFieldsValidation = await validateUserCrendetialFieldsAndCreateSession(req, email, password);
 
-      if (user) {
-        if (user.type === 'email') {
-          if (await user.comparePassword(password)) {
-            req.session.user = {
-              id: user._id,
-              name: user.name,
-              email: user.email,
-            };
-            await req.session.save();
-            res.status(200).json({ user: req.session.user });
-          } else {
-            res.status(401).json({ error: 'Email or password is incorrect.' });
-          }
-        } else {
-          res.status(401).json({ error: 'The account associated with that email was made with Google, login with Google.' });
-        }
-      } else {
-        res.status(401).json({ error: 'That account doesn\'t exist.' });
-      }
+    if (userCrendetialFieldsValidation === true) {
+      res.status(200).json({ user: req.session.user });
     } else {
-      res.status(401).json({ error: 'All fields are required.' });
+      res.status(400).json({ error: userCrendetialFieldsValidation });
     }
-
   } catch (err: any) {
     console.log(err);
     res.status(400).json({ error: err.message });
