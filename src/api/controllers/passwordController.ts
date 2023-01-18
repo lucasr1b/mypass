@@ -3,8 +3,6 @@ import { getPasswordsFromUser } from '../services/passwordService';
 import Password from '../models/Password';
 import { ObjectId } from 'mongodb';
 
-let validationError: string;
-
 // @Desc Get all passwords
 // @Route /api/passwords
 // @Method GET
@@ -53,8 +51,7 @@ export const newPasswordController = async (req: NextApiRequest, res: NextApiRes
         logo: newPassword.logo,
       });
     } else {
-      validationError = 'You cannot leave required fields empty.';
-      res.status(400).json({ created: false, error: validationError })
+      res.status(400).json({ created: false, error: 'You cannot leave required fields empty.' })
     }
   } else {
     res.status(401).json({ loggedIn: false });
@@ -112,8 +109,7 @@ export const updatePasswordController = async (req: NextApiRequest, res: NextApi
         updatedPassword
       });
     } else {
-      validationError = 'You cannot leave required fields empty.';
-      res.status(400).json({ updated: false, error: validationError })
+      res.status(400).json({ updated: false, error: 'You cannot leave required fields empty.' })
     }
   } else {
     res.status(401).json({ loggedIn: false });
