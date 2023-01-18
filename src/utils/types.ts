@@ -1,5 +1,7 @@
+import { ObjectId } from 'mongoose';
+
 export type Password = {
-  _id: string;
+  _id: ObjectId;
   user: string;
   identifier: string;
   url: string;
