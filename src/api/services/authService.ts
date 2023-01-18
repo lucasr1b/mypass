@@ -7,6 +7,7 @@ export const validateUserCreationFields = (name: string, email: string, password
     // if (validator.validate(email)) { // Validate email and check if it exists
     if (password.length >= 8) {
       if (password === cpassword) {
+        return true;
       } else {
         return 'Passwords do not match';
       }
@@ -19,7 +20,6 @@ export const validateUserCreationFields = (name: string, email: string, password
   } else {
     return 'All fields are required';
   }
-  return true;
 }
 
 export const createUserAndSession = async (req: NextApiRequest, name: string, email: string, password: string) => {
