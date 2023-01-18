@@ -1,4 +1,4 @@
-import { Mongoose, ObjectId } from 'mongoose';
+import { Mongoose } from 'mongoose';
 
 declare global {
   var mongoose: {
@@ -8,7 +8,7 @@ declare global {
 }
 
 export type User = {
-  id: ObjectId;
+  id: string;
   name: string;
   email: string;
 }

@@ -1,4 +1,3 @@
-
 import Password from '../models/Password';
 
 export const getPasswordsFromUser = async (id: string) => {

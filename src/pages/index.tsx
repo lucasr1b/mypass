@@ -4,9 +4,11 @@ import styles from '../styles/pages/Home.module.scss';
 import { useEffect, useState } from 'react';
 import { sessionOptions } from '../lib/session';
 
-const Home = (props: any) => {
+type HomeProps = {
+  isLoggedIn: boolean;
+}
 
-  const [loggedIn, setLoggedIn] = useState(props.isLoggedIn);
+const Home = (props: HomeProps) => {
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', 'light');
@@ -14,12 +16,12 @@ const Home = (props: any) => {
 
   return (
     <div className={styles.home}>
-      <Navbar isHome={true} isLoggedIn={loggedIn} />
+      <Navbar isHome={true} isLoggedIn={props.isLoggedIn} />
       <div className={styles.container}>
         <div className={styles.containerContent}>
           <h1>A <span>secure vault</span> for saving your passwords on the go.</h1>
           <h3>You can store your passwords safely inside of your vault and access them from any device with an internet connection.</h3>
-          <a href='/register'>{loggedIn ? 'Open vault' : 'Create an account'}</a>
+          <a href='/register'>{props.isLoggedIn ? 'Open vault' : 'Create an account'}</a>
         </div>
         <div className={`${styles.containerImage} ${styles.bounce}`}>
           <img src='/home.svg' />
