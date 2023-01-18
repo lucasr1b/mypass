@@ -61,27 +61,11 @@ export const authRegisterWithGoogleController = async (req: NextApiRequest, res:
     const { name, email } = req.body;
 
     if (name && email) {
-      const user = await User.create({
-        type: 'google',
-        name,
-        email,
-      });
-
-      req.session.user = {
-        id: user._id,
-        name: user.name,
-        email: user.email,
-      };
-
-      await req.session.save();
+      const user = await createUserAndSession(req, 'google', name, email)
 
       res.status(201).json({
         created: true,
-        user: {
-          id: user._id,
-          name: user.name,
-          email: user.email,
-        },
+        user
       });
     }
   } catch (err: any) {

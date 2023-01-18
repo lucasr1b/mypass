@@ -33,6 +33,16 @@ export const createUserAndSession = async (req: NextApiRequest, name: string, em
   return user;
 }
 
+export const createUserWithGoogleAndSession = async (req: NextApiRequest, name: string, email: string) => {
+  const user = await User.create({
+    type: 'google',
+    name,
+    email,
+  });
+  await createSession(req, user._id, user.name, user.email);
+  return user;
+}
+
 export const validateUserCrendetialFieldsAndCreateSession = async (req: NextApiRequest, email: string, password: string) => {
   if (email && password) {
     const user = await User.findOne({ email });
