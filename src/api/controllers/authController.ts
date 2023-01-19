@@ -71,7 +71,7 @@ export const authRegisterWithGoogleController = async (req: NextApiRequest, res:
     }
   } catch (err: any) {
     console.log(err);
-    res.status(400).json({ created: false, error: (err.message.includes('duplicate key error') ? 'An account with this email already exists.' : err.message) });
+    res.status(400).json({ created: false, error: err.message });
   }
 }
 
