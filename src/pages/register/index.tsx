@@ -11,6 +11,8 @@ import styles from '../../styles/pages/Register.module.scss';
 import FormError from '../../components/form/FormError';
 import { setSessionDetails } from '../../utils/helpers';
 import { useRouter } from 'next/router';
+import { withIronSessionSsr } from 'iron-session/next';
+import { sessionOptions } from '../../lib/session';
 
 const Register = () => {
   const router = useRouter();
@@ -66,5 +68,24 @@ const Register = () => {
     </div>
   )
 }
+
+export const getServerSideProps = withIronSessionSsr(
+  async ({ req }) => {
+    const user = req.session.user;
+
+    if (user) {
+      return {
+        redirect: {
+          destination: '/app',
+          permanent: false,
+        },
+      }
+    }
+
+    return {
+      props: {},
+    }
+  }, sessionOptions
+);
 
 export default Register;
