@@ -19,6 +19,7 @@ const Login = () => {
   const router = useRouter();
 
   const [error, setError] = useState('');
+  const [submitted, setSubmitted] = useState(false);
 
   useEffect(() => {
 
@@ -27,6 +28,7 @@ const Login = () => {
 
   const loginUser = async (e: any) => {
     e.preventDefault();
+    setSubmitted(true);
 
     const { email, password } = document.forms[0];
 
@@ -43,6 +45,7 @@ const Login = () => {
       .catch((res) => {
         setError(res.response.data.error);
         password.value = '';
+        setSubmitted(false);
       });
   }
 
@@ -57,7 +60,7 @@ const Login = () => {
           {error && <FormError error={error} />}
           <FormInput label={'Email address'} name='email' />
           <FormInput label={'Password'} type='password' name='password' />
-          <FormSubmitButton text='Login' />
+          <FormSubmitButton text='Login' submitted={submitted} />
         </form>
         <div className={styles.loginImage}>
           <img src='login.svg' alt='Vault' />

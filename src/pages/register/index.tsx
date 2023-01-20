@@ -18,6 +18,7 @@ const Register = () => {
   const router = useRouter();
 
   const [error, setError] = useState('');
+  const [submitted, setSubmitted] = useState(false);
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', 'light');
@@ -25,6 +26,7 @@ const Register = () => {
 
   const registerUser = async (e: any) => {
     e.preventDefault();
+    setSubmitted(true);
 
     const { uname, email, password, cpassword } = document.forms[0];
 
@@ -44,6 +46,7 @@ const Register = () => {
         setError(res.response.data.error);
         password.value = '';
         cpassword.value = '';
+        setSubmitted(false);
       });
   }
 
@@ -58,7 +61,7 @@ const Register = () => {
           <FormInput label={'Email address'} name='email' />
           <FormInput label={'Password'} type='password' name='password' />
           <FormInput label={'Confirm password'} type='password' name='cpassword' />
-          <FormSubmitButton text='Create account' />
+          <FormSubmitButton text='Create account' submitted={submitted} />
           <FormWithGoogle text='Sign up with Google' setError={setError} type='register' />
         </form>
         <div className={styles.registerImage}>

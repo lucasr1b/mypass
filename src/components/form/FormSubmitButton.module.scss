@@ -12,3 +12,11 @@
     cursor: pointer;
   }
 }
+
+.submitted {
+  background-color: #8d71e8;
+  &:hover {
+    cursor: default;
+    background-color: #8d71e8;
+  }
+}
