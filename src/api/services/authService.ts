@@ -1,26 +1,26 @@
 import { NextApiRequest } from 'next';
 import User from '../models/User';
-import { createSession } from '../utils/helpers';
+import { createSession, validateEmail } from '../utils/helpers';
 
 export const validateUserCreationFields = async (name: string, email: string, password: string, cpassword: string) => {
   if (name && email && password && cpassword) {
     const doesAccountExist = await User.findOne({ email });
-    // if (validator.validate(email)) { // Validate email and check if it exists
-    if (!doesAccountExist) {
-      if (password.length >= 8) {
-        if (password === cpassword) {
-          return true;
+    if (validateEmail(email)) {
+      if (!doesAccountExist) {
+        if (password.length >= 8) {
+          if (password === cpassword) {
+            return true;
+          } else {
+            return 'Passwords do not match';
+          }
         } else {
-          return 'Passwords do not match';
+          return 'Passwords must be at least 8 characters long';
         }
       } else {
-        return 'Passwords must be at least 8 characters long';
+        return 'An account with that email already exists';
       }
-      // } else {
-      //   res.status(400).json({ created: false, error: 'Email is already taken or invalid' });
-      // }
     } else {
-      return 'An account with that email already exists';
+      return 'The email provided is not valid';
     }
   } else {
     return 'All fields are required';
