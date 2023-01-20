@@ -30,13 +30,11 @@ export const newPasswordController = async (req: NextApiRequest, res: NextApiRes
 
   if (user) {
     if (identifier && details && password && logo) {
-      let websiteUrl;
-      !url ? websiteUrl = '' : websiteUrl = url;
 
       const newPassword = await Password.create({
         user: user.id,
         identifier,
-        websiteUrl,
+        url,
         details,
         password,
         logo,
