@@ -20,7 +20,7 @@ export const validateUserCreationFields = async (name: string, email: string, pa
         return 'An account with that email already exists';
       }
     } else {
-      return 'The email provided is not valid';
+      return 'That email address is not valid';
     }
   } else {
     return 'All fields are required';
