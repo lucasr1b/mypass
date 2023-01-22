@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { getPasswordsFromUser } from '../services/passwordService';
+import { createNewPassword, getPasswordsFromUser } from '../services/passwordService';
 import Password from '../models/Password';
 import { ObjectId } from 'mongodb';
 import dbConnect from '../lib/mongodb';
@@ -27,36 +27,21 @@ export const getPasswordsController = async (req: NextApiRequest, res: NextApiRe
 // @Method POST
 
 export const newPasswordController = async (req: NextApiRequest, res: NextApiResponse) => {
-  const user = await req.session.user;
-
   const { identifier, url, details, password, logo } = req.body;
+
+  const user = req.session.user;
 
   if (user) {
     if (identifier && details && password && logo) {
-
-      const newPassword = await Password.create({
-        user: user.id,
-        identifier,
-        url,
-        details,
-        password,
-        logo,
-      });
-      res.status(200).json({
-        _id: newPassword._id,
-        user: user.id,
-        identifier: newPassword.identifier,
-        url: newPassword.url,
-        details: newPassword.details,
-        password: newPassword.password,
-        logo: newPassword.logo,
-      });
+      const newPassword = await createNewPassword(req, identifier, url, details, password, logo)
+      res.status(201).json(newPassword);
     } else {
-      res.status(400).json({ created: false, error: 'You cannot leave required fields empty.' })
+      res.status(400).json({ created: false, error: 'You cannot leave required fields empty.' });
     }
   } else {
-    res.status(401).json({ loggedIn: false });
+    res.status(400).json({ error: 'Not logged in.' });
   }
+
 }
 
 // @Desc Delete a new password
