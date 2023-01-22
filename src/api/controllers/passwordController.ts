@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { createNewPassword, getPasswordsFromUser } from '../services/passwordService';
+import { createNewPassword, deletePassword, getPasswordsFromUser } from '../services/passwordService';
 import Password from '../models/Password';
 import { ObjectId } from 'mongodb';
 import dbConnect from '../lib/mongodb';
@@ -39,7 +39,7 @@ export const newPasswordController = async (req: NextApiRequest, res: NextApiRes
       res.status(400).json({ created: false, error: 'You cannot leave required fields empty.' });
     }
   } else {
-    res.status(400).json({ error: 'Not logged in.' });
+    res.status(401).json({ error: 'Not logged in.' });
   }
 
 }
@@ -54,13 +54,10 @@ export const deletePasswordController = async (req: NextApiRequest, res: NextApi
   const { id } = req.body;
 
   if (user) {
-    const deletedPassword = await Password.findOneAndDelete({ '_id': new ObjectId(id) }).select('-password');
-    res.status(200).json({
-      deleted: true,
-      deletedPassword,
-    });
+    const deletedPassword = await deletePassword(id);
+    res.status(200).json(deletedPassword);
   } else {
-    res.status(401).json({ loggedIn: false });
+    res.status(401).json({ error: 'Not logged in.' });
   }
 }
 

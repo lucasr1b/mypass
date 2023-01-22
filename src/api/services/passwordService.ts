@@ -1,5 +1,6 @@
 import { NextApiRequest } from 'next';
 import Password from '../models/Password';
+import { ObjectId } from 'mongodb';
 
 export const getPasswordsFromUser = async (id: string) => {
   const passwords = await Password.find({ 'user': id }).select('-__v');
@@ -17,4 +18,9 @@ export const createNewPassword = async (req: NextApiRequest, identifier: string,
     logo,
   });
   return newPassword;
-} 
+}
+
+export const deletePassword = async (id: string) => {
+  const deletedPassword = await Password.findOneAndDelete({ '_id': new ObjectId(id) }).select('-password');
+  return { deleted: true, deletedPassword };
+}
