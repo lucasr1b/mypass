@@ -21,7 +21,7 @@ const Home = (props: HomeProps) => {
         <div className={styles.containerContent}>
           <h1>A <span>secure vault</span> for saving your passwords on the go.</h1>
           <h3>You can store your passwords safely inside of your vault and access them from any device with an internet connection.</h3>
-          <a href='/register'>{props.isLoggedIn ? 'Open vault' : 'Create an account'}</a>
+          <a href='/register'>{props.isLoggedIn ? 'Go to your vault' : 'Create an account'}</a>
         </div>
         <div className={`${styles.containerImage} ${styles.bounce}`}>
           <img src='/home.svg' />
