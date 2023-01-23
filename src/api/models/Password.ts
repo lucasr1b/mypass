@@ -6,7 +6,7 @@ export interface IPassword extends mongoose.Document {
   url: string,
   details: string,
   password: string,
-  logo: string,
+  favicon: string,
   createdAt: Date,
   updatedAt: Date,
 }
@@ -38,7 +38,7 @@ const PasswordSchema = new mongoose.Schema({
     required: true
   },
 
-  logo: {
+  favicon: {
     type: String,
     required: true
   },

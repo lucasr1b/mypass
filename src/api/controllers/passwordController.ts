@@ -27,13 +27,13 @@ export const getPasswordsController = async (req: NextApiRequest, res: NextApiRe
 // @Method POST
 
 export const newPasswordController = async (req: NextApiRequest, res: NextApiResponse) => {
-  const { identifier, url, details, password, logo } = req.body;
+  const { identifier, url, details, password, favicon } = req.body;
 
   const user = req.session.user;
 
   if (user) {
-    if (identifier && details && password && logo) {
-      const newPassword = await createNewPassword(req, identifier, url, details, password, logo)
+    if (identifier && details && password && favicon) {
+      const newPassword = await createNewPassword(req, identifier, url, details, password, favicon)
       res.status(201).json(newPassword);
     } else {
       res.status(400).json({ created: false, error: 'You cannot leave required fields empty.' });
@@ -68,11 +68,11 @@ export const deletePasswordController = async (req: NextApiRequest, res: NextApi
 export const updatePasswordController = async (req: NextApiRequest, res: NextApiResponse) => {
   const user = req.session.user;
 
-  const { id, identifier, url, details, password, logo } = req.body;
+  const { id, identifier, url, details, password, favicon } = req.body;
 
   if (user) {
-    if (identifier && details && password && logo) {
-      const updatedPassword = await updatePassword(req, id, identifier, url, details, password, logo);
+    if (identifier && details && password && favicon) {
+      const updatedPassword = await updatePassword(id, identifier, url, details, password, favicon);
       res.status(200).json(updatedPassword);
     } else {
       res.status(400).json({ error: 'You cannot leave required fields empty.' })

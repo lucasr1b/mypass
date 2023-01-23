@@ -36,7 +36,7 @@ const PasswordItem = (props: PasswordProps) => {
 	return (
 		<div className={styles.password}>
 			<div className={styles.info} onClick={props.onClick}>
-				<img src={props.password.logo} alt={props.password.logo} />
+				<img src={props.password.favicon} alt={props.password.favicon} />
 				<div className={styles.details}>
 					<span className={styles.identifier}>{props.password.identifier}</span>
 					<span className={styles.email}>{props.password.details}</span>

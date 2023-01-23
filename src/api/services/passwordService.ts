@@ -7,7 +7,7 @@ export const getPasswordsFromUser = async (id: string) => {
   return passwords;
 }
 
-export const createNewPassword = async (req: NextApiRequest, identifier: string, url: string, details: string, password: string, logo: string) => {
+export const createNewPassword = async (req: NextApiRequest, identifier: string, url: string, details: string, password: string, favicon: string) => {
   const user = req.session.user;
   const newPassword = await Password.create({
     user: user.id,
@@ -15,7 +15,7 @@ export const createNewPassword = async (req: NextApiRequest, identifier: string,
     url,
     details,
     password,
-    logo,
+    favicon,
   });
   return newPassword;
 }
@@ -25,14 +25,14 @@ export const deletePassword = async (id: string) => {
   return { deleted: true, deletedPassword };
 }
 
-export const updatePassword = async (req: NextApiRequest, id: string, identifier: string, url: string, details: string, password: string, logo: string) => {
+export const updatePassword = async (id: string, identifier: string, url: string, details: string, password: string, favicon: string) => {
   const updatedPassword = await Password.findOneAndUpdate({ '_id': new ObjectId(id) },
     {
       identifier,
       url,
       details,
       password,
-      logo,
+      favicon,
     },
     {
       returnOriginal: false,

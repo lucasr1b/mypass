@@ -5,7 +5,7 @@ export type Password = {
   url: string;
   details: string;
   password: string;
-  logo: string;
+  favicon: string;
   createdAt: Date;
   updatedAt: Date;
 }

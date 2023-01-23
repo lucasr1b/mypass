@@ -1,16 +1,15 @@
 import { useEffect, useState } from 'react';
-import styles from './ModalLogo.module.scss';
+import styles from './ModalFavicon.module.scss';
 
-type ModalLogoProps = {
+type ModalFaviconProps = {
   websiteURL: string;
-  logo: any;
-  setLogo: any;
+  favicon: any;
+  setFavicon: any;
 }
 
-const ModalLogo = (props: ModalLogoProps) => {
+const ModalFavicon = (props: ModalFaviconProps) => {
 
   const [isWebsiteURLValid, setIsWebsiteURLValid] = useState(false);
-  const [isDisabled, setIsDisabled] = useState(true);
 
   useEffect(() => {
     const handleWebsiteURLValidity = () => {
@@ -18,10 +17,8 @@ const ModalLogo = (props: ModalLogoProps) => {
       const isValid = pattern.test(props.websiteURL);
       if (isValid) {
         setIsWebsiteURLValid(true);
-        setIsDisabled(false);
       } else {
         setIsWebsiteURLValid(false);
-        setIsDisabled(true);
       }
     }
     handleWebsiteURLValidity();
@@ -33,17 +30,17 @@ const ModalLogo = (props: ModalLogoProps) => {
   }
 
   const fetchFaviconFromWebsite = (websiteURL: string) => {
-    props.setLogo(`https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://${getDomainOnly(websiteURL)}/&size=256`);
+    props.setFavicon(`https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://${getDomainOnly(websiteURL)}/&size=256`);
   }
 
   return (
-    <div className={styles.logo}>
-      <div className={styles.favicon}>
-        <img src={props.logo} />
+    <div className={styles.favicon}>
+      <div className={styles.container}>
+        <img src={props.favicon} />
       </div>
       <span>OR</span>
       <div>
-        <button className={styles.fetch} type='button' disabled={isDisabled} onClick={() => fetchFaviconFromWebsite(props.websiteURL)}>Fetch favicon from website</button>
+        <button className={styles.fetch} type='button' disabled={!isWebsiteURLValid} onClick={() => fetchFaviconFromWebsite(props.websiteURL)}>Fetch favicon from website</button>
         {!props.websiteURL && <span className={styles.fetchRequirement}>Website URL is required to fetch</span>}
         {props.websiteURL && !isWebsiteURLValid && <span className={styles.fetchRequirement}>A valid website URL is required to fetch</span>}
         {props.websiteURL && isWebsiteURLValid && <span className={styles.fetchRequirement}>Fetch from {getDomainOnly(props.websiteURL)}</span>}
@@ -52,4 +49,4 @@ const ModalLogo = (props: ModalLogoProps) => {
   )
 }
 
-export default ModalLogo;
+export default ModalFavicon;

@@ -4,7 +4,7 @@ import Backdrop from '../../common/Backdrop';
 import { axiosConfig } from '../../../utils/constants';
 import axios from 'axios';
 import ModalHeader from './../ModalHeader';
-import ModalUpload from '../ModalLogo';
+import ModalFavicon from '../ModalFavicon';
 import ModalButton from './../ModalButton';
 import { useState } from 'react';
 import FormError from '../../form/FormError';
@@ -18,7 +18,7 @@ type NewPasswordModalProps = {
 const NewPasswordModal = (props: NewPasswordModalProps) => {
 
   const [websiteURL, setWebsiteURL] = useState('');
-  const [logo, setLogo] = useState('http://localhost:3000/icons/default.png');
+  const [favicon, setFavicon] = useState('icons/default.png');
   const [error, setError] = useState('');
 
   const addNewPassword = async (e: any) => {
@@ -31,7 +31,7 @@ const NewPasswordModal = (props: NewPasswordModalProps) => {
       url: url.value,
       details: details.value,
       password: password.value,
-      logo,
+      favicon,
     };
 
     await axios.post(`api/passwords/new`, data, axiosConfig)
@@ -62,7 +62,7 @@ const NewPasswordModal = (props: NewPasswordModalProps) => {
             <FormInput label='Password' type='password' small={true} required={true} name='password' />
           </div>
           <div className={modalStyles.buttons}>
-            <ModalUpload websiteURL={websiteURL} logo={logo} setLogo={setLogo} />
+            <ModalFavicon websiteURL={websiteURL} favicon={favicon} setFavicon={setFavicon} />
             <div className={modalStyles.actions}>
               <ModalButton text='Cancel' onClick={props.closeModal} />
               <ModalButton text='Save' submit={true} filled={true} />
