@@ -6,7 +6,7 @@ import dbConnect from '../lib/mongodb';
 dbConnect();
 
 export const getUserProfileController = async (req: NextApiRequest, res: NextApiResponse) => {
-  const user = await req.session.user;
+  const user = req.session.user;
 
   if (user) {
     const userData = await User.find({ '_id': new ObjectId(user.id) });

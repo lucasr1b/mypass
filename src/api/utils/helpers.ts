@@ -6,7 +6,7 @@ export const createSession = async (req: NextApiRequest, id: string, name: strin
     name,
     email
   }
-  await req.session.save();
+  req.session.save();
 }
 
 export const validateEmail = (email: string) => {

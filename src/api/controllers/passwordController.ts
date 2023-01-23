@@ -11,7 +11,7 @@ dbConnect();
 // @Method GET
 
 export const getPasswordsController = async (req: NextApiRequest, res: NextApiResponse) => {
-  const user = await req.session.user;
+  const user = req.session.user;
 
   if (user) {
     const passwords = await getPasswordsFromUser(user.id);
@@ -49,7 +49,7 @@ export const newPasswordController = async (req: NextApiRequest, res: NextApiRes
 // @Method POST
 
 export const deletePasswordController = async (req: NextApiRequest, res: NextApiResponse) => {
-  const user = await req.session.user;
+  const user = req.session.user;
 
   const { id } = req.body;
 
@@ -66,7 +66,7 @@ export const deletePasswordController = async (req: NextApiRequest, res: NextApi
 // @Method POST
 
 export const updatePasswordController = async (req: NextApiRequest, res: NextApiResponse) => {
-  const user = await req.session.user;
+  const user = req.session.user;
 
   const { id, identifier, url, details, password, logo } = req.body;
 
