@@ -48,7 +48,7 @@ export const validateRegisterWithGoogleAndCreateSession = async (req: NextApiReq
         email,
       });
       await createSession(req, user._id, user.name, user.email);
-      return user;
+      return true;
     } else {
       return 'An account with that email already exists.';
     }
@@ -84,14 +84,8 @@ export const validateLoginWithGoogleAndCreateSession = async (req: NextApiReques
   const user = await User.findOne({ email });
 
   if (user) {
-    req.session.user = {
-      id: user._id,
-      name: user.name,
-      email: user.email,
-    };
-    await req.session.save();
-
-    return user;
+    await createSession(req, user._id, user.name, user.email);
+    return true;
   } else {
     return 'That account doesn\'t exist.';
   }

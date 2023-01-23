@@ -24,7 +24,7 @@ const FormWithGoogle = (props: FormWithGoogleProps) => {
         .then(res => res.data);
       await axios.post(`api/auth/login/google`, userInfo, axiosConfig)
         .then((res) => {
-          setSessionDetails(res.data);
+          setSessionDetails(res.data.user);
           router.push('/app');
         })
         .catch((res) => {
@@ -42,7 +42,7 @@ const FormWithGoogle = (props: FormWithGoogleProps) => {
         .then(res => res.data);
       await axios.post(`api/auth/register/google`, userInfo, axiosConfig)
         .then((res) => {
-          setSessionDetails(res.data);
+          setSessionDetails(res.data.user);
           router.push('/app');
         })
         .catch((res) => {
