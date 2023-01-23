@@ -17,16 +17,13 @@ export const authRegisterUserController = async (req: NextApiRequest, res: NextA
     if (userCreationFieldsValidation === true) {
       const user = await createUserAndSession(req, name, email, password);
 
-      res.status(201).json({
-        created: true,
-        user
-      });
+      res.status(201).json({ message: 'Account created', user });
     } else {
-      res.status(400).json({ created: false, error: userCreationFieldsValidation });
+      res.status(400).json({ message: 'Account not created', error: userCreationFieldsValidation });
     }
   } catch (err: any) {
     console.log(err);
-    res.status(400).json({ created: false, error: err.message });
+    res.status(400).json({ message: 'Account not created', error: err.message });
   }
 }
 
@@ -41,13 +38,13 @@ export const authLoginUserController = async (req: NextApiRequest, res: NextApiR
     const userCrendetialFieldsValidation = await validateUserCrendetialFieldsAndCreateSession(req, email, password);
 
     if (userCrendetialFieldsValidation === true) {
-      res.status(200).json({ user: req.session.user });
+      res.status(200).json({ message: 'Successfully authenticated', user: req.session.user });
     } else {
-      res.status(400).json({ error: userCrendetialFieldsValidation });
+      res.status(400).json({ message: 'Authentication failed', error: userCrendetialFieldsValidation });
     }
   } catch (err: any) {
     console.log(err);
-    res.status(400).json({ error: err.message });
+    res.status(400).json({ message: 'Authentication failed', error: err.message });
   }
 }
 
@@ -62,16 +59,13 @@ export const authRegisterWithGoogleController = async (req: NextApiRequest, res:
     const userRegisterWithGoogleValidation = await validateRegisterWithGoogleAndCreateSession(req, name, email);
 
     if (userRegisterWithGoogleValidation === true) {
-      res.status(201).json({
-        created: true,
-        user: req.session.user
-      });
+      res.status(201).json({ message: 'Account created', user: req.session.user });
     } else {
-      res.status(400).json({ error: userRegisterWithGoogleValidation });
+      res.status(400).json({ message: 'Account not created', error: userRegisterWithGoogleValidation });
     }
   } catch (err: any) {
     console.log(err);
-    res.status(400).json({ created: false, error: err.message });
+    res.status(400).json({ message: 'Account not created', error: err.message });
   }
 }
 
@@ -86,13 +80,13 @@ export const authLoginWithGoogleController = async (req: NextApiRequest, res: Ne
     const userLoginWithGoogleValidation = await validateLoginWithGoogleAndCreateSession(req, email);
 
     if (userLoginWithGoogleValidation === true) {
-      res.status(200).json({ user: req.session.user });
+      res.status(200).json({ message: 'Successfully authenticated', user: req.session.user });
     } else {
-      res.status(400).json({ error: userLoginWithGoogleValidation })
+      res.status(400).json({ message: 'Authentication failed', error: userLoginWithGoogleValidation })
     }
   } catch (err: any) {
     console.log(err);
-    res.status(400).json({ error: err.message });
+    res.status(400).json({ message: 'Authentication failed', error: err.message });
   }
 }
 
@@ -102,11 +96,11 @@ export const authLoginWithGoogleController = async (req: NextApiRequest, res: Ne
 
 export async function logoutUserController(req: NextApiRequest, res: NextApiResponse) {
   if (!req.session.user) {
-    return res.status(401).json({ status: 401, message: 'Not logged in' });
+    res.status(401).json({ message: 'Failed to logout', error: 'User not logged in.' });
   }
 
   req.session.destroy();
 
-  return res.status(200).json({ status: 200, message: 'Logged out' });
+  return res.status(200).json({ message: 'Logged out' });
 
 }

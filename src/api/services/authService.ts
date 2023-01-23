@@ -11,19 +11,19 @@ export const validateUserCreationFields = async (name: string, email: string, pa
           if (password === cpassword) {
             return true;
           } else {
-            return 'Passwords do not match';
+            return 'Passwords do not match.';
           }
         } else {
-          return 'Passwords must be at least 8 characters long';
+          return 'Passwords must be at least 8 characters long.';
         }
       } else {
-        return 'An account with that email already exists';
+        return 'An account with that email already exists.';
       }
     } else {
-      return 'That email address is not valid';
+      return 'That email address is not valid.';
     }
   } else {
-    return 'All fields are required';
+    return 'All fields are required.';
   }
 }
 
@@ -50,7 +50,7 @@ export const validateRegisterWithGoogleAndCreateSession = async (req: NextApiReq
       await createSession(req, user._id, user.name, user.email);
       return user;
     } else {
-      return 'An account with that email already exists';
+      return 'An account with that email already exists.';
     }
   } else {
     return 'Something went wrong, try again.'

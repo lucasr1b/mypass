@@ -15,10 +15,9 @@ export const getPasswordsController = async (req: NextApiRequest, res: NextApiRe
 
   if (user) {
     const passwords = await getPasswordsFromUser(user.id);
-
-    res.status(200).json(passwords);
+    res.status(200).json({ message: 'Fetched passwords', passwords });
   } else {
-    res.status(401).json({ loggedIn: false });
+    res.status(401).json({ message: 'Failed to fetch passwords', error: 'User not logged in.' });
   }
 }
 
@@ -34,12 +33,12 @@ export const newPasswordController = async (req: NextApiRequest, res: NextApiRes
   if (user) {
     if (identifier && details && password && favicon) {
       const newPassword = await createNewPassword(req, identifier, url, details, password, favicon)
-      res.status(201).json(newPassword);
+      res.status(201).json({ message: 'Created new password', newPassword });
     } else {
-      res.status(400).json({ created: false, error: 'You cannot leave required fields empty.' });
+      res.status(400).json({ message: 'Password not created', error: 'You cannot leave required fields empty.' });
     }
   } else {
-    res.status(401).json({ error: 'Not logged in.' });
+    res.status(401).json({ message: 'Failed to create new password', error: 'User not logged in.' });
   }
 
 }
@@ -55,9 +54,9 @@ export const deletePasswordController = async (req: NextApiRequest, res: NextApi
 
   if (user) {
     const deletedPassword = await deletePassword(id);
-    res.status(200).json(deletedPassword);
+    res.status(200).json({ message: 'Deleted password', deletedPassword });
   } else {
-    res.status(401).json({ error: 'Not logged in.' });
+    res.status(401).json({ message: 'Failed to delete password', error: 'User not logged in.' });
   }
 }
 
@@ -78,6 +77,6 @@ export const updatePasswordController = async (req: NextApiRequest, res: NextApi
       res.status(400).json({ error: 'You cannot leave required fields empty.' })
     }
   } else {
-    res.status(401).json({ loggedIn: false });
+    res.status(401).json({ message: 'Failed to update password', error: 'User not logged in.' });
   }
 }
