@@ -24,3 +24,19 @@ export const deletePassword = async (id: string) => {
   const deletedPassword = await Password.findOneAndDelete({ '_id': new ObjectId(id) }).select('-password');
   return { deleted: true, deletedPassword };
 }
+
+export const updatePassword = async (req: NextApiRequest, id: string, identifier: string, url: string, details: string, password: string, logo: string) => {
+  const updatedPassword = await Password.findOneAndUpdate({ '_id': new ObjectId(id) },
+    {
+      identifier,
+      url,
+      details,
+      password,
+      logo,
+    },
+    {
+      returnOriginal: false,
+    },
+  ).select('-__v');
+  return { updated: true, updatedPassword };
+}

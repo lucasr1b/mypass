@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { createNewPassword, deletePassword, getPasswordsFromUser } from '../services/passwordService';
+import { createNewPassword, deletePassword, getPasswordsFromUser, updatePassword } from '../services/passwordService';
 import Password from '../models/Password';
 import { ObjectId } from 'mongodb';
 import dbConnect from '../lib/mongodb';
@@ -72,27 +72,10 @@ export const updatePasswordController = async (req: NextApiRequest, res: NextApi
 
   if (user) {
     if (identifier && details && password && logo) {
-      let websiteUrl;
-      !url ? websiteUrl = '' : websiteUrl = url;
-
-      const updatedPassword = await Password.findOneAndUpdate({ '_id': new ObjectId(id) },
-        {
-          identifier,
-          url,
-          details,
-          password,
-          logo,
-        },
-        {
-          returnOriginal: false,
-        },
-      ).select('-__v');
-      res.status(200).json({
-        updated: true,
-        updatedPassword
-      });
+      const updatedPassword = await updatePassword(req, id, identifier, url, details, password, logo);
+      res.status(200).json(updatedPassword);
     } else {
-      res.status(400).json({ updated: false, error: 'You cannot leave required fields empty.' })
+      res.status(400).json({ error: 'You cannot leave required fields empty.' })
     }
   } else {
     res.status(401).json({ loggedIn: false });
