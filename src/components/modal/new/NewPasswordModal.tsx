@@ -36,7 +36,7 @@ const NewPasswordModal = (props: NewPasswordModalProps) => {
 
     await axios.post(`api/passwords/new`, data, axiosConfig)
       .then((res) => {
-        props.addPassword(res.data);
+        props.addPassword(res.data.newPassword);
         props.closeModal();
       })
       .catch((res) => {

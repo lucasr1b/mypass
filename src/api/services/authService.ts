@@ -89,7 +89,7 @@ export const validateLoginWithGoogleAndCreateSession = async (req: NextApiReques
       name: user.name,
       email: user.email,
     };
-    req.session.save();
+    await req.session.save();
 
     return user;
   } else {

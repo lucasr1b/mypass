@@ -39,11 +39,11 @@ const Login = () => {
 
     await axios.post(`api/auth/login`, data, axiosConfig)
       .then((res) => {
-        setSessionDetails(res.data);
+        setSessionDetails(res.data.user);
         router.push('/app');
       })
       .catch((res) => {
-        setError(res.response.data.error);
+        setError(res.data.error);
         password.value = '';
         setSubmitted(false);
       });

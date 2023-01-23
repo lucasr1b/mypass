@@ -39,11 +39,11 @@ const Register = () => {
 
     await axios.post(`api/auth/register`, data, axiosConfig)
       .then((res) => {
-        setSessionDetails(res.data);
+        setSessionDetails(res.data.user);
         router.push('/app');
       })
       .catch((res) => {
-        setError(res.response.data.error);
+        setError(res.data.error);
         password.value = '';
         cpassword.value = '';
         setSubmitted(false);

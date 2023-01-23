@@ -25,8 +25,7 @@ const PasswordList = (props: PasswordListProps) => {
     const fetchPasswords = async () => {
       await axios.get(`api/passwords`, axiosConfig)
         .then((res) => {
-          props.setPasswordList(res.data)
-          props.setPasswordList(res.data);
+          props.setPasswordList(res.data.passwords)
           setIsLoading(false);
         })
         .catch((res) => {
