@@ -1,8 +1,8 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import dbConnect from '../lib/mongodb';
+import connectToDB from '../lib/mongodb';
 import { validateUserCreationFields, createUserAndSession, validateUserCrendetialFieldsAndCreateSession, validateLoginWithGoogleAndCreateSession, validateRegisterWithGoogleAndCreateSession } from '../services/authService';
 
-dbConnect();
+connectToDB();
 
 // @Desc Register user
 // @Route /api/auth/register

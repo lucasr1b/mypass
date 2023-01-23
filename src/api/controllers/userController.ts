@@ -1,9 +1,9 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import User from '../models/User';
 import { ObjectId } from 'mongodb';
-import dbConnect from '../lib/mongodb';
+import connectToDB from '../lib/mongodb';
 
-dbConnect();
+connectToDB();
 
 export const getUserProfileController = async (req: NextApiRequest, res: NextApiResponse) => {
   const user = req.session.user;

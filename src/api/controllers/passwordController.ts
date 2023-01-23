@@ -2,9 +2,9 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import { createNewPassword, deletePassword, getPasswordsFromUser, updatePassword } from '../services/passwordService';
 import Password from '../models/Password';
 import { ObjectId } from 'mongodb';
-import dbConnect from '../lib/mongodb';
+import connectToDB from '../lib/mongodb';
 
-dbConnect();
+connectToDB();
 
 // @Desc Get all passwords
 // @Route /api/passwords
