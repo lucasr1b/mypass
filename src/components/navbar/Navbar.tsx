@@ -5,6 +5,7 @@ import Backdrop from '../common/Backdrop';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSignOut } from '@fortawesome/free-solid-svg-icons';
 import * as jdenticon from 'jdenticon';
+import React from 'react';
 
 type NavbarProps = {
   isHome?: boolean;
@@ -17,6 +18,11 @@ type NavbarProps = {
 const Navbar = (props: NavbarProps) => {
 
   const [dropdownToggled, setDropdownToggled] = useState(false);
+  const [name, setName] = useState('');
+
+  useEffect(() => {
+    setName(localStorage.getItem('name')?.split(' ')[0] as string);
+  }, [])
 
   const jdenticon_config = {
     hues: [260],
@@ -31,19 +37,11 @@ const Navbar = (props: NavbarProps) => {
     backColor: "#0000"
   };
 
-  jdenticon.configure(jdenticon_config);
-
-  const [url, setUrl] = useState('');
-  const [name, setName] = useState('');
-
-  useEffect(() => {
-
-    setName(localStorage.getItem('name')?.split(' ')[0] as string);
-
-    const svgString = jdenticon.toSvg(localStorage.getItem('email'), 64);
-    const svg = new Blob([svgString], { type: "image/svg+xml" });
-    setUrl(URL.createObjectURL(svg));
-  }, [])
+  const svgRef = React.useCallback((node: SVGSVGElement) => {
+    if (node !== null) {
+      jdenticon.update(node, localStorage.getItem('email'), jdenticon_config)
+    }
+  }, []);
 
   return (
     <nav className={styles.navbar}>
@@ -55,7 +53,7 @@ const Navbar = (props: NavbarProps) => {
             <div className={styles.profile}>
               <button onClick={() => setDropdownToggled(!dropdownToggled)}>
                 <div className={styles.profilePicture}>
-                  <img src={url} alt='profile' />
+                  <svg ref={svgRef} width={64} height={64} />
                 </div>
                 <span>{name}</span> {dropdownToggled ? <CaretUpFill /> : <CaretDownFill />}
               </button>
