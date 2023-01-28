@@ -10,7 +10,7 @@ import { axiosConfig } from '../../utils/constants';
 import styles from '../../styles/pages/Register.module.scss';
 import FormError from '../../components/form/FormError';
 import { setSessionDetails } from '../../utils/helpers';
-import { useRouter } from 'next/router';
+import useRouter from 'next/router';
 import { withIronSessionSsr } from 'iron-session/next';
 import { sessionOptions } from '../../lib/session';
 
@@ -43,7 +43,7 @@ const Register = () => {
         router.push('/app');
       })
       .catch((res) => {
-        setError(res.data.error);
+        setError(res.response.data.error);
         password.value = '';
         cpassword.value = '';
         setSubmitted(false);

@@ -11,7 +11,7 @@ import { axiosConfig } from '../../utils/constants';
 import styles from '../../styles/pages/Login.module.scss';
 import FormError from '../../components/form/FormError';
 import { setSessionDetails } from '../../utils/helpers';
-import { useRouter } from 'next/router';
+import useRouter from 'next/router';
 import { withIronSessionSsr } from 'iron-session/next';
 import { sessionOptions } from '../../lib/session';
 

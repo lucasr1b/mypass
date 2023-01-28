@@ -5,10 +5,16 @@ import styles from '../../styles/pages/App.module.scss';
 import AddPasswordButton from '../../components/passwords/AddPasswordButton';
 import NewPasswordModal from '../../components/modal/new/NewPasswordModal';
 import { useEffect, useState } from 'react';
-import { Password } from '../../utils/types';
+import { Password, User } from '../../utils/types';
 import Navbar from '../../components/navbar/Navbar';
+import { withIronSessionSsr } from 'iron-session/next';
+import { sessionOptions } from '../../lib/session';
 
-const App = () => {
+type AppProps = {
+  user: User;
+}
+
+const App = (props: AppProps) => {
 
   const [theme, setTheme] = useLocalStorage('theme', 'light');
   const [modalToggled, setModalToggled] = useState(false);
@@ -40,7 +46,7 @@ const App = () => {
 
   return (
     <div>
-      <Navbar buttonsEnabled={true} switchTheme={switchTheme} theme={theme} />
+      <Navbar buttonsEnabled={true} switchTheme={switchTheme} theme={theme} user={props.user} />
       <div className={styles.container}>
         <WelcomeBanner openModal={toggleAddPasswordModal} />
         <PasswordsTable passwords={passwords} setPasswordList={setPasswordList} />
@@ -50,5 +56,16 @@ const App = () => {
     </div>
   );
 }
+
+export const getServerSideProps = withIronSessionSsr(
+  async ({ req }) => {
+    const user = req.session.user;
+
+    return {
+      props: { user },
+    }
+  }, sessionOptions
+);
+
 
 export default App;

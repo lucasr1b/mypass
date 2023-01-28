@@ -1,5 +1,14 @@
+import { ObjectId } from 'mongoose';
+
+export type User = {
+  _id: ObjectId
+  name: string;
+  email: string;
+  avatar: string;
+}
+
 export type Password = {
-  _id: string;
+  _id: ObjectId;
   user: string;
   identifier: string;
   url: string;

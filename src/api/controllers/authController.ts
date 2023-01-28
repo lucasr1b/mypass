@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import connectToDB from '../lib/mongodb';
-import { validateUserCreationFields, createUserAndSession, validateUserCrendetialFieldsAndCreateSession, validateLoginWithGoogleAndCreateSession, validateRegisterWithGoogleAndCreateSession } from '../services/authService';
+import { validateUserCreationFields, createUserAndSession, validateUserCrendetialFieldsAndCreateSession, validateLoginWithGoogleAndCreateSession, validateRegisterWithGoogleAndCreateSession, generateUserAvatar } from '../services/authService';
 
 connectToDB();
 
@@ -15,8 +15,8 @@ export const authRegisterUserController = async (req: NextApiRequest, res: NextA
     const userCreationFieldsValidation = await validateUserCreationFields(name, email, password, cpassword);
 
     if (userCreationFieldsValidation === true) {
+      await generateUserAvatar(email);
       const user = await createUserAndSession(req, name, email, password);
-
       res.status(201).json({ message: 'Account created', user });
     } else {
       res.status(400).json({ message: 'Account not created', error: userCreationFieldsValidation });
@@ -59,6 +59,7 @@ export const authRegisterWithGoogleController = async (req: NextApiRequest, res:
     const userRegisterWithGoogleValidation = await validateRegisterWithGoogleAndCreateSession(req, name, email);
 
     if (userRegisterWithGoogleValidation === true) {
+      await generateUserAvatar(email);
       res.status(201).json({ message: 'Account created', user: req.session.user });
     } else {
       res.status(400).json({ message: 'Account not created', error: userRegisterWithGoogleValidation });

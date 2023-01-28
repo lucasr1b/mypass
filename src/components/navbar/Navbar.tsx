@@ -1,10 +1,9 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import styles from './Navbar.module.scss';
 import { MoonFill, CaretDownFill, CaretUpFill, SunFill, GearFill } from 'react-bootstrap-icons';
 import Backdrop from '../common/Backdrop';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSignOut } from '@fortawesome/free-solid-svg-icons';
-import * as jdenticon from 'jdenticon';
 import React from 'react';
 
 type NavbarProps = {
@@ -12,36 +11,13 @@ type NavbarProps = {
   isLoggedIn?: boolean;
   buttonsEnabled?: boolean;
   switchTheme?: any;
-  theme?: string
+  theme?: string;
+  user?: any;
 }
 
 const Navbar = (props: NavbarProps) => {
 
   const [dropdownToggled, setDropdownToggled] = useState(false);
-  const [name, setName] = useState('');
-
-  useEffect(() => {
-    setName(localStorage.getItem('name')?.split(' ')[0] as string);
-  }, [])
-
-  const jdenticon_config = {
-    hues: [260],
-    lightness: {
-      color: [0.35, 0.44],
-      grayscale: [0.35, 0.45]
-    },
-    saturation: {
-      color: 1.00,
-      grayscale: 1.00
-    },
-    backColor: "#0000"
-  };
-
-  const svgRef = React.useCallback((node: SVGSVGElement) => {
-    if (node !== null) {
-      jdenticon.update(node, localStorage.getItem('email'), jdenticon_config)
-    }
-  }, []);
 
   return (
     <nav className={styles.navbar}>
@@ -53,9 +29,9 @@ const Navbar = (props: NavbarProps) => {
             <div className={styles.profile}>
               <button onClick={() => setDropdownToggled(!dropdownToggled)}>
                 <div className={styles.profilePicture}>
-                  <svg ref={svgRef} width={64} height={64} />
+                  <img src={`/uploads/${props.user.id}.svg`} />
                 </div>
-                <span>{name}</span> {dropdownToggled ? <CaretUpFill /> : <CaretDownFill />}
+                <span>{props.user.name}</span> {dropdownToggled ? <CaretUpFill /> : <CaretDownFill />}
               </button>
               {dropdownToggled &&
                 <>
