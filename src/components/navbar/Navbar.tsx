@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import styles from './Navbar.module.scss';
-import { MoonFill, CaretDownFill, CaretUpFill, SunFill, GearFill, MoonStarsFill } from 'react-bootstrap-icons';
+import { MoonFill, CaretDownFill, CaretUpFill, SunFill, GearFill } from 'react-bootstrap-icons';
 import Backdrop from '../common/Backdrop';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSignOut } from '@fortawesome/free-solid-svg-icons';

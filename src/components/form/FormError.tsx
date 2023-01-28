@@ -1,4 +1,4 @@
-import { ExclamationCircleFill, X } from 'react-bootstrap-icons';
+import { ExclamationCircleFill } from 'react-bootstrap-icons';
 import styles from './FormError.module.scss';
 
 type FormErrorProps = {

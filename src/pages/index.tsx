@@ -1,7 +1,7 @@
 import { withIronSessionSsr } from 'iron-session/next';
 import Navbar from '../components/navbar/Navbar';
 import styles from '../styles/pages/Home.module.scss';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { sessionOptions } from '../lib/session';
 
 type HomeProps = {

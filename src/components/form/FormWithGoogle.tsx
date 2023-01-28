@@ -3,7 +3,6 @@ import { useGoogleLogin } from '@react-oauth/google';
 import axios from 'axios';
 import { axiosConfig } from '../../utils/constants';
 import { setSessionDetails } from '../../utils/helpers';
-import { useState } from 'react';
 import { useRouter } from 'next/router';
 
 type FormWithGoogleProps = {

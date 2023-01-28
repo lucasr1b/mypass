@@ -1,7 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { createNewPassword, deletePassword, getPasswordsFromUser, updatePassword } from '../services/passwordService';
-import Password from '../models/Password';
-import { ObjectId } from 'mongodb';
 import connectToDB from '../lib/mongodb';
 
 connectToDB();
