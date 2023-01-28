@@ -3,6 +3,7 @@ import User from '../models/User';
 import { createSession, validateEmail } from '../utils/helpers';
 import { writeFileSync } from 'fs';
 import * as jdenticon from 'jdenticon';
+import { jdenticon_config } from '../utils/constants';
 
 export const validateUserCreationFields = async (name: string, email: string, password: string, cpassword: string) => {
   if (name && email && password && cpassword) {

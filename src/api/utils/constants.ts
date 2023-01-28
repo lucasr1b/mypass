@@ -1,4 +1,4 @@
-const jdenticon_config = {
+export const jdenticon_config = {
   hues: [260],
   lightness: {
     color: [0.35, 0.44],
