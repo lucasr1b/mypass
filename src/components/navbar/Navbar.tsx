@@ -4,20 +4,30 @@ import { MoonFill, CaretDownFill, CaretUpFill, SunFill, GearFill } from 'react-b
 import Backdrop from '../common/Backdrop';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSignOut } from '@fortawesome/free-solid-svg-icons';
+import * as jdenticon from 'jdenticon';
 import React from 'react';
+import { User } from '../../utils/types';
+import { jdenticon_config } from '../../utils/constants';
 
 type NavbarProps = {
+  user?: User;
   isHome?: boolean;
   isLoggedIn?: boolean;
   buttonsEnabled?: boolean;
   switchTheme?: any;
   theme?: string;
-  user?: any;
 }
 
 const Navbar = (props: NavbarProps) => {
 
   const [dropdownToggled, setDropdownToggled] = useState(false);
+
+
+  const svgRef = React.useCallback((node: SVGSVGElement) => {
+    if (node !== null) {
+      jdenticon.update(node, props.user?.email, jdenticon_config)
+    }
+  }, []);
 
   return (
     <nav className={styles.navbar}>
@@ -29,9 +39,9 @@ const Navbar = (props: NavbarProps) => {
             <div className={styles.profile}>
               <button onClick={() => setDropdownToggled(!dropdownToggled)}>
                 <div className={styles.profilePicture}>
-                  <img src={`/uploads/${props.user.id}.svg`} />
+                  <svg ref={svgRef} width={64} height={64} />
                 </div>
-                <span>{props.user.name}</span> {dropdownToggled ? <CaretUpFill /> : <CaretDownFill />}
+                <span>{props.user?.name}</span> {dropdownToggled ? <CaretUpFill /> : <CaretDownFill />}
               </button>
               {dropdownToggled &&
                 <>

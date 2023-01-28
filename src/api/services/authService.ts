@@ -1,9 +1,6 @@
 import { NextApiRequest } from 'next';
 import User from '../models/User';
 import { createSession, validateEmail } from '../utils/helpers';
-import { writeFileSync } from 'fs';
-import * as jdenticon from 'jdenticon';
-import { jdenticon_config } from '../utils/constants';
 
 export const validateUserCreationFields = async (name: string, email: string, password: string, cpassword: string) => {
   if (name && email && password && cpassword) {
@@ -39,13 +36,6 @@ export const createUserAndSession = async (req: NextApiRequest, name: string, em
   });
   await createSession(req, user._id, user.name, user.email);
   return user;
-}
-
-export const generateUserAvatar = async (email: string) => {
-  const svg = jdenticon.toSvg(email, 64, jdenticon_config);
-
-  const fileName = `public/uploads/${email}.svg`;
-  writeFileSync(fileName, svg);
 }
 
 export const validateRegisterWithGoogleAndCreateSession = async (req: NextApiRequest, name: string, email: string) => {

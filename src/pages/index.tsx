@@ -3,9 +3,11 @@ import Navbar from '../components/navbar/Navbar';
 import styles from '../styles/pages/Home.module.scss';
 import { useEffect } from 'react';
 import { sessionOptions } from '../lib/session';
+import { User } from '../utils/types';
 
 type HomeProps = {
   isLoggedIn: boolean;
+  user: User;
 }
 
 const Home = (props: HomeProps) => {
@@ -42,7 +44,7 @@ export const getServerSideProps = withIronSessionSsr(
     }
 
     return {
-      props: { isLoggedIn: false },
+      props: { isLoggedIn: false, user },
     }
   }, sessionOptions
 );
