@@ -3,7 +3,7 @@ import { useGoogleLogin } from '@react-oauth/google';
 import axios from 'axios';
 import { axiosConfig } from '../../utils/constants';
 import { setSessionDetails } from '../../utils/helpers';
-import useRouter from 'next/router';
+import Router from 'next/router';
 
 type FormWithGoogleProps = {
   text: string;
@@ -12,7 +12,6 @@ type FormWithGoogleProps = {
 }
 
 const FormWithGoogle = (props: FormWithGoogleProps) => {
-  const router = useRouter();
 
   const login = useGoogleLogin({
     onSuccess: async tokenResponse => {
@@ -24,7 +23,7 @@ const FormWithGoogle = (props: FormWithGoogleProps) => {
       await axios.post(`api/auth/login/google`, userInfo, axiosConfig)
         .then((res) => {
           setSessionDetails(res.data.user);
-          router.push('/app');
+          Router.push('/app');
         })
         .catch((res) => {
           props.setError(res.response.data.error);
@@ -42,7 +41,7 @@ const FormWithGoogle = (props: FormWithGoogleProps) => {
       await axios.post(`api/auth/register/google`, userInfo, axiosConfig)
         .then((res) => {
           setSessionDetails(res.data.user);
-          router.push('/app');
+          Router.push('/app');
         })
         .catch((res) => {
           props.setError(res.response.data.error);
