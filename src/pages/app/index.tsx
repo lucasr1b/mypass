@@ -3,7 +3,7 @@ import PasswordsTable from '../../components/passwords/PasswordsTable';
 import useLocalStorage from 'use-local-storage';
 import styles from '../../styles/pages/App.module.scss';
 import AddPasswordButton from '../../components/passwords/AddPasswordButton';
-import NewPasswordModal from '../../components/modal/new/NewPasswordModal';
+import NewPasswordModal from '../../components/modal/passwords/new/NewPasswordModal';
 import { useEffect, useState } from 'react';
 import { Password } from '../../utils/types';
 import Navbar from '../../components/navbar/Navbar';

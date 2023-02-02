@@ -1,14 +1,14 @@
-import FormInput from '../../form/FormInput';
+import FormInput from '../../../form/FormInput';
 import styles from './NewPasswordModal.module.scss';
-import Backdrop from '../../common/Backdrop';
-import { axiosConfig } from '../../../utils/constants';
+import Backdrop from '../../../common/Backdrop';
+import { axiosConfig } from '../../../../utils/constants';
 import axios from 'axios';
-import ModalHeader from './../ModalHeader';
-import ModalUpload from '../ModalLogo';
-import ModalButton from './../ModalButton';
+import ModalHeader from '../../ModalHeader';
+import ModalUpload from '../PasswordModalLogo';
+import ModalButton from '../../ModalButton';
 import { useState } from 'react';
-import FormError from '../../form/FormError';
-import modalStyles from '../../../styles/common/modal.module.scss';
+import FormError from '../../../form/FormError';
+import modalStyles from '../../../../styles/common/modal.module.scss';
 
 type NewPasswordModalProps = {
   closeModal: any,

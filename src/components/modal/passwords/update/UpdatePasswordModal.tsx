@@ -1,14 +1,14 @@
 import { useState } from 'react';
-import Backdrop from '../../common/Backdrop';
-import FormError from '../../form/FormError';
-import FormInput from '../../form/FormInput';
-import ModalButton from '../ModalButton';
-import ModalHeader from '../ModalHeader';
-import ModalUpload from '../ModalLogo';
+import Backdrop from '../../../common/Backdrop';
+import FormError from '../../../form/FormError';
+import FormInput from '../../../form/FormInput';
+import ModalButton from '../../ModalButton';
+import ModalHeader from '../../ModalHeader';
+import ModalUpload from '../PasswordModalLogo';
 import styles from './UpdatePasswordModal.module.scss';
-import modalStyles from '../../../styles/common/modal.module.scss';
+import modalStyles from '../../../../styles/common/modal.module.scss';
 import axios from 'axios';
-import { axiosConfig } from '../../../utils/constants';
+import { axiosConfig } from '../../../../utils/constants';
 
 type UpdatePasswordModalProps = {
   closeModal: any,

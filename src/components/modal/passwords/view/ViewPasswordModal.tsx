@@ -1,12 +1,10 @@
 import styles from './ViewPasswordModal.module.scss';
-import Backdrop from '../../common/Backdrop';
-import ModalHeader from '../ModalHeader';
+import Backdrop from '../../../common/Backdrop';
+import ModalHeader from '../../ModalHeader';
 import PasswordDetail from './PasswordDetail';
-import ModalButton from '../ModalButton';
+import ModalButton from '../../ModalButton';
 import { useEffect, useState } from 'react';
 import moment from 'moment';
-import axios from 'axios';
-import { axiosConfig } from '../../../utils/constants';
 
 type ViewPasswordModalProps = {
   closeModal: any;

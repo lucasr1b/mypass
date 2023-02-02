@@ -3,9 +3,9 @@ import { Password } from '../../utils/types';
 import PasswordItem from './PasswordItem';
 import { axiosConfig } from '../../utils/constants';
 import axios from 'axios';
-import ViewPasswordModal from '../modal/view/ViewPasswordModal';
+import ViewPasswordModal from '../modal/passwords/view/ViewPasswordModal';
+import UpdatePasswordModal from '../modal/passwords/update/UpdatePasswordModal';
 import styles from './PasswordList.module.scss';
-import UpdatePasswordModal from '../modal/update/UpdatePasswordModal';
 
 type PasswordListProps = {
   passwords: Password[];

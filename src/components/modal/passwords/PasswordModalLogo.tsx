@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import styles from './ModalLogo.module.scss';
+import styles from './PasswordModalLogo.module.scss';
 
 type ModalLogoProps = {
   websiteURL: string;
