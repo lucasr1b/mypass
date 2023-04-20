@@ -44,7 +44,7 @@ export const getServerSideProps = withIronSessionSsr(
     }
 
     return {
-      props: { isLoggedIn: false, user },
+      props: { isLoggedIn: false, user: user ?? null },
     }
   }, sessionOptions
 );

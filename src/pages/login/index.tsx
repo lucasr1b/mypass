@@ -41,7 +41,7 @@ const Login = () => {
         Router.push('/app');
       })
       .catch((res) => {
-        setError(res.data.error);
+        setError(res.response.data.error);
         password.value = '';
         setSubmitted(false);
       });
