@@ -22,7 +22,7 @@ const PasswordItem = (props: PasswordProps) => {
 		setDropdownToggled(!dropdownToggled)
 	}
 
-	const deletePassword = async (id: string) => {
+	const deletePassword = async (id: any) => {
 		await axios.post(`api/passwords/delete`, { id }, axiosConfig);
 		props.setPasswordList(props.passwords.filter((password: any) => password._id !== id))
 		handleOptions();
