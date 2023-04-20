@@ -1,7 +1,7 @@
 # mypass
-_A secure vault for saving your passwords on the go._
-
 Mypass is a password management website built using NextJS with TypeScript, SCSS and MongoDB as its database.
+
+https://mypass-lucasr1b.vercel.app/
 
 ### Landing Page
 ![Landing Page](/assets/home.png "Landing Page")
